@@ -1,0 +1,42 @@
+.contentProductLarger {
+  width: 25%;
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 10px;
+}
+
+.contentProductLarger img {
+  max-width: 100%;
+}
+
+.contentProductLarger h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #202020;
+  margin: 3% 0 5% 0;
+}
+
+.sale {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 50%;
+}
+.sale p:first-child {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  text-decoration-line: line-through;
+  color: #424242;
+}
+.sale p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #569ccd;
+}
