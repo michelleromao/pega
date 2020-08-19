@@ -1,0 +1,22 @@
+.bestSeller {
+  width: 226px;
+  height: 265px;
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  cursor: pointer;
+}
+.bestSeller:hover img {
+  opacity: 0.9;
+  transition: 0.3s;
+}
+.bestSeller p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  color: #202020;
+  margin-top: 6%;
+}
