@@ -1,10 +1,10 @@
 import React from 'react';
-import ButtomCategory from './components/ButtomCategory';
+import BestSeller from './components/BestSeller';
 
 function App() {
   return (
     <>
-      <ButtomCategory nameCategory="Camisas" />
+      <BestSeller nameSeller="Fernanda" />
     </>
   );
 }

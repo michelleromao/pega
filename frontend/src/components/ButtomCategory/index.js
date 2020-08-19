@@ -3,7 +3,7 @@ import './style.css';
 import { ReactComponent as Shirt } from '../../assets/icons/camisacinza.svg';
 import { ReactComponent as ShirtHover } from '../../assets/icons/camisarosa.svg';
 
-function ButtomCategory(props) {
+function ButtonCategory(props) {
   const [hover, setHover] = useState(false);
 
   const onMouseEnterHandle = () => {
@@ -25,4 +25,4 @@ function ButtomCategory(props) {
     </button>
   );
 }
-export default ButtomCategory;
+export default ButtonCategory;
