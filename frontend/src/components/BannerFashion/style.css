@@ -1,0 +1,79 @@
+.contentBannerFashion {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.contentBannerFashionColumn {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+
+.barVertical {
+  width: 22%;
+  height: 496px;
+  border-radius: 10px;
+}
+
+.contentBannerFashionColumn {
+  display: flex;
+  flex-flow: column;
+  width: 52%;
+}
+.barHorizontal {
+  height: 47%;
+  border-radius: 10px;
+}
+
+.pink {
+  background: #e076bb;
+}
+.pink p {
+  margin-top: 15%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 121%;
+  text-align: center;
+  color: #fff;
+}
+.yellow {
+  background: #f8f489;
+}
+.yellow p {
+  margin-top: 15%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 121%;
+  text-align: center;
+  color: #be5599;
+}
+.blue {
+  background: #83bde7;
+}
+.blue p {
+  margin: 15% 0 0 50%;
+  font-style: normal;
+  width: 30%;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #ffffff;
+}
+.red {
+  background: #e27475;
+}
+.red p {
+  margin: 15% 0 0 50%;
+  font-style: normal;
+  width: 30%;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #ffffff;
+}
