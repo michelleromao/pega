@@ -1,10 +1,10 @@
 import React from 'react';
-import BannerFashion from './components/BannerFashion';
+import ButtomCategory from './components/ButtomCategory';
 
 function App() {
   return (
     <>
-      <BannerFashion />
+      <ButtomCategory nameCategory="Camisas" />
     </>
   );
 }
