@@ -9,11 +9,11 @@ function ProductLarger(props) {
       <h3>{props.title}</h3>
       {props.promo ? (
         <div className="sale">
-          <p> {`R$ ${props.price},00`}</p>
-          <p> {`R$ ${props.promo},00`}</p>
+          <p className="promo"> {`R$ ${props.price},00`}</p>
+          <p className="price"> {`R$ ${props.promo},00`}</p>
         </div>
       ) : (
-        <p>{`R$ ${props.price},00`}</p>
+        <p className="price">{`R$ ${props.price},00`}</p>
       )}
     </div>
   );
