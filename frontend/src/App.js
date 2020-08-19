@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from './components/Footer';
+import ProductLarger from './components/ProductLarger';
 
 function App() {
   return (
     <>
-      <Footer />
+      <ProductLarger title="Jaquetinha Stickers" promo="20" price="45" />
     </>
   );
 }

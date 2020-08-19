@@ -1,8 +1,8 @@
-<svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.3598 14.7784V33.9027C8.54897 36.4821 8.95029 39.7302 13.3232 39.5426H37.8992C41.7593 39.5426 42.6402 37.1095 42.6402 35.2627V15.1891C42.6402 10.1389 37.8471 10.4729 37.8471 10.4729H14.0166C13.0606 10.5126 8.36617 9.74618 8.36617 14.7093" stroke="black" stroke-width="1.49621" stroke-linecap="round"/>
-<path d="M22.0242 25.0799V39.2652" stroke="black" stroke-width="1.49621" stroke-linecap="round"/>
-<path d="M41.2277 22.8267H23.8826" stroke="black" stroke-width="1.49621" stroke-linecap="round"/>
-<path d="M15.7538 28.1906C27.2134 21.8808 19.9316 14.1051 16.4885 14.9481C15.775 15.1226 14.5275 16.2593 15.2199 17.8084C20.4459 29.501 31.1288 18.5306 27.331 15.598C23.5333 12.6653 17.5365 24.2651 27.2563 27.7647" stroke="black" stroke-width="1.49621" stroke-linecap="round"/>
-<path d="M19.9286 22.8267H9.302" stroke="black" stroke-width="1.49621" stroke-linecap="round"/>
-<path d="M22.0242 11.2408V17.1227" stroke="black" stroke-width="1.49621" stroke-linecap="round"/>
+<svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 4.20178V18.3538C1.13724 20.2625 1.42839 22.6661 4.60089 22.5273H22.4305C25.231 22.5273 25.8701 20.7269 25.8701 19.3602V4.50573C25.8701 0.768573 22.3928 1.01572 22.3928 1.01572H5.10393C4.4104 1.04512 1.00462 0.477966 1.00462 4.15065" stroke="#202020" stroke-width="1.49621" stroke-linecap="round"/>
+<path d="M10.9131 11.825V22.3221" stroke="#202020" stroke-width="1.49621" stroke-linecap="round"/>
+<path d="M24.8454 10.1576H12.2617" stroke="#202020" stroke-width="1.49621" stroke-linecap="round"/>
+<path d="M6.36437 14.1268C14.6782 9.45753 9.39533 3.70352 6.89743 4.32731C6.37976 4.4565 5.47471 5.29761 5.97704 6.44396C9.76845 15.0965 17.5188 6.97836 14.7636 4.80824C12.0083 2.63808 7.65769 11.2219 14.7093 13.8116" stroke="#202020" stroke-width="1.49621" stroke-linecap="round"/>
+<path d="M9.39312 10.1576H1.68359" stroke="#202020" stroke-width="1.49621" stroke-linecap="round"/>
+<path d="M10.9131 1.58398V5.93659" stroke="#202020" stroke-width="1.49621" stroke-linecap="round"/>
 </svg>

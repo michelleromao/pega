@@ -24,7 +24,7 @@
   justify-content: space-between;
   width: 68%;
 }
-.saleProductSmall p:first-child {
+.saleProductSmall .promo {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -32,8 +32,8 @@
   text-decoration-line: line-through;
   color: #424242;
 }
-.saleProductSmall p,
-.contentProductSmall p {
+.saleProductSmall .price,
+.contentProductSmall .price {
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
