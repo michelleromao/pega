@@ -1,21 +1,24 @@
 import React from 'react'
 import { FiMenu, FiChevronDown } from 'react-icons/fi'
 import Sacola from '../../assets/icons/sacola.svg'
-import Logo from '../../assets/logo.svg'
-import Pesquisa from '../../assets/icons/lupa.svg'
 import Fernanda from './nanda.png'
 import './Header.css'
+import Bolsa from '../../assets/icons/Bolsa'
+import Logo from '../../assets/Logo'
+import Pesquisa from '../../assets/icons/Lupa'
 
 export default function Header() {
     return (
         <div className="Header">
-            <img src={Logo}></img>
+            <div className="Logo">
+                <Logo />
+            </div>            
             <div className="Categorias">
                 <FiMenu /> <p>Categorias</p>
             </div>
                 <div className="Pesquisa">
                 <input type="search" placeholder="Encontre seu produto aqui! =D"></input>
-                <img src={Pesquisa}></img>
+                <Pesquisa />
             </div>            
             <button id="cta-vender">Vender</button>
             <div className="Usuario">
@@ -24,7 +27,7 @@ export default function Header() {
                 <FiChevronDown />          
             </div>
             <div className="Sacola">
-                <span>3</span><img src={Sacola}></img>
+                <span>3</span><Bolsa />
             </div>
             
         </div>
