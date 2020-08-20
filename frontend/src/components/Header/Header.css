@@ -115,6 +115,6 @@
     font-weight: 600;
     font-size: 14px;
 }
-.Sacola img {
-    width:25px;
+.Sacola svg {
+    fill: red;
 }
