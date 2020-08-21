@@ -15,6 +15,17 @@
     padding: 10px 5px 10px 5px;
 }
 
+.Logo svg {
+   fill: #569CCD; 
+   transition: 0.5s;
+}
+
+.Logo svg:hover {
+    opacity: 90%;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 .Categorias {
     display: flex;
     flex-direction: row;
@@ -65,6 +76,19 @@
     transition: 0.3s;
 }
 
+.Pesquisa svg {
+    fill: #ccc;
+    transform: rotate(-7deg);
+    stroke:#ccc;
+    stroke-width:1px;
+    width: 40px;
+}
+
+.Pesquisa svg:hover {
+    opacity: 90%;
+    cursor: pointer;
+}
+
 #cta-vender {
     margin: 0 15px 0 5px;
     background: #BE5599;
@@ -95,7 +119,7 @@
 }
 
 .Usuario img {   
-    padding:8px;
+    padding:4px;
     width: 30px;
     height: 30px;
     border-radius: 50px;
@@ -115,6 +139,10 @@
     font-weight: 600;
     font-size: 14px;
 }
+
 .Sacola svg {
-    fill: red;
+    fill:#202020;
+    width:25px;
+    stroke: #202020;
+    stroke-width: 1.8px;
 }
