@@ -1,10 +1,14 @@
 .contentProductSmall {
-  width: 18.5%;
+  width: 47%;
   display: flex;
   flex-flow: column wrap;
   border-radius: 10px;
+  cursor: pointer;
 }
-
+.contentProductSmall:hover {
+  opacity: 0.9;
+  transition: 0.3s;
+}
 .contentProductSmall img {
   max-width: 100%;
 }

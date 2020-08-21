@@ -5,7 +5,7 @@ import Photo from '../../assets/photos/productlarger.png';
 function ProductSmall(props) {
   return (
     <div className="contentProductSmall">
-      <img src={Photo} alt={props.title} />
+      <img src={props.photoProductSmall} alt={props.title} />
       <h3>{props.title}</h3>
       {props.promo ? (
         <div className="saleProductSmall">

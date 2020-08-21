@@ -2,7 +2,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
+  cursor: pointer;
 }
 
 .contentBannerFashionColumn {
@@ -13,8 +14,12 @@
 
 .barVertical {
   width: 22%;
-  height: 496px;
+  height: 495px;
   border-radius: 10px;
+}
+.barVertical:hover {
+  opacity: 0.9;
+  transition: 0.3s;
 }
 
 .contentBannerFashionColumn {
@@ -25,6 +30,10 @@
 .barHorizontal {
   height: 47%;
   border-radius: 10px;
+}
+.barHorizontal:hover {
+  opacity: 0.9;
+  transition: 0.3s;
 }
 
 .pink {

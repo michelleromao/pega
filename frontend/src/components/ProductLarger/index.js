@@ -1,11 +1,10 @@
 import React from 'react';
 import './style.css';
-import Photo from '../../assets/photos/productlarger.png';
 
 function ProductLarger(props) {
   return (
     <div className="contentProductLarger">
-      <img src={Photo} alt={props.title} />
+      <img src={props.photoProductLarger} alt={props.title} />
       <h3>{props.title}</h3>
       {props.promo ? (
         <div className="sale">
