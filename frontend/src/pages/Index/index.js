@@ -25,7 +25,6 @@ import './style.css';
 function Index(props) {
   return (
     <>
-      <Header></Header>
       <BannerSlide
         photo={Slide}
         alt="Menina comendo pipoca sentada no sofá"
@@ -140,7 +139,6 @@ function Index(props) {
           content="O Pega! foi criado para vender no Sertão Central, aproximando vendedores e compradores da região."
         />
       </section>
-      <Footer />
     </>
   );
 }
