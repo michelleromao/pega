@@ -1,11 +1,16 @@
 import React from 'react';
-import DescriptionProduct from '../../components/Product/DescriptionProduct';
+import SellerInformation from '../../components/SellerInformation';
+import Seller from '../../assets/photos/bestSeller.png';
 
 function TestPage() {
   return (
     <>
-      <DescriptionProduct
-        description={`Jaqueta rosa jeans, que vem com stickers para colocar no tecido. Rosinha claro, está um pouco desbotada em alguns cantos, na manga, mas nada demais. Possui alguns rasgos laterais, mas é do modelo. Apenas 2 meses de uso. Motivo da venda: não cabe mais em mim, nos braços ficam apertados. Veste P facilmente.`}
+      <SellerInformation
+        photo={Seller}
+        name="Fernanda"
+        location="Quixadá - CE"
+        contFav="3"
+        contComents="32"
       />
     </>
   );
