@@ -8,14 +8,12 @@ import Index from './pages/Index';
 import TestPage from './pages/TestPage';
 
 function App() {
-  const [snackbar, setSnackbar] = React.useState({ open: false, message: '' });
-
   return (
     <>
       <Router>
         <Header />
         <Route exact path="/" component={() => <Index />} />
-        <Route path="/teste" component={() => <TestPage />} />
+        <Route exact path="/test" component={() => <TestPage />} />
         <Footer />
       </Router>
     </>

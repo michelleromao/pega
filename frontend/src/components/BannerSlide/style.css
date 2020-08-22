@@ -15,7 +15,6 @@
   display: flex;
   flex-flow: column;
   width: 40%;
-  justify-content: center;
   align-items: center;
 }
 .containerPhoto h1 {
