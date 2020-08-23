@@ -1,17 +1,13 @@
 import React from 'react';
-import SellerInformation from '../../components/SellerInformation';
-import Seller from '../../assets/photos/bestSeller.png';
+import PhotosProduct from '../../components/Product/PhotosProduct';
+import Photoproduct from '../../assets/photos/photoproduct.png';
+import Photoproduct2 from '../../assets/photos/photoproduct2.png';
+import Photoproduct3 from '../../assets/photos/photoproduct3.png';
 
 function TestPage() {
   return (
     <>
-      <SellerInformation
-        photo={Seller}
-        name="Fernanda"
-        location="Quixadá - CE"
-        contFav="3"
-        contComents="32"
-      />
+      <PhotosProduct photos={[Photoproduct, Photoproduct2, Photoproduct3]} />
     </>
   );
 }
