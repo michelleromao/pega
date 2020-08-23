@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
+import Greaterthan from '../../assets/icons/chevron-down 1.svg';
 
 function Breadcrumbs(props) {
   return (
@@ -11,7 +12,7 @@ function Breadcrumbs(props) {
             home
           </Link>
         </h5>
-        <span>&gt;</span>
+        <img src={Greaterthan} alt="" />
         <h5>
           <Link to="/" className="link">
             {props.category}

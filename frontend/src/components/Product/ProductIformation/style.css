@@ -1,5 +1,5 @@
 .productInformation {
-  width: 371px;
+  width: 32%;
   height: 436px;
   display: flex;
   flex-flow: column;
@@ -64,7 +64,7 @@
 .productPrice {
   display: flex;
   flex-flow: column;
-  width: 50%;
+  width: 40%;
 }
 
 .promo {
@@ -83,15 +83,24 @@
   color: #569ccd;
 }
 .method {
+  width: 40%;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   color: #202020;
-  margin-left: 15%;
 }
 button {
   cursor: pointer;
+}
+.receive {
+  margin-top: 5%;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #c4c4c4;
 }
 .btnBuy {
   height: 54px;

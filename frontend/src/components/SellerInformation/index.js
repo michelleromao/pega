@@ -77,7 +77,7 @@ function SellerInformation(props) {
           <img src={props.photo} alt={props.nameSeller} />
           <div className="columnSeller">
             <div className="rowSeller">
-              <h5>{props.name}</h5>
+              <h5>{props.nameSeller}</h5>
               <p>{props.location}</p>
             </div>
             <div className="rowSeller">

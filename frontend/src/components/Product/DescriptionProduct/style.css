@@ -1,7 +1,7 @@
 .descriptionProductContainer {
   display: flex;
   flex-flow: column;
-  width: 40%;
+  width: 65%;
 }
 .descriptionProductContainer h3 {
   font-style: normal;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
+
 import BannerSlide from '../../components/BannerSlide';
 import ButtomCategory from '../../components/ButtomCategory/';
 import ProductLarger from '../../components/ProductLarger/';
@@ -7,7 +7,6 @@ import ProductSmall from '../../components/ProductSmall/';
 import BestSeller from '../../components/BestSeller/';
 import BannerFashion from '../../components/BannerFashion/';
 import Illustration from '../../components/Illustration/';
-import Footer from '../../components/Footer/';
 
 import Slide from '../../assets/photos/slide.png';
 import PhotoProductLarger1 from '../../assets/photos/productlarger.png';
@@ -22,7 +21,7 @@ import Sun from '../../assets/illustrations/sunsertao.png';
 
 import './style.css';
 
-function Index(props) {
+function Index() {
   return (
     <>
       <BannerSlide
@@ -41,6 +40,7 @@ function Index(props) {
         <h3>Punk</h3>
         <div className="productsLargeContent">
           <ProductLarger
+            id="000"
             photoProductLarger={PhotoProductLarger1}
             title="jaquetinha stickers"
             price="45"

@@ -1,7 +1,7 @@
 .photosProductContent {
   display: flex;
   flex-flow: row;
-  width: 67%;
+  width: 63%;
   height: 436px;
   justify-content: space-between;
 }
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 .photosProductContent .active {
-  width: 100%;
+  width: 70%;
   margin-left: 2%;
   opacity: 1;
 }
