@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
+import StarComponent from './StarComponent';
 import Star from '../../assets/icons/Estrela';
 
 function SellerInformation(props) {
@@ -68,7 +69,11 @@ function SellerInformation(props) {
       );
     }
   };
-
+  //(i=0; i<=5; i<=contFav)
+  //loop 0 a 5, props.contFav,
+  //ate o valor que recebeu,
+  //entrela azul, se nao, estrela cinza
+  //renderiza 5, recebe a quantidade de fav,
   return (
     <>
       <div className="sellerInformationContainer">
@@ -81,7 +86,13 @@ function SellerInformation(props) {
               <p>{props.location}</p>
             </div>
             <div className="rowSeller">
-              {colorStar(props.contFav)}
+              <StarComponent>
+                <Star color="#949494" />
+                <Star color="#949494" />
+                <Star color="#949494" />
+                <Star color="#949494" />
+                <Star color="#949494" />
+              </StarComponent>
               <span>({props.contComents})</span>
             </div>
           </div>
