@@ -1,0 +1,31 @@
+.firstContentProduct,
+.secondContentProduct {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 86%;
+  margin-bottom: 8%;
+}
+.secondContentProduct {
+  width: 84%;
+}
+.moreProductSeller {
+  display: flex;
+  flex-flow: column;
+  width: 85%;
+  margin-bottom: 8%;
+}
+.moreProductSeller h4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 45px;
+  color: #569ccd;
+  margin-bottom: 2%;
+}
+.itemsProductSeller {
+  display: flex;
+  flex-flow: row;
+  width: 72%;
+  justify-content: space-around;
+}

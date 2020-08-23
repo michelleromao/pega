@@ -4,6 +4,7 @@
   flex-flow: column wrap;
   border-radius: 10px;
   cursor: pointer;
+  font-family: 'Poppins';
 }
 .contentProductSmall:hover {
   opacity: 0.9;
@@ -26,7 +27,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  width: 68%;
+  width: 42%;
 }
 .saleProductSmall .promo {
   font-style: normal;
@@ -38,10 +39,10 @@
 }
 .saleProductSmall .price,
 .contentProductSmall .price {
-  font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
   color: #569ccd;
+  margin-bottom: 10%;
 }

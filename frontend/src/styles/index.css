@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
 }
 
 code {
@@ -12,9 +16,12 @@ code {
     monospace;
 }
 
-body {
+#root {
   display: flex;
   flex-flow: column;
   align-items: center;
   width: 100%;
+}
+a {
+  text-decoration: none;
 }
