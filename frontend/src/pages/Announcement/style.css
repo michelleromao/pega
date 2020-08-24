@@ -9,6 +9,9 @@
 .secondContentProduct {
   width: 84%;
 }
+.thirdContentProduct {
+  width: 84%;
+}
 .moreProductSeller {
   display: flex;
   flex-flow: column;
