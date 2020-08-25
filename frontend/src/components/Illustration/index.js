@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import './style.css';
+import { Container, Content } from './style';
 
 function Illustration(props) {
   return (
-    <div className="drawComponent">
+    <Container>
       <img src={props.illustrate} alt={props.alt} />
-      <div className="textContent">
+      <Content>
         <h2>{props.title}</h2>
         <p> {props.content}</p>
-      </div>
-    </div>
+      </Content>
+    </Container>
   );
 }
 export default Illustration;

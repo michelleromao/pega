@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import PhotosProduct from '../../components/Product/PhotosProduct';
 import ProductIformation from '../../components/Product/ProductIformation';
 import DescriptionProduct from '../../components/Product/DescriptionProduct';
-import Comment from '../../components/Product/CommentsArea/Comments';
+import Comment from '../../components/Product/CommentsArea/Comments/Comments';
 
 import SellerInformation from '../../components/SellerInformation';
 import ProductSmall from '../../components/ProductSmall';
@@ -17,13 +17,22 @@ import PhotoProductSmall1 from '../../assets/photos/productsmall1.png';
 import PhotoProductSmall2 from '../../assets/photos/productsmall2.png';
 import PhotoProductSmall3 from '../../assets/photos/productsmall3.png';
 
-import './style.css';
+import {
+  ContentBreadcrumbs,
+  ContentFirst,
+  ContentSecond,
+  ContentThird,
+  ContentMore,
+  Items,
+} from './style';
 
 function Announcement() {
   return (
     <>
-      <Breadcrumbs category="indie" />
-      <div className="firstContentProduct">
+      <ContentBreadcrumbs>
+        <Breadcrumbs category="indie" />
+      </ContentBreadcrumbs>
+      <ContentFirst>
         <PhotosProduct photos={[Photoproduct, Photoproduct2, Photoproduct3]} />
         <ProductIformation
           title="Jaquetinha stickers"
@@ -36,8 +45,8 @@ function Announcement() {
           promo="25"
           price="50"
         />
-      </div>
-      <div className="secondContentProduct">
+      </ContentFirst>
+      <ContentSecond>
         <DescriptionProduct description="Jaqueta rosa jeans, que vem com stickers para colocar no tecido. Rosinha claro, está um pouco desbotada em alguns cantos, na manga, mas nada demais. Possui alguns rasgos laterais, mas é do modelo. Apenas 2 meses de uso. Motivo da venda: não cabe mais em mim, nos braços ficam apertados. Veste P facilmente." />
         <SellerInformation
           photo={PhotoUser}
@@ -46,13 +55,13 @@ function Announcement() {
           contFav="4"
           contComents="32"
         />
-      </div>
-      <div className="thirdContentProduct">
+      </ContentSecond>
+      <ContentThird>
         <Comment />
-      </div>
-      <div className="moreProductSeller">
+      </ContentThird>
+      <ContentMore>
         <h4>Mais desse vendedor</h4>
-        <div className="itemsProductSeller">
+        <Items>
           <ProductSmall
             photoProductSmall={PhotoProductSmall1}
             title="Tom&Jerry space"
@@ -69,8 +78,8 @@ function Announcement() {
             title="Imma ET-Girl"
             price="10"
           />
-        </div>
-      </div>
+        </Items>
+      </ContentMore>
     </>
   );
 }

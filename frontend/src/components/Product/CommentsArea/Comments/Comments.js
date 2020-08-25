@@ -1,29 +1,35 @@
 import React from 'react';
-import './Comments.css';
-import Comment from './CommentItem';
-import Fernanda from '../../../assets/photos/userphoto.png';
-import Vendedor from '../../../assets/photos/fotoVendedor.png';
+import {
+  Container,
+  TextArea,
+  ButtonArea,
+  Tags,
+  ContentComments,
+} from './style';
+import Comment from '../CommentItem/CommentItem';
+import Fernanda from '../../../../assets/photos/userphoto.png';
+import Vendedor from '../../../../assets/photos/fotoVendedor.png';
 
 export default function Comments(props) {
   return (
-    <div className="comments">
+    <Container>
       <h1>Perguntas e respostas</h1>
-      <div className="area-texto">
+      <TextArea>
         <textarea placeholder="Faça uma pergunta"></textarea>
-        <div className="botao">
+        <ButtonArea>
           <div></div>
           <input type="button" value="Enviar" />
-        </div>
-      </div>
+        </ButtonArea>
+      </TextArea>
 
-      <div className="tags">
+      <Tags>
         <button>Prazo</button>
         <button>Estado do produto</button>
         <button>Entrega</button>
         <button>Experimentar</button>
-      </div>
+      </Tags>
 
-      <div className="comentarios">
+      <ContentComments>
         <Comment
           nome="Ferdinanda"
           cidade="Fortaleza-CE"
@@ -51,7 +57,7 @@ export default function Comments(props) {
           resposta="Parece que foi fabricado ontem, novinha"
           tag="#estado"
         />
-      </div>
-    </div>
+      </ContentComments>
+    </Container>
   );
 }

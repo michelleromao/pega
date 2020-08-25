@@ -3,19 +3,21 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  width: 86%;
+  width: 102%;
+
   margin-bottom: 8%;
 }
 .secondContentProduct {
-  width: 84%;
+  width: 102%;
 }
 .thirdContentProduct {
-  width: 84%;
+  width: 102%;
 }
 .moreProductSeller {
   display: flex;
   flex-flow: column;
-  width: 85%;
+  width: 102%;
+
   margin-bottom: 8%;
 }
 .moreProductSeller h4 {
@@ -24,11 +26,11 @@
   font-size: 26px;
   line-height: 45px;
   color: #569ccd;
-  margin-bottom: 2%;
+  margin: 5%2%;
 }
 .itemsProductSeller {
   display: flex;
   flex-flow: row;
-  width: 72%;
+  width: 75%;
   justify-content: space-around;
 }

@@ -1,23 +1,23 @@
 import React from 'react';
-import './style.css';
+import { Container, ContentSale, Promo, Price } from './style';
 import { Link } from 'react-router-dom';
 
 function ProductLarger(props) {
   return (
-    <div className="contentProductLarger">
+    <Container>
       <Link to="/anuncio">
         <img src={props.photoProductLarger} alt={props.title} />
         <h3>{props.title}</h3>
         {props.promo ? (
-          <div className="sale">
-            <p className="promo"> {`R$ ${props.price},00`}</p>
-            <p className="price"> {`R$ ${props.promo},00`}</p>
-          </div>
+          <ContentSale>
+            <Promo> {`R$ ${props.price},00`}</Promo>
+            <Price> {`R$ ${props.promo},00`}</Price>
+          </ContentSale>
         ) : (
-          <p className="price">{`R$ ${props.price},00`}</p>
+          <Price>{`R$ ${props.price},00`}</Price>
         )}
       </Link>
-    </div>
+    </Container>
   );
 }
 export default ProductLarger;

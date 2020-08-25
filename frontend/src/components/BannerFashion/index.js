@@ -1,24 +1,30 @@
 import React from 'react';
-import './style.css';
+//import './style.css';
+import {
+  Container,
+  ContentVertical,
+  ContentColumn,
+  ContentHorizontal,
+} from './style';
 
-function BannerFashion(props) {
+function BannerFashion() {
   return (
-    <div className="contentBannerFashion">
-      <div className="barVertical pink">
+    <Container>
+      <ContentVertical pink>
         <p>Roupinhas da moda</p>
-      </div>
-      <div className="barVertical yellow">
+      </ContentVertical>
+      <ContentVertical>
         <p>Roupinhas da moda</p>
-      </div>
-      <div className="contentBannerFashionColumn">
-        <div className="barHorizontal blue">
+      </ContentVertical>
+      <ContentColumn>
+        <ContentHorizontal blue>
           <p>Roupinhas da moda</p>
-        </div>
-        <div className="barHorizontal red">
+        </ContentHorizontal>
+        <ContentHorizontal>
           <p>Roupinhas da moda</p>
-        </div>
-      </div>
-    </div>
+        </ContentHorizontal>
+      </ContentColumn>
+    </Container>
   );
 }
 export default BannerFashion;

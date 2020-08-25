@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
+import { Button } from './style';
 import Shirt from '../../assets/icons/Camisa';
 import Offer from '../../assets/icons/Etiqueta';
 import Bag from '../../assets/icons/Bolsa';
@@ -18,51 +18,27 @@ function ButtonCategory(props) {
 
   const changeIconHandle = (icon) => {
     if (icon == 'shirt') {
-      return hover ? (
-        <Shirt color="#BE5599" className="icon" />
-      ) : (
-        <Shirt color="#797979" className="icon" />
-      );
+      return hover ? <Shirt color="#BE5599" /> : <Shirt color="#797979" />;
     }
     if (icon == 'bag') {
-      return hover ? (
-        <Bag color="#BE5599" className="icon" />
-      ) : (
-        <Bag color="#797979" className="icon" />
-      );
+      return hover ? <Bag color="#BE5599" /> : <Bag color="#797979" />;
     }
     if (icon == 'offer') {
-      return hover ? (
-        <Offer color="#BE5599" className="icon" />
-      ) : (
-        <Offer color="#797979" className="icon" />
-      );
+      return hover ? <Offer color="#BE5599" /> : <Offer color="#797979" />;
     }
     if (icon == 'fav') {
-      return hover ? (
-        <Fav color="#BE5599" className="icon" />
-      ) : (
-        <Fav color="#797979" className="icon" />
-      );
+      return hover ? <Fav color="#BE5599" /> : <Fav color="#797979" />;
     }
     if (icon == 'heart') {
-      return hover ? (
-        <Heart color="#BE5599" className="icon" />
-      ) : (
-        <Heart color="#797979" className="icon" />
-      );
+      return hover ? <Heart color="#BE5599" /> : <Heart color="#797979" />;
     }
   };
 
   return (
-    <button
-      className="buttonCategory"
-      onMouseEnter={onMouseEnterHandle}
-      onMouseLeave={onMouseLeaveHandle}
-    >
+    <Button onMouseEnter={onMouseEnterHandle} onMouseLeave={onMouseLeaveHandle}>
       {changeIconHandle(props.icon)}
       <p>{props.nameCategory}</p>
-    </button>
+    </Button>
   );
 }
 export default ButtonCategory;

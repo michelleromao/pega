@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import './style.css';
+
+import {
+  Container,
+  ContentTitle,
+  ContentDetails,
+  ContentChoices,
+  ContentSale,
+  ContentPrice,
+  Promo,
+  Price,
+  Method,
+  Button,
+  Receive,
+} from './style';
 import Heart from '../../../assets/icons/coracaorosa.svg';
 import Gift from '../../../assets/icons/presente.svg';
 import CoatHanger from '../../../assets/icons/cruzeta.svg';
@@ -29,17 +42,17 @@ function ProductInformation(props) {
   }
 
   return (
-    <div className="productInformation">
-      <div className="titleProductContent">
+    <Container>
+      <ContentTitle>
         <h1>{props.title}</h1>
         <img src={Heart} alt="" />
-      </div>
-      <div className="productDetails">
+      </ContentTitle>
+      <ContentDetails>
         <p>{props.state}</p>
         <p>{`Tamanho: ${props.size}`}</p>
         <p>{props.color}</p>
-      </div>
-      <div className="productChoices">
+      </ContentDetails>
+      <ContentChoices>
         <p>
           <img src={Gift} alt="" />
           {textDelivery}
@@ -52,30 +65,31 @@ function ProductInformation(props) {
         ) : (
           false
         )}
-      </div>
-      <div className="productSale">
-        <div className="productPrice">
+      </ContentChoices>
+      <ContentSale>
+        <ContentPrice>
           {props.promo ? (
             <>
-              <p className="promo"> {`R$ ${props.price},00`}</p>
-              <p className="price"> {`R$ ${props.promo},00`}</p>
+              Receive
+              <Promo> {`R$ ${props.price},00`}</Promo>
+              <Price> {`R$ ${props.promo},00`}</Price>
             </>
           ) : (
-            <p className="price">{`R$ ${props.price},00`}</p>
+            <Promo>{`R$ ${props.price},00`}</Promo>
           )}
-        </div>
-        <p className="method">{textMethod}</p>
-      </div>
-      <button className="btnBuy">Comprar</button>
+        </ContentPrice>
+        <Method>{textMethod}</Method>
+      </ContentSale>
+      <Button btnBuy>Comprar</Button>
       {statusReceive ? (
-        <p className="receive">
+        <Receive>
           não é possivel adicionar o produto na sacola, pois você pode apenas
           retirar o produto em mãos.
-        </p>
+        </Receive>
       ) : (
-        <button className="btnCart">Adicionar ao carrinho</button>
+        <Button>Adicionar ao carrinho</Button>
       )}
-    </div>
+    </Container>
   );
 }
 export default ProductInformation;

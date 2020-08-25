@@ -1,17 +1,17 @@
 import React from 'react';
-import './style.css';
+import { Container, Content } from './style';
 
 function BannerSlide(props) {
   return (
-    <div className="contentBannerSlide">
-      <figure className="containerPhoto">
+    <Container>
+      <Content>
         <img src={props.photo} alt={props.alt} />
         <figcaption>
           <h1>{props.title}</h1>
           <button>Ver anuncios</button>
         </figcaption>
-      </figure>
-    </div>
+      </Content>
+    </Container>
   );
 }
 export default BannerSlide;

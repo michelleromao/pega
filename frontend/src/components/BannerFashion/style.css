@@ -10,6 +10,7 @@
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
+  width: 52%;
 }
 
 .barVertical {
@@ -22,11 +23,6 @@
   transition: 0.3s;
 }
 
-.contentBannerFashionColumn {
-  display: flex;
-  flex-flow: column;
-  width: 52%;
-}
 .barHorizontal {
   height: 47%;
   border-radius: 10px;
