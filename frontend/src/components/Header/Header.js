@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiMenu, FiChevronDown } from 'react-icons/fi';
+import Menu from './Menu'
 import './Header.css';
 
 import Bolsa from '../../assets/icons/Bolsa';
@@ -8,12 +9,15 @@ import Pesquisa from '../../assets/icons/Lupa';
 
 export default function Header(props) {
   const user = localStorage.getItem('user');
-  return (
-    <div className="Header">
+  const [menu, setMenu] = useState(false)
+
+  return (    
+    <>
+      <div className="Header">
       <div className="Logo">
         <Logo />
       </div>
-      <div className="Categorias">
+      <div onClick={() => setMenu(!menu)} className="Categorias">
         <FiMenu /> <p>Categorias</p>
       </div>
       <div className="Pesquisa">
@@ -39,6 +43,9 @@ export default function Header(props) {
         <span>{props.itemsCart}</span>
         <Bolsa />
       </div>
+
     </div>
+    {menu ? <Menu /> : <div />}      
+    </>
   );
 }

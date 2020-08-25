@@ -11,13 +11,13 @@ import Userphoto from './assets/photos/userphoto.png';
 
 function App() {
   return (
-    <>
-      <Header userPhoto={Userphoto} />
-
+    <>      
       <Router>
+        <Header userPhoto={Userphoto} />
         <Routes />
+        <Footer />
       </Router>
-      <Footer />
+      
     </>
   );
 }
