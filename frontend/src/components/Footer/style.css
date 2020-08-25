@@ -2,6 +2,7 @@ footer {
   width: 85%;
   display: flex;
   flex-flow: column;
+  
 }
 .footerRow {
   display: flex;
@@ -16,12 +17,14 @@ footer {
 .footerColumn h2 {
   font-style: normal;
   font-weight: bold;
+  font-family: 'Poppins';
   font-size: 20px;
   line-height: 120%;
   color: #83bde6;
   margin-bottom: 10%;
 }
 .footerColumn ul li {
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -61,6 +64,7 @@ footer {
 }
 
 .credits p {
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
