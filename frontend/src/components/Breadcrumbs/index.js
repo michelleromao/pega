@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.css';
+
+import { Container } from './style';
 import Greaterthan from '../../assets/icons/chevron-down 1.svg';
 
 function Breadcrumbs(props) {
   return (
     <>
-      <div className="breadcrumbsContainer">
+      <Container>
         <h5>
           <Link to="/" className="link">
             home
@@ -18,7 +19,7 @@ function Breadcrumbs(props) {
             {props.category}
           </Link>
         </h5>
-      </div>
+      </Container>
     </>
   );
 }

@@ -1,14 +1,13 @@
 import React from 'react';
-import './style.css';
+//import './style.css';
+import { Container } from './style';
 
 function DescriptionProduct(props) {
   return (
-    <>
-      <div className="descriptionProductContainer">
-        <h3>Descrição</h3>
-        <p>{props.description}</p>
-      </div>
-    </>
+    <Container>
+      <h3>Descrição</h3>
+      <p>{props.description}</p>
+    </Container>
   );
 }
 export default DescriptionProduct;

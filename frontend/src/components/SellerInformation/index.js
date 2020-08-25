@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
+import { Container, Content, Column, Row } from './style';
 import Star from '../../assets/icons/Estrela';
 
 function SellerInformation(props) {
@@ -71,22 +71,22 @@ function SellerInformation(props) {
 
   return (
     <>
-      <div className="sellerInformationContainer">
+      <Container>
         <h3>Sobre o vendedor</h3>
-        <div className="sellerInformationContent">
+        <Content>
           <img src={props.photo} alt={props.nameSeller} />
-          <div className="columnSeller">
-            <div className="rowSeller">
+          <Column>
+            <Row>
               <h5>{props.nameSeller}</h5>
               <p>{props.location}</p>
-            </div>
-            <div className="rowSeller">
+            </Row>
+            <Row>
               {colorStar(props.contFav)}
               <span>({props.contComents})</span>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Row>
+          </Column>
+        </Content>
+      </Container>
     </>
   );
 }

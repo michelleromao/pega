@@ -19,7 +19,18 @@ import PhotoUser4 from '../../assets/photos/bestSeller4.png';
 import Delivery from '../../assets/illustrations/delivery.png';
 import Sun from '../../assets/illustrations/sunsertao.png';
 
-import './style.css';
+import {
+  ButtomContent,
+  ContentMain,
+  ContentProductLarger,
+  ContentSub,
+  ContentSubCategory,
+  Items,
+  ContentTopSellers,
+  TopSellers,
+  ContentBannerFashion,
+  ContentIllustration,
+} from './style';
 
 function Index() {
   return (
@@ -29,16 +40,16 @@ function Index() {
         alt="Menina comendo pipoca sentada no sofá"
         title="Para você bombar na quarentena"
       />
-      <div className="buttonCategoryContent">
+      <ButtomContent>
         <ButtomCategory icon="shirt" nameCategory="Camisas" />
         <ButtomCategory icon="bag" nameCategory="Acessórios" />
         <ButtomCategory icon="offer" nameCategory="Ofertas" />
         <ButtomCategory icon="fav" nameCategory="Apreciados" />
         <ButtomCategory icon="heart" nameCategory="Queridinhos" />
-      </div>
-      <section className="mainCategory">
+      </ButtomContent>
+      <ContentMain>
         <h3>Punk</h3>
-        <div className="productsLargeContent">
+        <ContentProductLarger>
           <ProductLarger
             id="000"
             photoProductLarger={PhotoProductLarger1}
@@ -56,12 +67,12 @@ function Index() {
             title="Jaqueta cropped com cintos"
             price="30"
           />
-        </div>
-      </section>
-      <section className="subCategory">
-        <section className="subCategoryContent">
+        </ContentProductLarger>
+      </ContentMain>
+      <ContentSub>
+        <ContentSubCategory>
           <h4>Geek</h4>
-          <div className="itemsProductSmall">
+          <Items>
             <ProductSmall
               photoProductSmall={PhotoProductLarger1}
               title="jaquetinha"
@@ -72,8 +83,8 @@ function Index() {
               title="jaquetinha"
               price="5"
             />
-          </div>
-          <div className="itemsProductSmall">
+          </Items>
+          <Items>
             <ProductSmall
               photoProductSmall={PhotoProductLarger1}
               title="jaquetinha"
@@ -85,11 +96,11 @@ function Index() {
               price="5"
               className="noMargin"
             />
-          </div>
-        </section>
-        <section className="subCategoryContent">
+          </Items>
+        </ContentSubCategory>
+        <ContentSubCategory>
           <h4>Praiero</h4>
-          <div className="itemsProductSmall">
+          <Items>
             <ProductSmall
               photoProductSmall={PhotoProductLarger1}
               title="jaquetinha"
@@ -100,8 +111,8 @@ function Index() {
               title="jaquetinha"
               price="5"
             />
-          </div>
-          <div className="itemsProductSmall">
+          </Items>
+          <Items>
             <ProductSmall
               photoProductSmall={PhotoProductLarger1}
               title="jaquetinha"
@@ -112,22 +123,22 @@ function Index() {
               title="jaquetinha"
               price="5"
             />
-          </div>
-        </section>
-      </section>
-      <section className="topSellers">
+          </Items>
+        </ContentSubCategory>
+      </ContentSub>
+      <ContentTopSellers>
         <h3>Vendedores top</h3>
-        <div className="topSellersContent">
+        <TopSellers>
           <BestSeller photoUser={PhotoUser} nameSeller="Fernanda" />
           <BestSeller photoUser={PhotoUser2} nameSeller="Michelle" />
           <BestSeller photoUser={PhotoUser3} nameSeller="Yan" />
           <BestSeller photoUser={PhotoUser4} nameSeller="Kainan" />
-        </div>
-      </section>
-      <section className="bannerFashionContent">
+        </TopSellers>
+      </ContentTopSellers>
+      <ContentBannerFashion>
         <BannerFashion />
-      </section>
-      <section className="illustrationsContent">
+      </ContentBannerFashion>
+      <ContentIllustration>
         <Illustration
           illustrate={Delivery}
           title="Entrega facilitada"
@@ -138,7 +149,7 @@ function Index() {
           title="Nós vendemos no Sertão Central! "
           content="O Pega! foi criado para vender no Sertão Central, aproximando vendedores e compradores da região."
         />
-      </section>
+      </ContentIllustration>
     </>
   );
 }
