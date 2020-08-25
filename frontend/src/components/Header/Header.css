@@ -57,6 +57,7 @@
   font-size: 14px;
   font-weight: 400;
   outline: none;
+  font-family: 'Poppins';
 }
 
 .Pesquisa input::placeholder {
@@ -91,6 +92,7 @@
   border: none;
   padding: 5px 40px 5px 40px;
   transition: 0.3s;
+  font-family: 'Poppins';
 }
 
 #cta-vender:hover {
