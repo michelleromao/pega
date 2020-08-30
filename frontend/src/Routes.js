@@ -10,7 +10,6 @@ function Routes() {
     <>
       <Route exact path="/" component={() => <Index />} />
       <Route path="/anuncio" component={() => <Announcement />} />
-
       <Route path="/test" component={() => <TestPage />} />
     </>
   );

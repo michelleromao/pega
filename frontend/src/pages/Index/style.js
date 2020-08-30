@@ -12,7 +12,7 @@ export const ContentMain = styled.section`
   display: flex;
   flex-flow: column;
   width: 102%;
-  h3 {
+  h3:first-child {
     font-style: normal;
     font-weight: 600;
     font-size: 30px;

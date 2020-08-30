@@ -106,6 +106,18 @@
   outline: none;
 }
 
+.Nologgedin p {
+  margin-bottom: 5%;
+}
+.Nologgedin a {
+  margin: 0 0 0 20%;
+  font-size: 12px;
+  color: #569ccd !important;
+}
+.Nologgedin a:hover {
+  transition: 0.3s;
+  color: rgba(86, 156, 205, 0.8) !important;
+}
 .Usuario {
   display: flex;
   align-items: center;
