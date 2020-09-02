@@ -5,12 +5,17 @@ import { InputContainer, Label } from './style';
 
 function Input({
   type,
+  marginBottom,
+  marginleft,
+  fSize,
   color,
   labelText,
+  value,
   placeholder,
   size,
   name,
   required,
+  maxLength,
   ...rest
 }) {
   const inputRef = useRef(null);
@@ -26,14 +31,19 @@ function Input({
 
   return (
     <>
-      <Label>{labelText}</Label>
+      <Label marginleft={marginleft} fSize={fSize}>
+        {labelText}
+      </Label>
       <InputContainer
+        marginBottom={marginBottom}
         name={fieldName}
         type={type}
         color={color}
+        value={value}
         placeholder={placeholder}
         size={size}
         ref={inputRef}
+        maxLength={maxLength}
         defaultValue={defaultValue}
         {...rest}
         required={required}

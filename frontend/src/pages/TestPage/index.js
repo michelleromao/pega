@@ -1,6 +1,12 @@
 import React from 'react';
+import InterestCategories from '../../components/InterestCategories';
+import Personal from '../../components/Personal';
 
 function TestPage() {
-  return <></>;
+  return (
+    <>
+      <Personal />
+    </>
+  );
 }
 export default TestPage;

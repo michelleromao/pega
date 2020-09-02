@@ -4,10 +4,11 @@ export const Label = styled.label`
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
+  font-size: ${(props) => props.fSize};
   line-height: 27px;
   color: #000000;
-  margin: 0 0 5% -41%;
+  margin-left: ${(props) => props.marginleft}%;
+  margin-bottom: 5%;
 `;
 export const InputContainer = styled.input`
   width: ${(props) => props.size};
@@ -16,7 +17,7 @@ export const InputContainer = styled.input`
   border: 2px solid ${(props) => props.color};
   border-radius: 6px;
   padding-left: 8%;
-  margin-bottom: 15%;
+  margin-bottom: ${(props) => props.marginBottom};
   align-self: center;
   font-family: Poppins;
   font-style: normal;

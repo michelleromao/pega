@@ -57,6 +57,8 @@ function Login() {
           }}
         >
           <Input
+            marginleft="-41"
+            fSize="18px"
             labelText="Seu e-mail"
             name="email"
             type="email"
@@ -64,8 +66,11 @@ function Login() {
             placeholder="Escreve seu e-mail aqui"
             size="170%"
             required={true}
+            marginBottom="15%"
           />
           <Input
+            marginleft="-41"
+            fSize="18px"
             labelText="Senha"
             name="password"
             type="password"
@@ -73,6 +78,7 @@ function Login() {
             placeholder="******** (ninguém tá olhando viu)"
             size="170%"
             required={true}
+            marginBottom="15%"
           />
           <ActionButton text="Entrar" />
         </Unform>
