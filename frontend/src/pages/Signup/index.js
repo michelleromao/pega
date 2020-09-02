@@ -63,6 +63,8 @@ function Signup() {
               }}
             >
               <Input
+                marginleft="-41"
+                fSize="18px"
                 labelText="Nome"
                 name="name"
                 type="text"
@@ -70,8 +72,11 @@ function Signup() {
                 placeholder="Qual seu nome?"
                 size="170%"
                 required={true}
+                marginBottom="15%"
               />
               <Input
+                marginleft="-41"
+                fSize="18px"
                 labelText="E-mail"
                 name="email"
                 type="email"
@@ -79,8 +84,11 @@ function Signup() {
                 placeholder="Diz seu e-mail pra gente"
                 size="170%"
                 required={true}
+                marginBottom="15%"
               />
               <Input
+                marginleft="-41"
+                fSize="18px"
                 labelText="Senha"
                 name="password"
                 type="password"
@@ -88,8 +96,11 @@ function Signup() {
                 placeholder="******** (ninguém tá olhando viu)"
                 size="170%"
                 required={true}
+                marginBottom="15%"
               />
               <Input
+                marginleft="-41"
+                fSize="18px"
                 labelText="De novo a senha"
                 name="passwordconfirm"
                 type="password"
@@ -97,6 +108,7 @@ function Signup() {
                 placeholder="******** (confirma pra gente)"
                 size="170%"
                 required={true}
+                marginBottom="15%"
               />
               <Terms>
                 Ao criar sua conta você concorda com tudim dos nossos{' '}
