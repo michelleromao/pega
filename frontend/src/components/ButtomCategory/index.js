@@ -18,7 +18,11 @@ function ButtonCategory(props) {
 
   const changeIconHandle = (icon) => {
     if (icon == 'shirt') {
-      return hover ? <Shirt color="#BE5599" /> : <Shirt color="#797979" />;
+      return hover ? (
+        <Shirt width="50" heigth="50" color="#BE5599" />
+      ) : (
+        <Shirt width="50" heigth="50" color="#797979" />
+      );
     }
     if (icon == 'bag') {
       return hover ? <Bag color="#BE5599" /> : <Bag color="#797979" />;

@@ -70,7 +70,6 @@ function ProductInformation(props) {
         <ContentPrice>
           {props.promo ? (
             <>
-              Receive
               <Promo> {`R$ ${props.price},00`}</Promo>
               <Price> {`R$ ${props.promo},00`}</Price>
             </>
