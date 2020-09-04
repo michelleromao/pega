@@ -1,5 +1,5 @@
 import React from 'react'
-import Foto from '../../assets/photos/userphoto.png'
+import Foto from '../../../assets/photos/userphoto.png'
 import './PanelMenu.css'
 
 export default function PanelMenu () {
