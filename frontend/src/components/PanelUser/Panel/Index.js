@@ -2,14 +2,15 @@ import React from 'react'
 import './Index.css'
 import Menu from '../PanelMenu/PanelMenu'
 import Content from '../PanelContent/PanelContent'
+import { PanelUser } from './style'
 
 export default function Panel() {
     return (
         <>
-             <div className="panel">
+             <PanelUser>
                 <Menu></Menu>
                 <Content></Content>
-             </div>
+             </PanelUser>
         </>
     )
 }
