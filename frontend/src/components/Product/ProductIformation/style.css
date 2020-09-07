@@ -1,0 +1,134 @@
+.productInformation {
+  width: 32%;
+  height: 436px;
+  display: flex;
+  flex-flow: column;
+}
+.titleProductContent {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.titleProductContent h1 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 33px;
+  color: #202020;
+}
+.titleProductContent img {
+  cursor: pointer;
+}
+.productDetails {
+  width: 60%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.productDetails p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #202020;
+}
+
+.productChoices {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  margin-top: 8%;
+  margin-bottom: 10%;
+}
+.productChoices p {
+  margin-top: 5%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #202020;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.productChoices img {
+  margin-right: 4%;
+}
+.productSale {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.productPrice {
+  display: flex;
+  flex-flow: column;
+  width: 40%;
+}
+
+.promo {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-decoration-line: line-through;
+  color: #424242;
+}
+.price {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 37px;
+  color: #569ccd;
+}
+.method {
+  width: 40%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #202020;
+}
+button {
+  cursor: pointer;
+}
+.receive {
+  margin-top: 5%;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #c4c4c4;
+}
+.btnBuy {
+  height: 54px;
+  margin-top: 8%;
+  background: #be5599;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.btnCart {
+  height: 54px;
+  margin-top: 4%;
+  background: transparent;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #569ccd;
+  border: 1px solid #569ccd;
+}
+.btnBuy:hover,
+.btnCart:hover {
+  opacity: 0.9;
+  transition: 0.3s;
+}

@@ -1,0 +1,78 @@
+.comments h1 {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: 'Poppins';
+  color: #569ccd;
+  margin-bottom: 20px;
+}
+
+.area-texto {
+  border: solid 1px #569ccd;
+  border-radius: 16px;
+  width: 600px;
+  height: 100px;
+  padding: 20px;
+}
+
+.area-texto textarea {
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 60px;
+  resize: none;
+  font-weight: 400;
+  font-family: 'Poppins';
+  font-size: 14px;
+}
+
+.botao {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.botao input {
+  background: #569ccd;
+  color: #fff;
+  padding: 5px 25px 5px 25px;
+  border: none;
+  border-radius: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins';
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.botao input:focus {
+  outline: none;
+}
+
+.botao input:hover {
+  transition: 0.4s;
+  opacity: 90%;
+}
+
+.tags {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.tags button {
+  background: none;
+  padding: 5px 25px 5px 25px;
+  border: solid 1px #569ccd;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Poppins';
+  transition: 0.4s;
+  color: #569ccd;
+  margin: 0 20px 0 0;
+}
+
+.comentarios {
+  margin-top: 20px;
+}
