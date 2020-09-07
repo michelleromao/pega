@@ -1,0 +1,65 @@
+.sellerInformationContainer {
+  display: flex;
+  flex-flow: column;
+  width: 30%;
+}
+.sellerInformationContainer h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 39px;
+  color: #569ccd;
+}
+.sellerInformationContent {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  margin-top: 8%;
+}
+.sellerInformationContent img {
+  width: 41.5%;
+}
+.sellerInformationContent img:hover {
+  opacity: 0.9;
+  transition: 0.3s;
+}
+.columnSeller {
+  display: flex;
+  flex-flow: column;
+  margin-left: 5%;
+}
+.rowSeller {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+.rowSeller h5 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  color: #202020;
+  cursor: pointer;
+}
+
+.rowSeller p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #202020;
+}
+
+.rowSeller span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+}

@@ -1,0 +1,75 @@
+.buttonCategoryContent {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 2%;
+  margin-bottom: 3%;
+  width: 102%;
+}
+.mainCategory h3:first-child,
+.subCategoryContent h4,
+.topSellers h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  color: #569ccd;
+  margin-bottom: 2%;
+}
+.mainCategory {
+  display: flex;
+  flex-flow: column;
+  width: 102%;
+}
+.productsLargeContent {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.subCategory {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-top: 5%;
+  width: 102%;
+}
+
+.subCategoryContent {
+  display: flex;
+  flex-flow: column;
+}
+
+.itemsProductSmall {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.subCategoryContent:first-child {
+  margin-right: 10%;
+}
+.topSellers {
+  display: flex;
+  flex-flow: column;
+  margin-top: 10%;
+  width: 102%;
+}
+.topSellersContent {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.bannerFashionContent {
+  margin-top: 10%;
+  width: 102%;
+}
+
+.illustrationsContent {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 102%;
+
+  margin-top: 12%;
+  margin-bottom: 14%;
+}
