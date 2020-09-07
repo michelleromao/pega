@@ -1,6 +1,5 @@
 import React from 'react'
-import Foto from '../../../assets/photos/userphoto.png'
-import './PanelMenu.css'
+import Foto from '../../assets/photos/userphoto.png'
 import { Sidebar, Hove } from './style'
 
 

@@ -1,7 +1,6 @@
 import React from 'react'
-import './Index.css'
-import Menu from '../PanelMenu/PanelMenu'
-import Content from '../PanelContent/PanelContent'
+import Menu from '../../components/PanelMenu'
+import ContentPanel from '../../components/PanelContent'
 import { PanelUser } from './style'
 
 export default function Panel() {
@@ -9,7 +8,7 @@ export default function Panel() {
         <>
              <PanelUser>
                 <Menu></Menu>
-                <Content></Content>
+                <ContentPanel></ContentPanel>
              </PanelUser>
         </>
     )
