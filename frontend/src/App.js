@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
@@ -12,7 +14,7 @@ import Succeed from './pages/Succeed';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <Router>
         <Switch>
           <Route path="/login" component={() => <Login />} />
@@ -25,7 +27,7 @@ function App() {
           </Fragment>
         </Switch>
       </Router>
-    </>
+    </Provider>
   );
 }
 

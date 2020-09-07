@@ -4,6 +4,9 @@ import Index from './pages/Index';
 import Announcement from './pages/Announcement';
 
 import TestPage from './pages/TestPage';
+import Sacola from './pages/Sacola/Sacola';
+import Payment from './pages/Sacola/Payment';
+import Details from './pages/Sacola/Details';
 
 function Routes() {
   return (
@@ -11,6 +14,9 @@ function Routes() {
       <Route exact path="/" component={() => <Index />} />
       <Route path="/anuncio" component={() => <Announcement />} />
       <Route path="/test" component={() => <TestPage />} />
+      <Route path="/sacola" component={() => <Sacola />} />
+      <Route path="/payment" component={() => <Payment />} />
+      <Route path="/details" component={() => <Details />} />
     </>
   );
 }
