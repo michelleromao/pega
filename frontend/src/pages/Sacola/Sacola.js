@@ -6,6 +6,7 @@ import Arrow from '../../assets/icons/arrow.svg';
 import GroupItem from '../../components/Sacola/GroupItem';
 
 import { Container, Breadcrumb, Stage, Column } from './style';
+import Cupom from '../../components/Cupom/Cupom';
 import Resume from '../../components/Sacola/Resume';
 
 function Sacola() {
@@ -40,6 +41,7 @@ function Sacola() {
       <Container>
         <GroupItem status={1} stageTitle={1} />
         <Column>
+          <Cupom />
           <Resume stage={1} stageClick={1} />
         </Column>
       </Container>

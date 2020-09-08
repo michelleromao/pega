@@ -5,7 +5,10 @@ import api from '../../services/api';
 import Arrow from '../../assets/icons/arrow.svg';
 import GroupItem from '../../components/Sacola/GroupItem';
 
-import { Container, Breadcrumb, Stage } from './style';
+import { Container, Breadcrumb, Stage, Column } from './style';
+
+import PaySafeWithPicPay from '../../components/PaySafeWithPicPay/PaySafeWithPicpay';
+import TipsFrete from '../../components/TipsFrete/TipsFrete';
 import Resume from '../../components/Sacola/Resume';
 import { Link } from 'react-router-dom';
 
@@ -42,7 +45,11 @@ function Payment() {
 
       <Container>
         <GroupItem stage={true} status={2} stageTitle={2} />
-        <Resume stage={1} stageClick={2} />
+        <Column>
+          <TipsFrete />
+          <PaySafeWithPicPay />
+          <Resume stage={1} stageClick={2} />
+        </Column>
       </Container>
     </>
   );

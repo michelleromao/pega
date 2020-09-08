@@ -6,6 +6,8 @@ import Arrow from '../../assets/icons/arrow.svg';
 import GroupItem from '../../components/Sacola/GroupItem';
 
 import { Container, Breadcrumb, Stage, Column } from './style';
+
+import TipsFrete from '../../components/TipsFrete/TipsFrete';
 import Resume from '../../components/Sacola/Resume';
 
 function Details() {
@@ -42,6 +44,7 @@ function Details() {
           <GroupItem stage={true} status={3} stageTitle={3} />
           <Column>
             <Resume stage={3} />
+            <TipsFrete />
           </Column>
         </>
       </Container>
