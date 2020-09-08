@@ -1,11 +1,11 @@
 import React from 'react';
-import Delete from '../../components/RegisterDelete/UserDelete'
-import UserDelete from '../../components/RegisterDelete/UserDelete';
+import UserDelete from '../../components/RegisterDelete/WhyDelete';
+import ConfirmDelete from '../../components/RegisterDelete/ConfirmDelete'
 
 function TestPage() {
   return (
     <>
-      <UserDelete></UserDelete>
+      <ConfirmDelete></ConfirmDelete>
     </>
   );
 }
