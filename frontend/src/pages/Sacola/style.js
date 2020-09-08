@@ -31,3 +31,10 @@ export const Container = styled.div`
   flex-flow: row;
   margin-bottom: 10%;
 `;
+
+export const Column = styled.div`
+  display: flex;
+  flex-flow: column;
+  width: 38%;
+  margin-left: 5%;
+`;

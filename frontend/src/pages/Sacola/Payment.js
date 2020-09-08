@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import api from '../../services/api';
-import { addProductToCartRequest } from '../../store/modules/sacola/actions';
 import Arrow from '../../assets/icons/arrow.svg';
 import GroupItem from '../../components/Sacola/GroupItem';
 
@@ -28,18 +27,6 @@ function Payment() {
       reserve: '',
     },
   ]);
-  /*
-  useEffect(() => {
-    api.get(`user/dd2`).then((response) => {
-      const userSacola = response.data.sacola;
-      userSacola.map((product) => {
-        api.get(`products/${product.product}`).then((response) => {
-          const products = response.data;
-          setSacola([...sacola, products]);
-        });
-      });
-    });
-  }, []);*/
 
   return (
     <>
