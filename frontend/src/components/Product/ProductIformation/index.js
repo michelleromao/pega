@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import {
   Container,
@@ -18,6 +19,8 @@ import Gift from '../../../assets/icons/presente.svg';
 import CoatHanger from '../../../assets/icons/cruzeta.svg';
 
 function ProductInformation(props) {
+  const productDetails = useSelector((state) => state);
+
   const delivery = props.delivery;
   const method = props.method;
 

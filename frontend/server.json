@@ -1,0 +1,275 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "owner": "dd1",
+      "title": "Casaquinho legal",
+      "category": 1,
+      "size": "M",
+      "color": "Rosa",
+      "state": "Usado",
+      "price": 27.2,
+      "promo": 0,
+      "payment": [1],
+      "trynon": true,
+      "reserve": false,
+      "deliveryType": [1, 2],
+      "frete": 20,
+      "description": "Casaco da cor rosa, com stickers, com um rasgado no ombro, mas passa impercebido, é estilo",
+      "comments": [
+        {
+          "owner": "dd2",
+          "message": "A roupa veste G?",
+          "response": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "owner": "dd2",
+      "title": "Blusa das trevas",
+      "category": 5,
+      "size": "GG",
+      "color": "Preto",
+      "state": "Usado",
+      "price": 40,
+      "promo": 20,
+      "payment": [2],
+      "trynon": false,
+      "reserve": false,
+      "deliveryType": [1],
+      "frete": 0,
+      "description": "Camisa preta, com detalhes pretos",
+      "comments": []
+    },
+    {
+      "id": 3,
+      "owner": "dd3",
+      "title": "Cropped crochê",
+      "category": 4,
+      "size": "M",
+      "color": "Estampado",
+      "state": "Novo",
+      "price": 5,
+      "promo": 0,
+      "payment": [1],
+      "trynon": false,
+      "reserve": false,
+      "deliveryType": [2],
+      "frete": 11,
+      "description": "Cropped crochê feito a mão, artesanalmente",
+      "comments": []
+    },
+    {
+      "id": 4,
+      "owner": "dd3",
+      "title": "Maiô",
+      "category": 6,
+      "size": "M",
+      "color": "Redvelvet",
+      "state": "Novo",
+      "price": 70,
+      "promo": 45,
+      "payment": [1],
+      "trynon": false,
+      "reserve": false,
+      "deliveryType": [2],
+      "frete": 11,
+      "description": "Maiô novo, motivo da venda: comprei, nunca usei, pois nunca mais fui a praia",
+      "comments": []
+    },
+    {
+      "id": 5,
+      "owner": "dd2",
+      "title": "Short florido",
+      "category": 2,
+      "size": "M",
+      "color": "Estampado",
+      "state": "Novo",
+      "price": 35,
+      "promo": 15,
+      "payment": [1],
+      "trynon": false,
+      "reserve": false,
+      "deliveryType": [2],
+      "frete": 15,
+      "description": "Short estampado fofinho, soltinho, feito ontem.",
+      "comments": []
+    }
+  ],
+  "users": [
+    {
+      "id": "dd1",
+      "username": "fegadelha",
+      "name": "Fernanda Gadelha",
+      "email": "fernandagadelha@gmail.com",
+      "cpf": "00075660210",
+      "tel": 8599998500,
+      "password": "unicorniosbrilhantes",
+      "interestCategories": [],
+      "picpay": "@fegadelha",
+      "address": [
+        {
+          "street": "Rua do Montese",
+          "number": "55",
+          "neighboohood": "Montese",
+          "city": "Quixadá",
+          "state": "Ceará",
+          "principal": true
+        }
+      ],
+      "rate": {
+        "rating": [{ "message": "", "owner": "", "stars": 0 }],
+        "media": 0
+      },
+      "announcements": [1],
+      "favorite": [],
+      "buys": [],
+      "sales": [],
+      "sacola": {
+        "productsID": [],
+        "resume": {
+          "productsValue": 0,
+          "cupom": 0,
+          "total": 0
+        }
+      }
+    },
+    {
+      "id": "dd2",
+      "username": "michelleromao",
+      "name": "Michelle Romao",
+      "email": "michelleromao@gmail.com",
+      "cpf": "07286000005",
+      "tel": 85997000083,
+      "password": "pegandonopega",
+      "interestCategories": [1, 2, 3],
+      "picpay": "@mromao",
+      "address": [
+        {
+          "street": "Rua do Bolo",
+          "number": "777",
+          "neighboohood": "Centro",
+          "city": "Quixadá",
+          "state": "Ceará",
+          "principal": true
+        }
+      ],
+      "rate": {
+        "rating": [
+          {
+            "message": "Muito bom! Entregou na data certa",
+            "owner": "dd3",
+            "stars": 5
+          }
+        ],
+        "media": 5
+      },
+      "announcements": [2],
+      "favorite": [],
+      "buys": [],
+      "sales": [],
+      "sacola": {
+        "productsID": [],
+        "resume": {
+          "productsValue": 0,
+          "cupom": 0,
+          "total": 0
+        }
+      }
+    },
+    {
+      "id": "dd3",
+      "username": "akainan",
+      "name": "Antonio Kainan",
+      "email": "kainan@gmail.com",
+      "cpf": "0055886930",
+      "tel": 88990222354,
+      "password": "kainanzimdastapioca",
+      "interestCategories": [4],
+      "picpay": "@ah.kainan",
+      "address": [
+        {
+          "street": "Rua Aquela",
+          "number": "1687",
+          "neighboohood": "Centro",
+          "city": "Quixeramobim",
+          "state": "Ceará",
+          "principal": true
+        },
+        {
+          "street": "Rua do Montese",
+          "number": "55",
+          "neighboohood": "Montese",
+          "city": "Quixadá",
+          "state": "Ceará",
+          "principal": false
+        }
+      ],
+      "rate": {
+        "rating": [{ "message": "", "owner": "", "stars": 0 }],
+        "media": 0
+      },
+      "announcements": [3, 4],
+      "favorite": [1],
+      "buys": [],
+      "sales": [],
+      "sacola": {
+        "productsID": [],
+        "resume": {
+          "productsValue": 0,
+          "cupom": 0,
+          "total": 0
+        }
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Geek"
+    },
+    {
+      "id": 2,
+      "name": "Conforto"
+    },
+    {
+      "id": 3,
+      "name": "Soninho"
+    },
+    {
+      "id": 4,
+      "name": "Básico"
+    },
+    {
+      "id": 5,
+      "name": "Punk"
+    },
+    {
+      "id": 6,
+      "name": "Praia"
+    }
+  ],
+  "payment": [
+    {
+      "id": 1,
+      "type": "Picpay"
+    },
+    {
+      "id": 2,
+      "type": "A vista"
+    }
+  ],
+  "deliveryType": [
+    {
+      "id": 1,
+      "type": "Em mãos"
+    },
+    {
+      "id": 2,
+      "type": "Frete"
+    }
+  ],
+  "cupom": [{ "id": 1, "codigo": "PEGAMAIS!", "value": 15 }],
+  "bestSellers": ["dd2"]
+}
