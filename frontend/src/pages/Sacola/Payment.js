@@ -2,11 +2,13 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import api from '../../services/api';
-import { addProductToCartRequest } from '../../store/modules/sacola/actions';
 import Arrow from '../../assets/icons/arrow.svg';
 import GroupItem from '../../components/Sacola/GroupItem';
 
-import { Container, Breadcrumb, Stage } from './style';
+import { Container, Breadcrumb, Stage, Column } from './style';
+
+import PaySafeWithPicPay from '../../components/PaySafeWithPicPay/PaySafeWithPicpay';
+import TipsFrete from '../../components/TipsFrete/TipsFrete';
 import Resume from '../../components/Sacola/Resume';
 import { Link } from 'react-router-dom';
 
@@ -28,18 +30,6 @@ function Payment() {
       reserve: '',
     },
   ]);
-  /*
-  useEffect(() => {
-    api.get(`user/dd2`).then((response) => {
-      const userSacola = response.data.sacola;
-      userSacola.map((product) => {
-        api.get(`products/${product.product}`).then((response) => {
-          const products = response.data;
-          setSacola([...sacola, products]);
-        });
-      });
-    });
-  }, []);*/
 
   return (
     <>
@@ -55,7 +45,11 @@ function Payment() {
 
       <Container>
         <GroupItem stage={true} status={2} stageTitle={2} />
-        <Resume stage={1} stageClick={2} />
+        <Column>
+          <TipsFrete />
+          <PaySafeWithPicPay />
+          <Resume stage={1} stageClick={2} />
+        </Column>
       </Container>
     </>
   );

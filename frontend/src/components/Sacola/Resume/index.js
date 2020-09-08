@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -13,7 +14,6 @@ import {
   Text,
 } from './style';
 import Suscess from '../../../assets/icons/success.svg';
-import { Link } from 'react-router-dom';
 
 function Resume(props) {
   const [stage, setStage] = useState(props.stage);

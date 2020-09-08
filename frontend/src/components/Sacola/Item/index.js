@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 
 import {
   Container,
@@ -19,18 +18,8 @@ import {
   Price,
 } from './style';
 import Image from '../../../assets/photos/productsmall3.png';
-import { addProductToCartRequest } from '../../../store/modules/sacola/actions';
 
 function Item(props) {
-  const dispatch = useDispatch();
-
-  const handleAddProductToCart = useCallback(
-    (product) => {
-      dispatch(addProductToCartRequest(product));
-    },
-    [dispatch],
-  );
-
   const [color, setColor] = useState('#878787');
   const [background, setBackground] = useState('#fff');
   const [border, setBorder] = useState('1px solid #878787');
