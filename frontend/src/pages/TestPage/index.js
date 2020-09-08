@@ -1,6 +1,5 @@
 import React from 'react';
-import Delete from '../../components/RegisterDelete/UserDelete'
-import UserDelete from '../../components/RegisterDelete/UserDelete';
+import UserDelete from '../../components/RegisterDelete/WhyDelete';
 
 function TestPage() {
   return (
