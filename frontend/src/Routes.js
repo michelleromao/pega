@@ -7,6 +7,7 @@ import TestPage from './pages/TestPage';
 import Sacola from './pages/Sacola/Sacola';
 import Payment from './pages/Sacola/Payment';
 import Details from './pages/Sacola/Details';
+import Error404 from './pages/Error404/';
 
 function Routes() {
   return (
@@ -17,6 +18,7 @@ function Routes() {
       <Route path="/sacola" component={() => <Sacola />} />
       <Route path="/payment" component={() => <Payment />} />
       <Route path="/details" component={() => <Details />} />
+      <Route path="*" component={() => <Error404 />} />
     </>
   );
 }

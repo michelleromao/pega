@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "owner": "dd1",
+      "ownerID": "dd1",
       "title": "Casaquinho legal",
       "category": 1,
       "size": "M",
@@ -26,7 +26,7 @@
     },
     {
       "id": 2,
-      "owner": "dd2",
+      "ownerID": "dd2",
       "title": "Blusa das trevas",
       "category": 5,
       "size": "GG",
@@ -44,7 +44,7 @@
     },
     {
       "id": 3,
-      "owner": "dd3",
+      "ownerID": "dd3",
       "title": "Cropped crochê",
       "category": 4,
       "size": "M",
@@ -62,7 +62,7 @@
     },
     {
       "id": 4,
-      "owner": "dd3",
+      "ownerID": "dd3",
       "title": "Maiô",
       "category": 6,
       "size": "M",
@@ -80,7 +80,7 @@
     },
     {
       "id": 5,
-      "owner": "dd2",
+      "ownerID": "dd2",
       "title": "Short florido",
       "category": 2,
       "size": "M",
@@ -122,7 +122,6 @@
         "rating": [{ "message": "", "owner": "", "stars": 0 }],
         "media": 0
       },
-      "announcements": [1],
       "favorite": [],
       "buys": [],
       "sales": [],
@@ -165,7 +164,6 @@
         ],
         "media": 5
       },
-      "announcements": [2],
       "favorite": [],
       "buys": [],
       "sales": [],
@@ -210,7 +208,7 @@
         "rating": [{ "message": "", "owner": "", "stars": 0 }],
         "media": 0
       },
-      "announcements": [3, 4],
+
       "favorite": [1],
       "buys": [],
       "sales": [],
@@ -271,5 +269,5 @@
     }
   ],
   "cupom": [{ "id": 1, "codigo": "PEGAMAIS!", "value": 15 }],
-  "bestSellers": ["dd2"]
+  "bestSellers": [{ "ownerID": "dd2" }]
 }
