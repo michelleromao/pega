@@ -10,6 +10,8 @@ import Routes from './Routes';
 import Userphoto from './assets/photos/userphoto.png';
 import Login from './pages/Login/';
 import Signup from './pages/Signup/';
+import Error404 from './pages/Error404/';
+
 import Succeed from './pages/Succeed';
 
 function App() {

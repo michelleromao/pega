@@ -30,11 +30,16 @@ export const userInitialState = {
           principal: null,
         },
       ],
-      announcements: [],
-      favorite: [],
-      buys: [],
-      sales: [],
+      rate: {
+        rating: [{ message: null, owner: null, stars: 0 }],
+        media: 0,
+      },
+      announcements: [], //reducer (pesquisar de terceiros, pesquisar um especifico, e meus anuncios (add, ver, remover, editar))
+      favorite: [], //reducer (addfavorito, ver, remover)
+      buys: [], //reducer (ver, cancelar)
+      sales: [], //reducer (ver, cancelar)
       sacola: {
+        //reducer
         productsID: [],
         resume: {
           productsValue: 0,
