@@ -8,6 +8,8 @@ import './Header.css';
 import Bolsa from '../../assets/icons/Bolsa';
 import Logo from '../../assets/Logo';
 import Pesquisa from '../../assets/icons/Lupa';
+import { ContentHeader, Brand, Categorias, Search, Nologgedin, Sacola } from './style'
+
 
 export default function Header(props) {
   const user = localStorage.getItem('user');
@@ -15,31 +17,31 @@ export default function Header(props) {
 
   return (
     <>
-      <div className="Header">
-        <div className="Logo">
+      <ContentHeader>     
+        <Brand>
           <Link to="/">
             <Logo />
           </Link>
-        </div>
-        <div onClick={() => setMenu(!menu)} className="Categorias">
+        </Brand>
+        <Categorias onClick={() => setMenu(!menu)}>
           <FiMenu /> <p>Categorias</p>
-        </div>
-        <div className="Pesquisa">
+        </Categorias>
+        <Search>
           <input
             type="search"
             placeholder="Encontre seu produto aqui! =D"
           ></input>
           <Pesquisa />
-        </div>
+        </Search>
         <button id="cta-vender">Vender</button>
         <div className="Usuario">
           {user ? (
             <p>{`Olá, ${user}!`}</p>
           ) : (
-            <div className="Nologgedin">
+            <Nologgedin>
               <p>Olá, pegador!</p>
               <Link to="/login">Loga aqui!</Link>
-            </div>
+            </Nologgedin>
           )}
 
           {user ? (
@@ -51,11 +53,11 @@ export default function Header(props) {
             false
           )}
         </div>
-        <div className="Sacola">
+        <Sacola>
           <span>{props.itemsCart}</span>
           <Bolsa />
-        </div>
-      </div>
+        </Sacola>
+      </ContentHeader>
       {menu ? <Menu /> : <div />}
     </>
   );

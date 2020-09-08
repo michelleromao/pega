@@ -1,11 +1,11 @@
 import React from 'react';
-import InterestCategories from '../../components/InterestCategories';
-import Personal from '../../components/Personal';
+import Delete from '../../components/RegisterDelete/UserDelete'
+import UserDelete from '../../components/RegisterDelete/UserDelete';
 
 function TestPage() {
   return (
     <>
-      <Personal />
+      <UserDelete></UserDelete>
     </>
   );
 }
