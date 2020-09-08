@@ -118,6 +118,10 @@
           "principal": true
         }
       ],
+      "rate": {
+        "rating": [{ "message": "", "owner": "", "stars": 0 }],
+        "media": 0
+      },
       "announcements": [1],
       "favorite": [],
       "buys": [],
@@ -151,6 +155,16 @@
           "principal": true
         }
       ],
+      "rate": {
+        "rating": [
+          {
+            "message": "Muito bom! Entregou na data certa",
+            "owner": "dd3",
+            "stars": 5
+          }
+        ],
+        "media": 5
+      },
       "announcements": [2],
       "favorite": [],
       "buys": [],
@@ -192,6 +206,10 @@
           "principal": false
         }
       ],
+      "rate": {
+        "rating": [{ "message": "", "owner": "", "stars": 0 }],
+        "media": 0
+      },
       "announcements": [3, 4],
       "favorite": [1],
       "buys": [],
@@ -252,5 +270,6 @@
       "type": "Frete"
     }
   ],
-  "cupom": [{ "id": 1, "codigo": "PEGAMAIS!", "value": 15 }]
+  "cupom": [{ "id": 1, "codigo": "PEGAMAIS!", "value": 15 }],
+  "bestSellers": ["dd2"]
 }

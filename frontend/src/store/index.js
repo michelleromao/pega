@@ -1,24 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware from 'redux-saga';
+import { configureStore } from '@reduxjs/toolkit';
+import { reducerUsers } from '../reducers/users';
+import { authReducer } from '../reducers/auth';
 
-import rootReducer from './modules/rootReducer';
-import rootSaga from './modules/rootSaga';
-import reducerRaiz from '../reducers';
-/*
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
-
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(...middlewares)),
-);
-
-sagaMiddleware.run(rootSaga);
-
-export default store;
-*/
-
-const store = createStore(reducerRaiz);
+const store = configureStore({
+  reducer: {
+    user: reducerUsers,
+    auth: authReducer,
+  },
+});
 
 export default store;
