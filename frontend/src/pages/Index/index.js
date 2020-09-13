@@ -24,7 +24,7 @@ import './style.css';
 
 function Index(props) {
   return (
-    <>
+    <div className="container-Full">
       <Header></Header>
       <BannerSlide
         photo={Slide}
@@ -141,7 +141,7 @@ function Index(props) {
         />
       </section>
       <Footer />
-    </>
+    </div>
   );
 }
 export default Index;

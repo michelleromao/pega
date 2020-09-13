@@ -1,16 +1,18 @@
 .contentProductLarger {
-  width: 30%;
+  width: 356px;
   display: flex;
   flex-flow: column wrap;
   border-radius: 10px;
   cursor: pointer;
+  
 }
 .contentProductLarger:hover {
   opacity: 0.9;
   transition: 0.3s;
 }
 .contentProductLarger img {
-  max-width: 100%;
+  width: 100%px;
+  height: auto;
 }
 
 .contentProductLarger h3 {

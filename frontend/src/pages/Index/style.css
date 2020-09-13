@@ -1,3 +1,7 @@
+.container-Full{
+  width: 1145px;
+  height: auto;
+}
 .buttonCategoryContent {
   display: flex;
   flex-flow: row;
@@ -29,7 +33,7 @@
   flex-flow: row;
   justify-content: space-between;
   margin-top: 5%;
-  width: 83vw;
+  width: 100%;
 }
 
 .subCategoryContent {
@@ -41,10 +45,12 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
+  width: 528px;
+  height: auto;
 }
 
 .subCategoryContent:first-child {
-  margin-right: 10%;
+  margin-right: 90px;
 }
 .topSellers {
   display: flex;
@@ -64,7 +70,7 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  width: 80vw;
+  width: 100%;
   margin-top: 12%;
   margin-bottom: 14%;
 }
