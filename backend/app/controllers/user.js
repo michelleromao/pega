@@ -1,13 +1,64 @@
-const { v4 } = require("uuid");
+const User = require('../models/user');
 
-const users = [
-  {
-    id: v4(),
-    nome: "Michelle",
-    email: "michelle.nunes10@gmail.com",
-    username: "michelleromao",
-    picpay: "@michelleromao",
-  },
-];
+class UserController {
+  constructor() {
+    this.users = [User];
+  }
 
-module.exports = users;
+  all() {
+    return this.users;
+  }
+
+  getUser(id) {
+    this.users.map(user => {
+      if (id === user.idUser) {
+        return user;
+      }
+      return 'Não há usuário';
+    });
+  }
+
+  create({ name, email, senha }) {
+    const user = new User({ name, email, senha });
+    this.users.push(user);
+    return user;
+  }
+
+  editUser({ id, cpf, name, profilePhoto, email, senha, telefone, picpay }) {
+    const user = new User({
+      id,
+      cpf,
+      name,
+      profilePhoto,
+      email,
+      senha,
+      telefone,
+      picpay,
+    });
+    this.users.map(userID => {
+      if (userID.idUser === id) {
+        const index = this.users.indexOf(userID);
+        this.users[index] = user;
+        return this.users;
+      }
+      return 'Usuário não encontrado';
+    });
+  }
+
+  removeUser({ id, reason }) {
+    const user = new User({
+      id,
+      reason,
+    });
+    this.users.map(userID => {
+      if (userID.idUser === id) {
+        const index = this.users.indexOf(userID);
+        this.users[index] = user;
+        return this.users;
+      }
+      return 'Não foi possível remover o usuário';
+    });
+  }
+}
+
+module.exports = UserController;

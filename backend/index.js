@@ -1,15 +1,16 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
-const routes = require("./config/express");
-const db = require("./config/database");
+const routes = require('./config/express');
+// const db = require('./config/database');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-//db("mongodb://localhost/pegasystem");
+// db("mongodb://localhost/pegasystem");
 
 app.listen(3333, () => {
-  console.log("⭐ Server is running!");
+  console.log('⭐ Server is running!');
 });
