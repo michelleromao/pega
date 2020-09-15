@@ -6,13 +6,17 @@ class User {
     this.name = name;
     this.email = email;
     this.senha = senha;
-    this.cpf = '';
-    this.profilePhoto = '';
-    this.telefone = '';
-    this.picpay = '';
-    this.address = '';
-    this.rate = '';
-    this.reason = '';
+    this.cpf = undefined;
+    this.profilePhoto = 'default.png';
+    this.telefone = undefined;
+    this.picpay = undefined;
+    this.rating = undefined;
+    this.interestCategories = [];
+    this.addresses = [];
+    this.favorites = [];
+    this.buys = [];
+    this.sales = [];
+    this.reason = undefined;
   }
 }
 
