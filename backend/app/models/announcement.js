@@ -9,11 +9,11 @@ class Announcement {
     state,
     description,
     initPrice,
-    owner,
-    category,
+    idOwner,
+    idCategory,
     deliveryType,
     paymentType,
-    status,
+    idStatus,
   }) {
     this.idAnnouncement = uuid();
     this.title = title;
@@ -25,11 +25,11 @@ class Announcement {
     this.initPrice = initPrice;
     this.offert = undefined;
     this.valueOffert = undefined;
-    this.owner = owner;
-    this.category = category;
+    this.idOwner = idOwner;
+    this.idCategory = idCategory;
     this.deliveryType = deliveryType;
     this.paymentType = paymentType;
-    this.status = status;
+    this.idStatus = idStatus;
   }
 }
 
