@@ -12,10 +12,6 @@ class User {
     this.picpay = undefined;
     this.rating = undefined;
     this.interestCategories = [];
-    this.addresses = [];
-    this.favorites = [];
-    this.buys = [];
-    this.sales = [];
     this.reason = undefined;
   }
 }
