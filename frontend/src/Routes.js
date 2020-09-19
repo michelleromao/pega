@@ -8,6 +8,7 @@ import Sacola from './pages/Sacola/Sacola';
 import Payment from './pages/Sacola/Payment';
 import Details from './pages/Sacola/Details';
 import Error404 from './pages/Error404/';
+import PainelUser from './pages/UserPanel'
 
 function Routes() {
   return (
@@ -18,6 +19,7 @@ function Routes() {
       <Route path="/sacola" component={() => <Sacola />} />
       <Route path="/payment" component={() => <Payment />} />
       <Route path="/details" component={() => <Details />} />
+      <Route path="/painel" component={() => <PainelUser />} />
       <Route path="*" component={() => <Error404 />} />
     </>
   );
