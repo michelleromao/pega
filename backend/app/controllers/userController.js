@@ -38,14 +38,27 @@ class UserController {
       const { name, email, senha, cpf, telefone } = request.body;
       const idUser = v4();
       const username = name.toLowerCase().split(' ')[0] + idUser;
-      const criterion = { $or: [{ email }, { cpf }] };
-      const promise = await User.find(criterion).exec();
-      if (promise.length !== 0) {
+      const criterionEmail = { email };
+      const criterionCPF = { cpf };
+
+      const promiseEmail = await User.find(criterionEmail).exec();
+      if (promiseEmail.length !== 0) {
         return response
           .status(400)
           .json({
             message:
-              'Não é possível criar este usuário, e-mail ou CPF já constam na plataforma',
+              'Não é possível criar este usuário, e-mail já consta na plataforma',
+          })
+          .end();
+      }
+
+      const promiseCPF = await User.find(criterionCPF).exec();
+      if (promiseCPF.length !== 0) {
+        return response
+          .status(400)
+          .json({
+            message:
+              'Não é possível criar este usuário, CPF já consta na plataforma',
           })
           .end();
       }
@@ -91,10 +104,23 @@ class UserController {
       const promise = await User.find(criterion).exec();
       if (promise.length !== 0) {
         return response
-          .status(500)
+          .status(400)
           .json({
             message:
               'Não foi possível atualizar os dados, e-mail ou CPF já constam na plataforma',
+          })
+          .end();
+      }
+      const criterionUsername = {
+        $and: [{ idUser: { $ne: id } }, { $or: [{ username }] }],
+      };
+      const promiseUsernameExist = await User.find(criterionUsername).exec();
+      if (promiseUsernameExist.length !== 0) {
+        return response
+          .status(400)
+          .json({
+            message:
+              'Não foi possível atualizar os dados, username já consta na plataforma',
           })
           .end();
       }

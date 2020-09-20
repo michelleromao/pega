@@ -2,16 +2,16 @@ const { Router } = require('express');
 
 const StatusAnnouncementController = require('../controllers/statusAnnouncementController');
 
-const announcementsRouter = Router();
+const statusAnnouncementsRouter = Router();
 
-announcementsRouter.get('/', StatusAnnouncementController.index);
+statusAnnouncementsRouter.get('/', StatusAnnouncementController.index);
 
-announcementsRouter.get('/:id', StatusAnnouncementController.show);
+statusAnnouncementsRouter.get('/:id', StatusAnnouncementController.show);
 
-announcementsRouter.post('/', StatusAnnouncementController.create);
+// statusAnnouncementsRouter.post('/', StatusAnnouncementController.create);
 
-announcementsRouter.put('/:id', StatusAnnouncementController.update);
+// statusAnnouncementsRouter.put('/:id', StatusAnnouncementController.update);
 
-announcementsRouter.delete('/:id', StatusAnnouncementController.delete);
+// statusAnnouncementsRouter.delete('/:id', StatusAnnouncementController.delete);
 
-module.exports = announcementsRouter;
+module.exports = statusAnnouncementsRouter;

@@ -1,5 +1,7 @@
 const { v4 } = require('uuid');
 const Announcement = require('../models/announcement');
+const DeliveryAnnouncement = require('../models/delivery_announcement');
+const PaymentAnnouncement = require('../models/payment_announcement');
 
 class AnnouncementController {
   static async index(request, response) {
@@ -44,7 +46,7 @@ class AnnouncementController {
         description,
         initPrice,
         idOwner,
-        idCategory,
+        idStyle,
         deliveryType,
         paymentType,
         idStatus,
@@ -61,11 +63,24 @@ class AnnouncementController {
         description,
         initPrice,
         idOwner,
-        idCategory,
-        deliveryType,
-        paymentType,
+        idStyle,
+        deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
+        paymentType: 'd51c243e-8adb-41fb-8093-b9241be23665',
         idStatus,
       });
+      const idDeliveryAnnouncement = v4();
+      const createDeliveryPromise = await DeliveryAnnouncement.create({
+        idDeliveryAnnouncement,
+        idDelivery: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
+        idAnnouncement,
+      });
+      const idPaymentAnnouncement = v4();
+      const createPaymentPromise = await PaymentAnnouncement.create({
+        idPaymentAnnouncement,
+        idPayment: 'd51c243e-8adb-41fb-8093-b9241be23665',
+        idAnnouncement,
+      });
+
       return response.json(createPromise);
     } catch (err) {
       return err;
@@ -84,7 +99,7 @@ class AnnouncementController {
         description,
         initPrice,
         idOwner,
-        idCategory,
+        idStyle,
         deliveryType,
         paymentType,
         idStatus,
@@ -114,9 +129,9 @@ class AnnouncementController {
             offert: true,
             valueOffert: initPrice,
             idOwner,
-            idCategory,
-            deliveryType,
-            paymentType,
+            idStyle,
+            deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
+            paymentType: 'd51c243e-8adb-41fb-8093-b9241be23665',
             idStatus,
           },
         );
@@ -142,9 +157,9 @@ class AnnouncementController {
           offert: false,
           valueOffert: null,
           idOwner,
-          idCategory,
-          deliveryType,
-          paymentType,
+          idStyle,
+          deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
+          paymentType: 'd51c243e-8adb-41fb-8093-b9241be23665',
           idStatus,
         },
       );
@@ -171,9 +186,20 @@ class AnnouncementController {
           .json({ message: 'Não foi possível encontrar esse anúncio' });
       }
       const promiseRemove = await Announcement.deleteOne(criterio).exec();
-      if (promiseRemove.ok === 1) {
+      const removeDeliveryAnnouncementPromise = await DeliveryAnnouncement.deleteOne(
+        criterio,
+      ).exec();
+      const removePaymentAnnouncementPromise = await PaymentAnnouncement.deleteOne(
+        criterio,
+      ).exec();
+      if (
+        promiseRemove.ok === 1 &&
+        removePaymentAnnouncementPromise.ok === 1 &&
+        removeDeliveryAnnouncementPromise.ok === 1
+      ) {
         return response.json({ message: 'Excluído com sucesso' });
       }
+
       return response
         .status(400)
         .json({ message: 'Não foi possível excluir o anúncio' });

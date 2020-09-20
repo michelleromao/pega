@@ -2,16 +2,16 @@ const { Router } = require('express');
 
 const StatusTransactionController = require('../controllers/statusTransactionController');
 
-const announcementsRouter = Router();
+const statusTransactionRouter = Router();
 
-announcementsRouter.get('/', StatusTransactionController.index);
+statusTransactionRouter.get('/', StatusTransactionController.index);
 
-announcementsRouter.get('/:id', StatusTransactionController.show);
+statusTransactionRouter.get('/:id', StatusTransactionController.show);
 
-announcementsRouter.post('/', StatusTransactionController.create);
+// statusTransactionRouter.post('/', StatusTransactionController.create);
 
-announcementsRouter.put('/:id', StatusTransactionController.update);
+// statusTransactionRouter.put('/:id', StatusTransactionController.update);
 
-announcementsRouter.delete('/:id', StatusTransactionController.delete);
+// statusTransactionRouter.delete('/:id', StatusTransactionController.delete);
 
-module.exports = announcementsRouter;
+module.exports = statusTransactionRouter;

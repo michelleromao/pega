@@ -1,6 +1,8 @@
 const { v4 } = require('uuid');
 const AnnouncementBag = require('../models/announcement_bag');
+const Announcement = require('../models/announcement');
 const Bag = require('../models/bag');
+const Transaction = require('../models/transaction');
 
 class BagController {
   static async index(request, response) {
@@ -57,7 +59,18 @@ class BagController {
           })
           .end();
       }
-
+      // pegar anuncios [..,..,..]
+      // ir na tabela de anuncios
+      // procurar por id ".."
+      // fazer update do idStatus para vendido
+      const updateStatusAnnouncementPromise = await Announcement.updateMany(
+        criterion,
+        {
+          $set: {
+            idStatus: '9008a1d4-59af-4fa2-9595-e868c6c0e4bb',
+          },
+        },
+      ).exec();
       const createBagPromise = await Bag.create({
         idBag,
         idBuyer,
@@ -79,8 +92,46 @@ class BagController {
       const createAnnouncementBagPromise = await AnnouncementBag.insertMany(
         announcement,
       );
-      // create transaction
+      const idTransaction = v4();
+
+      const createTransactionPromise = await Transaction.create({
+        idTransaction,
+        statusTransaction: '00fd31a5-d50f-4ac2-945e-08166aff88bd',
+        idBag,
+      });
       return response.json(createBagPromise);
+    } catch (err) {
+      return err;
+    }
+  }
+
+  static async delete(request, response) {
+    try {
+      const { id } = request.params;
+      const criterion = { idBag: id };
+      const promiseExist = await Bag.find(criterion).exec();
+      if (promiseExist === 0) {
+        return response
+          .status(400)
+          .json({ message: 'Não foi possível encontrar essa sacola' });
+      }
+      const deleteBagPromise = await Bag.deleteOne(criterion).exec();
+      const deleteTransactionPromise = await Transaction.deleteOne(
+        criterion,
+      ).exec();
+      const deleteAnnouncementBagPromise = await AnnouncementBag.deleteMany(
+        criterion,
+      ).exec();
+      if (
+        deleteTransactionPromise.ok === 1 &&
+        deleteAnnouncementBagPromise.ok === 1 &&
+        deleteBagPromise === 1
+      ) {
+        return response.json({ message: 'Excluído com sucesso' });
+      }
+      return response
+        .status(400)
+        .json({ message: 'Não foi possível excluir a sacola' });
     } catch (err) {
       return err;
     }

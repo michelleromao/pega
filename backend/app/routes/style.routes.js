@@ -8,10 +8,10 @@ styleRouter.get('/', StyleController.index);
 
 styleRouter.get('/:id', StyleController.show);
 
-styleRouter.post('/', StyleController.create);
+// styleRouter.post('/', StyleController.create);
 
-styleRouter.put('/:id', StyleController.update);
+// styleRouter.put('/:id', StyleController.update);
 
-styleRouter.delete('/:id', StyleController.delete);
+// styleRouter.delete('/:id', StyleController.delete);
 
 module.exports = styleRouter;

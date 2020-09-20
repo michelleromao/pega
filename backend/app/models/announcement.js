@@ -14,7 +14,7 @@ const Announcements = new Schema({
   offert: { type: Boolean, required: false },
   valueOffert: { type: Number, required: false },
   idOwner: { type: String, required: true },
-  idCategory: { type: String, required: true },
+  idStyle: { type: String, required: true },
   deliveryType: { type: String, required: true },
   paymentType: { type: String, required: true },
   idStatus: { type: String, required: true },
