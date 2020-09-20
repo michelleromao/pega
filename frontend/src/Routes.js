@@ -8,7 +8,7 @@ import Sacola from './pages/Sacola/Sacola';
 import Payment from './pages/Sacola/Payment';
 import Details from './pages/Sacola/Details';
 import Error404 from './pages/Error404/';
-import PainelUser from './pages/UserPanel'
+import PainelUser from './pages/UserPanel/Index'
 
 function Routes() {
   return (
