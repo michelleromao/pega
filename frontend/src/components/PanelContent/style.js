@@ -9,3 +9,11 @@ export const Content = styled.div`
         padding: 50px;
     }
 `
+
+export const Favoritos = styled.div`
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+`

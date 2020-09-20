@@ -19,3 +19,9 @@ export const PanelUser = styled.div`
         padding:10px;
     }
 `
+
+export const Title = styled.h4`
+    color: #4E4E4E;
+    font-size:26px;
+    font-family:'Poppins';
+`
