@@ -59,10 +59,7 @@ class BagController {
           })
           .end();
       }
-      // pegar anuncios [..,..,..]
-      // ir na tabela de anuncios
-      // procurar por id ".."
-      // fazer update do idStatus para vendido
+
       const updateStatusAnnouncementPromise = await Announcement.updateMany(
         criterion,
         {
