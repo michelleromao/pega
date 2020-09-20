@@ -1,152 +1,164 @@
+const { v4 } = require('uuid');
 const User = require('../models/user');
 
-const users = [];
-
 class UserController {
-  static index(request, response) {
+  static async index(request, response) {
     try {
-      return response.json(users);
+      const promise = await User.find().exec();
+      if (promise.length === 0) {
+        return response
+          .status(400)
+          .json({ message: 'Ops, não há usuários aqui' });
+      }
+      return response.json(promise);
     } catch (err) {
       return err;
     }
   }
 
-  static show(request, response) {
+  static async show(request, response) {
     try {
-      const id = request.params;
-      const user = users.find(u => {
-        if (u.idUser === id) {
-          return u;
-        }
-        return null;
-      });
-      if (!user) {
+      const { id } = request.params;
+      const criterion = { idUser: id };
+      const promise = await User.find(criterion).exec();
+      if (promise.length === 0) {
         return response
           .status(400)
           .json({ message: 'Não foi possível encontrar esse usuário' });
       }
 
-      return response.json(user);
+      return response.json(promise);
     } catch (err) {
       return err;
     }
   }
 
-  static create(request, response) {
+  static async create(request, response) {
     try {
-      const { name, email, senha } = request.body;
-      const userExist = users.find(u => {
-        if (u.email === email) {
-          return u;
-        }
-        return undefined;
-      });
-
-      if (!userExist) {
-        const user = new User({ name, email, senha });
-        users.push(user);
-        return response.json(user);
+      const { name, email, senha, cpf, telefone } = request.body;
+      const idUser = v4();
+      const username = name.toLowerCase().split(' ')[0] + idUser;
+      const criterion = { $or: [{ email }, { cpf }] };
+      const promise = await User.find(criterion).exec();
+      if (promise.length !== 0) {
+        return response
+          .status(400)
+          .json({
+            message:
+              'Não é possível criar este usuário, e-mail ou CPF já constam na plataforma',
+          })
+          .end();
       }
-      return response.status(401).json({ message: 'E-mail já existente :(' });
+
+      const createPromise = await User.create({
+        idUser,
+        name,
+        username,
+        email,
+        senha,
+        cpf,
+        telefone,
+      });
+      return response.json(createPromise);
     } catch (err) {
       return err;
     }
   }
 
-  static update(request, response) {
+  static async update(request, response) {
     try {
       const { id } = request.params;
       const {
         cpf,
         name,
+        username,
         profilePhoto,
         email,
         senha,
         telefone,
         picpay,
       } = request.body;
-
-      const user = {
-        id,
-        cpf,
-        name,
-        profilePhoto,
-        email,
-        senha,
-        telefone,
-        picpay,
+      const criterionId = { idUser: id };
+      const criterion = {
+        $and: [{ idUser: { $ne: id } }, { $or: [{ email }, { cpf }] }],
       };
-
-      const index = users.findIndex((u, i) => {
-        if (u.idUser === id) {
-          return i;
-        }
-        return null;
-      });
-
-      if (!index) {
+      const promiseExist = await User.find(criterionId).exec();
+      if (promiseExist.length === 0) {
         return response
           .status(400)
           .json({ message: 'Não foi possível encontrar esse usuário' });
       }
-
-      const emailExist = users.find(u => {
-        if (u.idUser !== id && u.email === email) {
-          return u;
-        }
-        return null;
-      });
-
-      if (emailExist) {
+      const promise = await User.find(criterion).exec();
+      if (promise.length !== 0) {
         return response
-          .status(400)
-          .json({ message: 'Epa! Esse e-mail já está na nossa plataforma' });
+          .status(500)
+          .json({
+            message:
+              'Não foi possível atualizar os dados, e-mail ou CPF já constam na plataforma',
+          })
+          .end();
       }
-
-      const cpfExist = users.find(u => {
-        if (u.idUser !== id && u.cpf === cpf) {
-          return u;
-        }
-        return null;
-      });
-
-      if (cpfExist) {
-        return response
-          .status(400)
-          .json({ message: 'Epa! Esse CPF já está na nossa plataforma ' });
+      const updatePromise = await User.updateOne(
+        { idUser: id },
+        {
+          id,
+          cpf,
+          name,
+          username,
+          profilePhoto,
+          email,
+          senha,
+          telefone,
+          picpay,
+        },
+      );
+      if (updatePromise.ok === 1) {
+        const res = await User.find(criterionId).exec();
+        return response.json(res);
       }
-
-      users[index] = user;
-      return response.json(user);
+      return response
+        .status(400)
+        .json({ message: 'Não foi possível atualizar o usuário' });
     } catch (err) {
       return err;
     }
   }
 
-  static delete(request, response) {
+  static async delete(request, response) {
     try {
       const { id } = request.params;
       const { reason } = request.body;
-      const user = {
-        id,
-        reason,
-      };
 
-      const index = users.findIndex((u, i) => {
-        if (u.idUser === id) {
-          return i;
-        }
-        return null;
-      });
+      const criterion = { idUser: id };
+      const promiseUser = await User.find(criterion).exec();
 
-      if (!index) {
+      if (promiseUser.length === 0) {
         return response
           .status(400)
           .json({ message: 'Não foi possível encontrar esse usuário' });
       }
 
-      users[index] = user;
-      return response.json(user);
+      const promise = await User.updateOne(criterion, {
+        id,
+        cpf: '',
+        name: '',
+        username: '',
+        profilePhoto: '',
+        email: '',
+        senha: '',
+        telefone: '',
+        picpay: '',
+        reason,
+      }).exec();
+
+      if (promise.ok === 1) {
+        const res = await User.find(criterion).exec();
+        return response.json(res);
+      }
+
+      return response
+        .status(400)
+        .json({ message: 'Não foi possível excluir o usuário' });
     } catch (err) {
       return err;
     }

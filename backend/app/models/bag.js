@@ -1,15 +1,15 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Bag {
-  constructor({ buyer, announcements, idPayment, value, cupom, totalValue }) {
-    this.idBag = uuid();
-    this.buyer = buyer;
-    this.announcements = announcements;
-    this.idPayment = idPayment;
-    this.value = value;
-    this.idCupom = cupom;
-    this.totalValue = totalValue;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Bag;
+const Bags = new Schema({
+  idBag: { type: String, required: true },
+  idBuyer: { type: String, required: true },
+  announcements: { type: [String], required: true },
+  idPayment: { type: String, required: true },
+  value: { type: Number, required: true },
+  idCupom: { type: String, required: false },
+  totalValue: { type: Number, required: true },
+});
+
+module.exports = mongoose.model('Bags', Bags);

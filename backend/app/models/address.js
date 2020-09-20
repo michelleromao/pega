@@ -1,16 +1,16 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Address {
-  constructor({ zipCode, street, number, city, state, main, idUser }) {
-    this.idAddress = uuid();
-    this.zipCode = zipCode;
-    this.street = street;
-    this.number = number;
-    this.city = city;
-    this.state = state;
-    this.main = main;
-    this.idUser = idUser;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Address;
+const Addresses = new Schema({
+  idAddress: { type: String, required: true },
+  zipCode: { type: String, required: true },
+  street: { type: String, required: true },
+  number: { type: String, required: true },
+  city: { type: String, required: true },
+  state: { type: String, required: true },
+  main: { type: Boolean, required: true },
+  idUser: { type: String, required: true },
+});
+
+module.exports = mongoose.model('Addresses', Addresses);

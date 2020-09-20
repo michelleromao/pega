@@ -1,14 +1,14 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Rate {
-  constructor({ star, comment, evaluator, rated, transaction }) {
-    this.idRate = uuid();
-    this.star = star;
-    this.comment = comment;
-    this.evaluator = evaluator;
-    this.rated = rated;
-    this.transaction = transaction;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Rate;
+const Rates = new Schema({
+  idRate: { type: String, required: true },
+  star: { type: Number, required: true },
+  comment: { type: String, required: true },
+  evaluator: { type: String, required: true },
+  rated: { type: String, required: true },
+  transaction: { type: String, required: true },
+});
+
+module.exports = mongoose.model('Rates', Rates);

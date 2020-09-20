@@ -1,10 +1,10 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class City {
-  constructor({ name }) {
-    this.idCity = uuid();
-    this.name = name;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = City;
+const Cities = new Schema({
+  idCity: { type: String, required: true },
+  name: { type: String, required: true },
+});
+
+module.exports = mongoose.model('Cities', Cities);

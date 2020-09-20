@@ -1,11 +1,14 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class PaymentAnnouncement {
-  constructor({ idDelivery, idAnnoucement }) {
-    this.idPayment_Annoucement = uuid();
-    this.idPayment = idDelivery;
-    this.idAnnoucement = idAnnoucement;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = PaymentAnnouncement;
+const PaymentAnnouncements = new Schema({
+  idPayment_Annoucement: {
+    type: String,
+    required: true,
+  },
+  idPayment: { type: String, required: true },
+  idAnnoucement: { type: String, required: true },
+});
+
+module.exports = mongoose.model('PaymentAnnouncements', PaymentAnnouncements);

@@ -1,11 +1,13 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class FavoriteAnnouncements {
-  constructor({ idUser, idAnnoucement }) {
-    this.idFavoriteAnnouncements = uuid();
-    this.idUser = idUser;
-    this.idAnnouncement = idAnnoucement;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = FavoriteAnnouncements;
+const FavoriteAnnouncements = new Schema({
+  idFavoriteAnnouncements: {
+    type: String,
+    required: true,
+  },
+  idUser: { type: String, required: true },
+  idAnnouncement: { type: String, required: true },
+});
+module.exports = mongoose.model('FavoriteAnnouncements', FavoriteAnnouncements);

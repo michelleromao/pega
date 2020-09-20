@@ -1,36 +1,23 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Announcement {
-  constructor({
-    title,
-    color,
-    size,
-    photos,
-    state,
-    description,
-    initPrice,
-    idOwner,
-    idCategory,
-    deliveryType,
-    paymentType,
-    idStatus,
-  }) {
-    this.idAnnouncement = uuid();
-    this.title = title;
-    this.color = color;
-    this.size = size;
-    this.photos = photos;
-    this.state = state;
-    this.description = description;
-    this.initPrice = initPrice;
-    this.offert = undefined;
-    this.valueOffert = undefined;
-    this.idOwner = idOwner;
-    this.idCategory = idCategory;
-    this.deliveryType = deliveryType;
-    this.paymentType = paymentType;
-    this.idStatus = idStatus;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Announcement;
+const Announcements = new Schema({
+  idAnnouncement: { type: String, required: true },
+  title: { type: String, required: true },
+  color: { type: String, required: true },
+  size: { type: String, required: true },
+  photos: { type: [String], required: true },
+  state: { type: String, required: true },
+  description: { type: String, required: true },
+  initPrice: { type: Number, required: true },
+  offert: { type: Boolean, required: false },
+  valueOffert: { type: Number, required: false },
+  idOwner: { type: String, required: true },
+  idCategory: { type: String, required: true },
+  deliveryType: { type: String, required: true },
+  paymentType: { type: String, required: true },
+  idStatus: { type: String, required: true },
+});
+
+module.exports = mongoose.model('Announcements', Announcements);

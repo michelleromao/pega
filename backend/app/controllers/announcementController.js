@@ -1,38 +1,39 @@
+const { v4 } = require('uuid');
 const Announcement = require('../models/announcement');
 
-const announcements = [];
-
 class AnnouncementController {
-  static index(request, response) {
+  static async index(request, response) {
     try {
-      return response.json(announcements);
+      const promise = await Announcement.find().exec();
+      if (promise.length === 0) {
+        return response
+          .status(400)
+          .json({ message: 'Ops, não há anúncios aqui' });
+      }
+      return response.json(promise);
     } catch (err) {
       return err;
     }
   }
 
-  static show(request, response) {
+  static async show(request, response) {
     try {
-      const id = request.params;
-      const announcement = announcements.find(a => {
-        if (a.idAnnouncement === id) {
-          return a;
-        }
-        return null;
-      });
-      if (!announcement) {
+      const { id } = request.params;
+      const criterion = { idAnnouncement: id };
+      const promise = await Announcement.find(criterion).exec();
+      if (promise.length === 0) {
         return response
-          .status(400)
+          .status(500)
           .json({ message: 'Não foi possível encontrar esse anúncio' });
       }
 
-      return response.json(announcement);
+      return response.json(promise);
     } catch (err) {
       return err;
     }
   }
 
-  static create(request, response) {
+  static async create(request, response) {
     try {
       const {
         title,
@@ -48,8 +49,10 @@ class AnnouncementController {
         paymentType,
         idStatus,
       } = request.body;
+      const idAnnouncement = v4();
 
-      const announcement = new Announcement({
+      const createPromise = await Announcement.create({
+        idAnnouncement,
         title,
         color,
         size,
@@ -63,14 +66,13 @@ class AnnouncementController {
         paymentType,
         idStatus,
       });
-      announcements.push(announcement);
-      return response.json(announcement);
+      return response.json(createPromise);
     } catch (err) {
       return err;
     }
   }
 
-  static update(request, response) {
+  static async update(request, response) {
     try {
       const { id } = request.params;
       const {
@@ -81,7 +83,6 @@ class AnnouncementController {
         state,
         description,
         initPrice,
-        valueOffert,
         idOwner,
         idCategory,
         deliveryType,
@@ -89,107 +90,93 @@ class AnnouncementController {
         idStatus,
       } = request.body;
 
-      const index = announcements.findIndex((u, i) => {
-        if (u.idAnnouncement === id) {
-          return i;
-        }
-        return null;
-      });
+      const criterion = { idAnnouncement: id };
 
-      if (!index) {
+      const promiseExist = await Announcement.find(criterion).exec();
+      if (promiseExist.length === 0) {
         return response
           .status(400)
-          .json({ message: 'Não foi possível encontrar esse usuário' });
+          .json({ message: 'Não foi possível encontrar esse anúncio' });
       }
-
-      if (valueOffert && announcements[index].initPrice > valueOffert) {
-        const price = announcements[index].initPrice;
-        if (announcements[index].initPrice < valueOffert) {
-          const announcement = {
-            id,
+      if (promiseExist[0].initPrice > initPrice) {
+        const price = promiseExist[0].initPrice;
+        const updatePromise = await Announcement.updateOne(
+          { idAnnouncement: id },
+          {
+            idAnnouncement: id,
             title,
             color,
             size,
             photos,
             state,
             description,
-            initPrice: valueOffert,
-            offert: false,
-            valueOffert: undefined,
+            initPrice: price,
+            offert: true,
+            valueOffert: initPrice,
             idOwner,
             idCategory,
             deliveryType,
             paymentType,
             idStatus,
-          };
-          announcements[index] = announcement;
-          return response.json(announcement);
+          },
+        );
+        if (updatePromise.ok === 1) {
+          const res = await Announcement.find(criterion).exec();
+          return response.json(res);
         }
-
-        const announcement = {
-          id,
+        return response
+          .status(400)
+          .json({ message: 'Não foi possível atualizar o anúncio' });
+      }
+      const updatePromise = await Announcement.update(
+        { idAnnouncement: id },
+        {
+          idAnnouncement: id,
           title,
           color,
           size,
           photos,
           state,
           description,
-          price,
-          offert: true,
-          valueOffert,
+          initPrice,
+          offert: false,
+          valueOffert: null,
           idOwner,
           idCategory,
           deliveryType,
           paymentType,
           idStatus,
-        };
-        announcements[index] = announcement;
-        return response.json(announcement);
+        },
+      );
+      if (updatePromise.ok === 1) {
+        const res = await Announcement.find(criterion).exec();
+        return response.json(res);
       }
-      const announcement = {
-        id,
-        title,
-        color,
-        size,
-        photos,
-        state,
-        description,
-        initPrice,
-        offert: false,
-        valueOffert: undefined,
-        idOwner,
-        idCategory,
-        deliveryType,
-        paymentType,
-        idStatus,
-      };
-      announcements[index] = announcement;
-      return response.json(announcement);
+      return response
+        .status(400)
+        .json({ message: 'Não foi possível atualizar o anúncio' });
     } catch (err) {
       return err;
     }
   }
 
-  static delete(request, response) {
+  static async delete(request, response) {
     try {
       const { id } = request.params;
-
-      const index = announcements.findIndex((a, i) => {
-        if (a.idAnnouncement === id) {
-          return i;
-        }
-        return null;
-      });
-
-      if (!index) {
+      const criterio = { idAnnouncement: id };
+      const promiseExist = await Announcement.find(criterio).exec();
+      if (promiseExist.length === 0) {
         return response
           .status(400)
-          .json({ message: 'Não foi possível encontrar esse usuário' });
+          .json({ message: 'Não foi possível encontrar esse anúncio' });
       }
-
-      announcements.splice(index, 1);
-
-      return response.json(announcements);
+      const promiseRemove = await Announcement.deleteOne(criterio).exec();
+      if (promiseRemove.ok === 1) {
+        return response.json({ message: 'Excluído com sucesso' });
+      }
+      return response
+        .status(400)
+        .json({ message: 'Não foi possível excluir o anúncio' });
     } catch (err) {
       return err;
     }

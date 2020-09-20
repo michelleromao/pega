@@ -1,10 +1,9 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Size {
-  constructor({ size }) {
-    this.idSize = uuid();
-    this.size = size;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Size;
+const Sizes = new Schema({
+  idSize: { type: String, required: true },
+  size: { type: String, required: true },
+});
+module.exports = mongoose.model('Sizes', Sizes);

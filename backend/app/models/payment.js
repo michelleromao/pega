@@ -1,10 +1,9 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Payment {
-  constructor({ type }) {
-    this.idPayment = uuid();
-    this.type = type;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Payment;
+const Payments = new Schema({
+  idPayment: { type: String, required: true },
+  type: { type: String, required: true },
+});
+module.exports = mongoose.model('Payments', Payments);

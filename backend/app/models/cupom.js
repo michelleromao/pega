@@ -1,12 +1,12 @@
-const { uuid } = require('uuidv4');
+const mongoose = require('mongoose');
 
-class Cupom {
-  constructor({ code, value, quantity }) {
-    this.idCupom = uuid();
-    this.code = code;
-    this.value = value;
-    this.quantity = quantity;
-  }
-}
+const { Schema } = mongoose;
 
-module.exports = Cupom;
+const Cupoms = new Schema({
+  idCupom: { type: String, required: true },
+  name: { type: String, required: true },
+  code: { type: String, required: true },
+  value: { type: Number, required: true },
+  quantity: { type: Number, required: true },
+});
+module.exports = mongoose.model('Cupoms', Cupoms);
