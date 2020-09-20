@@ -3,6 +3,7 @@
     {
       "idUser": "f7636543-34f9-450d-9fd7-8766a0c9a890",
       "name": "Fernanda Gadelha",
+      "username": "michelleromao",
       "email": "fegadelha@gmail.com",
       "senha": "unicorniosvoadores",
       "cpf": "05564833305",
@@ -16,6 +17,7 @@
     {
       "idUser": "fd8996f9-87a9-4773-9532-e834e819a2c5",
       "name": "Michelle Romão",
+      "username": "michelleromao",
       "email": "michelleromao@gmail.com",
       "senha": "batatinhassaltitantes",
       "cpf": "072400289223",
@@ -32,7 +34,7 @@
       "idBag": "",
       "buyer": "",
       "announcements": [],
-      "idPayment": "60b152b0-7014-49d4-b22d-eabe8bfd005b",
+      "idPayment": "d51c243e-8adb-41fb-8093-b9241be23665",
       "value": 0,
       "idCupom": "",
       "totalValue": 0
@@ -57,117 +59,135 @@
       "initPrice": 25,
       "offert": false,
       "valueOffert": 0,
-      "owner": "fd8996f9-87a9-4773-9532-e834e819a2c5      ",
-      "category": "c8c50770-9fd5-41fe-853c-2e8e971256a3",
-      "deliveryType": "135d5c46-ecb4-4ddb-9d4d-659c680b7f1a",
-      "paymentType": "60b152b0-7014-49d4-b22d-eabe8bfd005b",
-      "status": "0c0f91d8-2b3c-4b0d-8056-761ae8833c3b"
+      "owner": "fd8996f9-87a9-4773-9532-e834e819a2c5",
+      "category": "c0b303cc-ccb3-4568-9661-dc104302d99f",
+      "deliveryType": "e005eb43-21ac-48ff-9944-b1f2510e6126",
+      "paymentType": "d51c243e-8adb-41fb-8093-b9241be23665",
+      "status": "a7249f2f-da3c-4312-8269-4d20aa326dcc"
     }
   ],
-  "categories": [
+  "styles": [
     {
-      "idCategory": "6b8637a2-89ca-4d64-958c-6a9bd0c40fcd",
+      "idCategory": "bd27019f-b519-4021-a8cd-57885e0dddc7",
       "name": "Básico"
     },
     {
-      "idCategory": "d8cb7d8a-058a-4b05-8742-9d4424ee3b95",
+      "idCategory": "9867aef7-6913-4ae6-9ac1-c9e4102a9301",
       "name": "Casual"
     },
     {
-      "idCategory": "4fdda800-7884-4837-8110-e1fd859270b6",
+      "idCategory": "961f0303-71ac-4362-825b-5d29864aa89d",
+      "name": "Confortável"
+    },
+    {
+      "idCategory": "8ca38a28-7a9f-4011-b07e-86dccbfb8924",
       "name": "E-boy"
     },
     {
-      "idCategory": "360285f2-216b-4455-847c-58fae3fd289c",
+      "idCategory": "e81f17b4-faa2-497a-ac2e-277fc406e575",
       "name": "E-girl"
     },
     {
-      "idCategory": "7be344ef-89e4-4299-963e-7bd21e8cbb19",
+      "idCategory": "585741b3-8cc5-4248-9143-4d7bb3a2060c",
       "name": "Esportivo"
     },
     {
-      "idCategory": "b0c02de9-faf7-477d-a96c-60fef48fdd16",
+      "idCategory": "b9f64d3a-2c6b-424e-a57f-ea49881053c8",
       "name": "Fantasia"
     },
     {
-      "idCategory": "39ef6c0b-0651-4e81-bdbc-f62cd4ff4454",
+      "idCategory": "582017f7-1080-48b9-8947-ad541a6e0081",
       "name": "Festa"
     },
     {
-      "idCategory": "e7c20614-8d5a-4490-90aa-89115ec1d3d7",
+      "idCategory": "f9e4e702-aeca-438f-8f9b-6790556834c9",
       "name": "Ficar em casa"
     },
     {
-      "idCategory": "6c8e76c6-1633-4fc2-afa9-fcab14b276d8",
+      "idCategory": "6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e",
       "name": "Floral"
     },
 
     {
-      "idCategory": "53bbe255-667d-4b56-ab87-5f0eea6d810a",
+      "idCategory": "0c7d8ea1-9ae5-4430-9e11-d828e6f5c905",
       "name": "Geek"
     },
     {
-      "idCategory": "6a4d2ef8-11b4-4050-ab84-3eb8435a3665",
-      "name": "Gótica"
+      "idCategory": "ca202d3a-c06e-4ba2-9661-c813735d2dba",
+      "name": "Gótico"
     },
 
     {
-      "idCategory": "70520549-dc9c-4c03-9c59-d268cc2258d9",
+      "idCategory": "6ce19360-09c7-464e-928a-951825136954",
       "name": "Praiano"
     },
     {
-      "idCategory": "c8c50770-9fd5-41fe-853c-2e8e971256a3",
+      "idCategory": "c0b303cc-ccb3-4568-9661-dc104302d99f",
       "name": "Punk"
     },
     {
-      "idCategory": "2cf740b6-0132-4fd5-960f-02d6d6324fde",
+      "idCategory": "098374f5-302e-4b25-94c3-552f87bdb378",
       "name": "Social"
     },
     {
-      "idCategory": "749c42de-e451-47ed-a93c-9794f327b29c",
+      "idCategory": "cb3dc053-3314-4831-9152-f444551f831e",
       "name": "Tropical"
     },
     {
-      "idCategory": "710a3a48-ff7b-479b-b1cd-bcff463efaf9",
+      "idCategory": "9e0e9685-707f-444e-9a17-f369c49143c8",
       "name": "Urbano"
     },
     {
-      "idCategory": "8097094a-73f3-41c4-a401-ce6fc051de5e",
+      "idCategory": "99fbca3b-d22f-4c44-a065-56b3ed85c742",
       "name": "Vintage"
     }
   ],
   "paymentType": [
     {
-      "idPayment": "60b152b0-7014-49d4-b22d-eabe8bfd005b",
+      "idPayment": "d51c243e-8adb-41fb-8093-b9241be23665",
       "type": "Picpay"
     }
   ],
   "deliveryType": [
     {
-      "idDelivery": "135d5c46-ecb4-4ddb-9d4d-659c680b7f1a",
+      "idDelivery": "e005eb43-21ac-48ff-9944-b1f2510e6126",
       "type": "Frete"
     }
   ],
-  "status": [
+  "statusAnnouncement": [
     {
-      "idStatus": "0c0f91d8-2b3c-4b0d-8056-761ae8833c3b",
+      "idStatus": "a7249f2f-da3c-4312-8269-4d20aa326dcc",
       "type": "Ativo"
     },
     {
-      "idStatus": "18a249ae-a5d7-4325-9125-8223dc619f3b",
+      "idStatus": "0b438541-f970-4e20-be51-ba9398326369",
       "type": "Inativo"
     },
     {
-      "idStatus": "6c6b6da8-93f2-4434-9aed-8f2779a17c44",
+      "idStatus": "7336a7a2-07cc-4966-adb4-5a19758b1506",
       "type": "Vendido"
     },
     {
-      "idStatus": "bbd984fa-e0ad-4a2d-b61f-8dd4d43e9533",
+      "idStatus": "51f68a38-c8f0-4088-a40e-7b380dab6bd0",
       "type": "Rascunho"
     },
     {
-      "idStatus": "cd1f1aad-9877-4ccc-b0f4-636cb9b7a60e",
+      "idStatus": "9008a1d4-59af-4fa2-9595-e868c6c0e4bb",
       "type": "Reservado"
+    }
+  ],
+  "statusTransaction": [
+    {
+      "idStatus": "00fd31a5-d50f-4ac2-945e-08166aff88bd",
+      "type": "Em andamento"
+    },
+    {
+      "idStatus": "852091cf-a079-4c54-bf8f-86ce8af424a4",
+      "type": "Concluída"
+    },
+    {
+      "idStatus": "a8cd0bbc-21a4-4295-8a81-d8c138197028",
+      "type": "Cancelada"
     }
   ]
 }
