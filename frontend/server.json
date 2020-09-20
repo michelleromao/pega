@@ -1,273 +1,193 @@
 {
-  "products": [
-    {
-      "id": 1,
-      "ownerID": "dd1",
-      "title": "Casaquinho legal",
-      "category": 1,
-      "size": "M",
-      "color": "Rosa",
-      "state": "Usado",
-      "price": 27.2,
-      "promo": 0,
-      "payment": [1],
-      "trynon": true,
-      "reserve": false,
-      "deliveryType": [1, 2],
-      "frete": 20,
-      "description": "Casaco da cor rosa, com stickers, com um rasgado no ombro, mas passa impercebido, é estilo",
-      "comments": [
-        {
-          "owner": "dd2",
-          "message": "A roupa veste G?",
-          "response": ""
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "ownerID": "dd2",
-      "title": "Blusa das trevas",
-      "category": 5,
-      "size": "GG",
-      "color": "Preto",
-      "state": "Usado",
-      "price": 40,
-      "promo": 20,
-      "payment": [2],
-      "trynon": false,
-      "reserve": false,
-      "deliveryType": [1],
-      "frete": 0,
-      "description": "Camisa preta, com detalhes pretos",
-      "comments": []
-    },
-    {
-      "id": 3,
-      "ownerID": "dd3",
-      "title": "Cropped crochê",
-      "category": 4,
-      "size": "M",
-      "color": "Estampado",
-      "state": "Novo",
-      "price": 5,
-      "promo": 0,
-      "payment": [1],
-      "trynon": false,
-      "reserve": false,
-      "deliveryType": [2],
-      "frete": 11,
-      "description": "Cropped crochê feito a mão, artesanalmente",
-      "comments": []
-    },
-    {
-      "id": 4,
-      "ownerID": "dd3",
-      "title": "Maiô",
-      "category": 6,
-      "size": "M",
-      "color": "Redvelvet",
-      "state": "Novo",
-      "price": 70,
-      "promo": 45,
-      "payment": [1],
-      "trynon": false,
-      "reserve": false,
-      "deliveryType": [2],
-      "frete": 11,
-      "description": "Maiô novo, motivo da venda: comprei, nunca usei, pois nunca mais fui a praia",
-      "comments": []
-    },
-    {
-      "id": 5,
-      "ownerID": "dd2",
-      "title": "Short florido",
-      "category": 2,
-      "size": "M",
-      "color": "Estampado",
-      "state": "Novo",
-      "price": 35,
-      "promo": 15,
-      "payment": [1],
-      "trynon": false,
-      "reserve": false,
-      "deliveryType": [2],
-      "frete": 15,
-      "description": "Short estampado fofinho, soltinho, feito ontem.",
-      "comments": []
-    }
-  ],
   "users": [
     {
-      "id": "dd1",
-      "username": "fegadelha",
+      "idUser": "f7636543-34f9-450d-9fd7-8766a0c9a890",
       "name": "Fernanda Gadelha",
-      "email": "fernandagadelha@gmail.com",
-      "cpf": "00075660210",
-      "tel": 8599998500,
-      "password": "unicorniosbrilhantes",
-      "interestCategories": [],
-      "picpay": "@fegadelha",
-      "address": [
-        {
-          "street": "Rua do Montese",
-          "number": "55",
-          "neighboohood": "Montese",
-          "city": "Quixadá",
-          "state": "Ceará",
-          "principal": true
-        }
-      ],
-      "rate": {
-        "rating": [{ "message": "", "owner": "", "stars": 0 }],
-        "media": 0
-      },
-      "favorite": [],
-      "buys": [],
-      "sales": [],
-      "sacola": {
-        "productsID": [],
-        "resume": {
-          "productsValue": 0,
-          "cupom": 0,
-          "total": 0
-        }
-      }
-    },
-    {
-      "id": "dd2",
       "username": "michelleromao",
-      "name": "Michelle Romao",
-      "email": "michelleromao@gmail.com",
-      "cpf": "07286000005",
-      "tel": 85997000083,
-      "password": "pegandonopega",
-      "interestCategories": [1, 2, 3],
-      "picpay": "@mromao",
-      "address": [
-        {
-          "street": "Rua do Bolo",
-          "number": "777",
-          "neighboohood": "Centro",
-          "city": "Quixadá",
-          "state": "Ceará",
-          "principal": true
-        }
-      ],
-      "rate": {
-        "rating": [
-          {
-            "message": "Muito bom! Entregou na data certa",
-            "owner": "dd3",
-            "stars": 5
-          }
-        ],
-        "media": 5
-      },
-      "favorite": [],
-      "buys": [],
-      "sales": [],
-      "sacola": {
-        "productsID": [],
-        "resume": {
-          "productsValue": 0,
-          "cupom": 0,
-          "total": 0
-        }
-      }
+      "email": "fegadelha@gmail.com",
+      "senha": "unicorniosvoadores",
+      "cpf": "05564833305",
+      "profilePhoto": "default.png",
+      "telefone": "85905651001",
+      "picpay": "",
+      "rating": 0,
+      "interestCategories": [],
+      "reason": ""
     },
     {
-      "id": "dd3",
-      "username": "akainan",
-      "name": "Antonio Kainan",
-      "email": "kainan@gmail.com",
-      "cpf": "0055886930",
-      "tel": 88990222354,
-      "password": "kainanzimdastapioca",
-      "interestCategories": [4],
-      "picpay": "@ah.kainan",
-      "address": [
-        {
-          "street": "Rua Aquela",
-          "number": "1687",
-          "neighboohood": "Centro",
-          "city": "Quixeramobim",
-          "state": "Ceará",
-          "principal": true
-        },
-        {
-          "street": "Rua do Montese",
-          "number": "55",
-          "neighboohood": "Montese",
-          "city": "Quixadá",
-          "state": "Ceará",
-          "principal": false
-        }
-      ],
-      "rate": {
-        "rating": [{ "message": "", "owner": "", "stars": 0 }],
-        "media": 0
-      },
-
-      "favorite": [1],
-      "buys": [],
-      "sales": [],
-      "sacola": {
-        "productsID": [],
-        "resume": {
-          "productsValue": 0,
-          "cupom": 0,
-          "total": 0
-        }
-      }
+      "idUser": "fd8996f9-87a9-4773-9532-e834e819a2c5",
+      "name": "Michelle Romão",
+      "username": "michelleromao",
+      "email": "michelleromao@gmail.com",
+      "senha": "batatinhassaltitantes",
+      "cpf": "072400289223",
+      "profilePhoto": "default.png",
+      "telefone": "85997055583",
+      "picpay": "michelleromao",
+      "rating": 4,
+      "interestCategories": [],
+      "reason": ""
     }
   ],
-  "categories": [
+  "bag": [
     {
-      "id": 1,
-      "name": "Geek"
-    },
+      "idBag": "",
+      "buyer": "",
+      "announcements": [],
+      "idPayment": "d51c243e-8adb-41fb-8093-b9241be23665",
+      "value": 0,
+      "idCupom": "",
+      "totalValue": 0
+    }
+  ],
+  "transactions": [
     {
-      "id": 2,
-      "name": "Conforto"
-    },
+      "idTransaction": "",
+      "status": false,
+      "idBag": ""
+    }
+  ],
+  "products": [
     {
-      "id": 3,
-      "name": "Soninho"
-    },
+      "idAnnouncement": "6b52ea58-91fe-49a1-8128-8af717d361f7",
+      "title": "Jaqueta de couro",
+      "color": "Preta",
+      "size": "M",
+      "photos": [""],
+      "state": "Usado",
+      "description": "Uma jaqueta de couro que estava guardada no meu armário",
+      "initPrice": 25,
+      "offert": false,
+      "valueOffert": 0,
+      "owner": "fd8996f9-87a9-4773-9532-e834e819a2c5",
+      "category": "c0b303cc-ccb3-4568-9661-dc104302d99f",
+      "deliveryType": "e005eb43-21ac-48ff-9944-b1f2510e6126",
+      "paymentType": "d51c243e-8adb-41fb-8093-b9241be23665",
+      "status": "a7249f2f-da3c-4312-8269-4d20aa326dcc"
+    }
+  ],
+  "styles": [
     {
-      "id": 4,
+      "idCategory": "bd27019f-b519-4021-a8cd-57885e0dddc7",
       "name": "Básico"
     },
     {
-      "id": 5,
+      "idCategory": "9867aef7-6913-4ae6-9ac1-c9e4102a9301",
+      "name": "Casual"
+    },
+    {
+      "idCategory": "961f0303-71ac-4362-825b-5d29864aa89d",
+      "name": "Confortável"
+    },
+    {
+      "idCategory": "8ca38a28-7a9f-4011-b07e-86dccbfb8924",
+      "name": "E-boy"
+    },
+    {
+      "idCategory": "e81f17b4-faa2-497a-ac2e-277fc406e575",
+      "name": "E-girl"
+    },
+    {
+      "idCategory": "585741b3-8cc5-4248-9143-4d7bb3a2060c",
+      "name": "Esportivo"
+    },
+    {
+      "idCategory": "b9f64d3a-2c6b-424e-a57f-ea49881053c8",
+      "name": "Fantasia"
+    },
+    {
+      "idCategory": "582017f7-1080-48b9-8947-ad541a6e0081",
+      "name": "Festa"
+    },
+    {
+      "idCategory": "f9e4e702-aeca-438f-8f9b-6790556834c9",
+      "name": "Ficar em casa"
+    },
+    {
+      "idCategory": "6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e",
+      "name": "Floral"
+    },
+
+    {
+      "idCategory": "0c7d8ea1-9ae5-4430-9e11-d828e6f5c905",
+      "name": "Geek"
+    },
+    {
+      "idCategory": "ca202d3a-c06e-4ba2-9661-c813735d2dba",
+      "name": "Gótico"
+    },
+
+    {
+      "idCategory": "6ce19360-09c7-464e-928a-951825136954",
+      "name": "Praiano"
+    },
+    {
+      "idCategory": "c0b303cc-ccb3-4568-9661-dc104302d99f",
       "name": "Punk"
     },
     {
-      "id": 6,
-      "name": "Praia"
-    }
-  ],
-  "payment": [
-    {
-      "id": 1,
-      "type": "Picpay"
+      "idCategory": "098374f5-302e-4b25-94c3-552f87bdb378",
+      "name": "Social"
     },
     {
-      "id": 2,
-      "type": "A vista"
+      "idCategory": "cb3dc053-3314-4831-9152-f444551f831e",
+      "name": "Tropical"
+    },
+    {
+      "idCategory": "9e0e9685-707f-444e-9a17-f369c49143c8",
+      "name": "Urbano"
+    },
+    {
+      "idCategory": "99fbca3b-d22f-4c44-a065-56b3ed85c742",
+      "name": "Vintage"
+    }
+  ],
+  "paymentType": [
+    {
+      "idPayment": "d51c243e-8adb-41fb-8093-b9241be23665",
+      "type": "Picpay"
     }
   ],
   "deliveryType": [
     {
-      "id": 1,
-      "type": "Em mãos"
-    },
-    {
-      "id": 2,
+      "idDelivery": "e005eb43-21ac-48ff-9944-b1f2510e6126",
       "type": "Frete"
     }
   ],
-  "cupom": [{ "id": 1, "codigo": "PEGAMAIS!", "value": 15 }],
-  "bestSellers": [{ "ownerID": "dd2" }]
+  "statusAnnouncement": [
+    {
+      "idStatus": "a7249f2f-da3c-4312-8269-4d20aa326dcc",
+      "type": "Ativo"
+    },
+    {
+      "idStatus": "0b438541-f970-4e20-be51-ba9398326369",
+      "type": "Inativo"
+    },
+    {
+      "idStatus": "7336a7a2-07cc-4966-adb4-5a19758b1506",
+      "type": "Vendido"
+    },
+    {
+      "idStatus": "51f68a38-c8f0-4088-a40e-7b380dab6bd0",
+      "type": "Rascunho"
+    },
+    {
+      "idStatus": "9008a1d4-59af-4fa2-9595-e868c6c0e4bb",
+      "type": "Reservado"
+    }
+  ],
+  "statusTransaction": [
+    {
+      "idStatus": "00fd31a5-d50f-4ac2-945e-08166aff88bd",
+      "type": "Em andamento"
+    },
+    {
+      "idStatus": "852091cf-a079-4c54-bf8f-86ce8af424a4",
+      "type": "Concluída"
+    },
+    {
+      "idStatus": "a8cd0bbc-21a4-4295-8a81-d8c138197028",
+      "type": "Cancelada"
+    }
+  ]
 }
