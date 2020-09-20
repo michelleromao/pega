@@ -117,7 +117,7 @@ export const Nologgedin = styled.div`
     }
 
     a {
-        margin: 0 0 0 20%;
+        margin: 0 0 0 0;
         font-size: 12px;
         color: #569ccd !important;
     }
