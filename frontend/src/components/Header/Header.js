@@ -53,10 +53,12 @@ export default function Header(props) {
             false
           )}
         </div>
-        <Sacola>
-          <span>{props.itemsCart}</span>
-          <Bolsa />
-        </Sacola>
+        <Link to="/sacola">
+          <Sacola>
+            <span>{props.itemsCart}</span>
+            <Bolsa />
+          </Sacola>
+        </Link>
       </ContentHeader>
       {menu ? <Menu /> : <div />}
     </>

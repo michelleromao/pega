@@ -128,7 +128,7 @@ export const ContentPrice = styled.div`
   font-style: normal;
 `;
 
-export const Promo = styled.div`
+export const Price = styled.div`
   font-family: Poppins;
   font-weight: 500;
   font-size: 16px;
@@ -137,7 +137,7 @@ export const Promo = styled.div`
   color: #424242;
 `;
 
-export const Price = styled.div`
+export const Promo = styled.div`
   font-weight: 500;
   font-size: 25px;
   line-height: 37px;

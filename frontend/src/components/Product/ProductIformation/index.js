@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import {addToBag} from '../../../actions/bag'
 
 import {
   Container,
@@ -19,6 +21,8 @@ import Gift from '../../../assets/icons/presente.svg';
 import CoatHanger from '../../../assets/icons/cruzeta.svg';
 
 function ProductInformation(props) {
+  console.log("ProductInformation");
+  console.log(props);
   const productDetails = useSelector((state) => state);
 
   const delivery = props.delivery;
@@ -89,9 +93,13 @@ function ProductInformation(props) {
           retirar o produto em mãos.
         </Receive>
       ) : (
-        <Button>Adicionar ao carrinho</Button>
+        <Button onClick={props.addToBagProps} >Adicionar ao carrinho</Button>
       )}
     </Container>
   );
 }
-export default ProductInformation;
+function mapDispatchToProps(dispatch){
+  
+};
+  
+export default connect(null, mapDispatchToProps)(ProductInformation);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import {
   Container,
@@ -28,7 +29,7 @@ function Resume(props) {
             <Content>
               <Detail>
                 <p>produtos</p>
-                <p>R$ 120.00</p>
+                <Price>R$ {props.totalValue}</Price>
               </Detail>
               <Detail>
                 <p>cupom</p>
@@ -36,7 +37,7 @@ function Resume(props) {
               </Detail>
               <Detail>
                 <Total>Total a pagar</Total>
-                <Price>R$ 120.00</Price>
+                <Price>R$ {props.totalValue}</Price>
               </Detail>
               <Line />
               {stageClick === 1 ? (
@@ -67,7 +68,7 @@ function Resume(props) {
             <Content>
               <Detail>
                 <p>produtos</p>
-                <p>R$ 120.00</p>
+                <Price>R$ {props.totalValue}</Price>
               </Detail>
               <Detail>
                 <p>cupom</p>
@@ -75,7 +76,7 @@ function Resume(props) {
               </Detail>
               <Detail>
                 <Total>Total a pagar</Total>
-                <Price>R$ 120.00</Price>
+                <Price>R$ {props.totalValue}</Price>
               </Detail>
               <Line />
               <Button>Continuar</Button>
@@ -90,7 +91,7 @@ function Resume(props) {
             <Content>
               <Detail>
                 <p>produtos</p>
-                <p>R$ 120.00</p>
+                <Price>R$ {props.totalValue}</Price>
               </Detail>
               <Detail>
                 <p>cupom</p>
@@ -98,7 +99,7 @@ function Resume(props) {
               </Detail>
               <Detail>
                 <Total>Total a pagar</Total>
-                <Price>R$ 120.00</Price>
+                <Price>R$ {props.totalValue}</Price>
               </Detail>
               <Line />
               <Success>
@@ -114,4 +115,8 @@ function Resume(props) {
     </>
   );
 }
-export default Resume;
+const mapStateToProps = (state, props) =>{
+  return {"totalValue": state.bag.totalValue};    
+}
+  
+export default connect(mapStateToProps)(Resume)

@@ -44,6 +44,7 @@ function Announcement() {
           fitting={true}
           promo="25"
           price="50"
+          owner="Kainan"
         />
       </ContentFirst>
       <ContentSecond>

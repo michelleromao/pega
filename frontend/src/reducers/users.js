@@ -19,17 +19,6 @@ export const userInitialState = {
       password: null,
       interestCategories: null,
       picpay: null,
-      address: [
-        {
-          cep: null,
-          street: null,
-          number: null,
-          neighboohood: null,
-          city: null,
-          state: null,
-          principal: null,
-        },
-      ],
       rate: {
         rating: [{ message: null, owner: null, stars: 0 }],
         media: 0,

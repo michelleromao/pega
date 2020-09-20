@@ -17,7 +17,7 @@ import {
   Promo,
   Price,
 } from './style';
-import Image from '../../../assets/photos/productsmall3.png';
+
 
 function Item(props) {
   const [color, setColor] = useState('#878787');
@@ -44,7 +44,7 @@ function Item(props) {
     <>
       <Container>
         <ContentPhoto>
-          <img src={Image} alt="" />
+          <img src={props.image} alt="" />
           {stage ? (
             <></>
           ) : (
@@ -62,17 +62,17 @@ function Item(props) {
         </ContentPhoto>
         <Content>
           <ContentTitle>
-            <Title>Camiseta Tom Astronauta {props.title}</Title>
+            <Title>{props.title}</Title>
           </ContentTitle>
           <ContentDetails>
-            <Detail>Usado {props.state}</Detail>
-            <Detail>Tamanho M {props.size}</Detail>
-            <Detail>Tamanho {props.color}</Detail>
+            <Detail>{props.state}</Detail>
+            <Detail>Tamanho {props.size}</Detail>
+            <Detail>Cor {props.color}</Detail>
             <DetailUnique>Peça única</DetailUnique>
           </ContentDetails>
           <ContentPrice>
-            <Promo>R$ 45.00{props.promo}</Promo>
-            <Price>R$ 35.00{props.price}</Price>
+            <Price>R$ {props.price}</Price>
+            <Promo>R$ {props.promo}</Promo>
           </ContentPrice>
         </Content>
       </Container>
