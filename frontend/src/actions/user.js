@@ -12,19 +12,21 @@ export const removeUserSuccess = createAction(REMOVE_USER_SUCCESS);
 export const fetchUsersSuccess = createAction(FETCH_USER_SUCCESS);
 
 
-// export const addUser = () => {
-//   return (dispatch, getState) => {
-//     api.post('/users').then((response) => {
-//       console.log('ok');
-//     });
-//   };
-// };
+export const addUser = () => {
+  return (dispatch, getState) => {
+    api.post('/users').then((response) => {
+      console.log('ok');
+    });
+  };
+};
 
-// export const fetchUsers = () => {
-//   return (dispatch, getState) => {
-//     api.get('/users').then((response) => {
-//       console.log(response.data);
-//       dispatch(fetchUsersSuccess(response.data));
-//     });
-//   };
-// };
+export const fetchUsers = () => {
+  return (dispatch, getState) => {
+    api.get('/users').then((response) => {
+      console.log(response.data);
+      dispatch(fetchUsersSuccess(response.data));
+    });
+  };
+};
+
+

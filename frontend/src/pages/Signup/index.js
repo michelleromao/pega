@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Form as Unform } from '@unform/web';
+import {connect} from 'redux';
 
 import ActionButton from '../../components/ActionButton';
 import Input from '../../components/Input';
@@ -20,12 +21,14 @@ import {
 import Logo from '../../assets/Logo';
 import Error from '../../components/Error';
 
-function Signup() {
+function Signup(){
+    
   const history = useHistory();
 
   const [active, setActive] = useState(false);
   const [colorPwd, setColorPwd] = useState('#BE5599');
   const [text, setText] = useState('');
+
   function handleSubmit(data) {
     if (data.password !== data.passwordconfirm) {
       setActive(true);
@@ -126,4 +129,11 @@ function Signup() {
     </>
   );
 }
+
+function mapStateToProps(state, props) {
+  return {
+    users: state.users
+  }
+}
+
 export default Signup;
