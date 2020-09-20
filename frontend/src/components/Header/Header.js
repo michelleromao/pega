@@ -39,7 +39,6 @@ export default function Header(props) {
             <p>{`Olá, ${user}!`}</p>
           ) : (
             <Nologgedin>
-              <p>Olá, pegador!</p>
               <Link to="/login">Loga aqui!</Link>
             </Nologgedin>
           )}
