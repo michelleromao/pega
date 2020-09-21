@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FiMenu, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import Menu from '../CategoryMenu/Menu';
+import Menu from '../CategoryMenu/';
 import './Header.css';
 
 import Bolsa from '../../assets/icons/Bolsa';
