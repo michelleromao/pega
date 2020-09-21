@@ -1,22 +1,11 @@
 import React from 'react' 
 import { Content, Favoritos } from './style'
-import Compras from '../ProductPanel'
-import FilterPanel from '../../components/FilterPanel'
-import AnuncioPanel from '../../components/AnuncioPanel'
-import FavoritoItem from '../../components/FavoritoPanel'
+import FormEndereco from '../../components/FormEnderecoPanel'
 
 export default function PanelContent () {
     return (
-        <Content>
-            
-            <Favoritos>
-                <FavoritoItem nome="Camiseta Baltimore" precoAntes="50" precoDepois="49"></FavoritoItem>
-                <FavoritoItem nome="Camiseta Baltimore" precoAntes="50" precoDepois="49"></FavoritoItem>
-                <FavoritoItem nome="Camiseta Baltimore" precoAntes="50" precoDepois="49"></FavoritoItem>
-                <FavoritoItem nome="Camiseta Baltimore" precoAntes="50" precoDepois="49"></FavoritoItem>
-                <FavoritoItem nome="Camiseta Baltimore" precoAntes="50" precoDepois="49"></FavoritoItem>
-            </Favoritos>
-            
+        <Content>                       
+            <FormEndereco></FormEndereco>    
         </Content>
     )
 }
