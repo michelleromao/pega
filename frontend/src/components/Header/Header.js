@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FiMenu, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-
+import MenuVertical from '../Menu/Menu';
 import Menu from '../CategoryMenu/Menu';
 import './Header.css';
 
@@ -14,7 +14,16 @@ import { ContentHeader, Brand, Categorias, Search, Nologgedin, Sacola } from './
 export default function Header(props) {
   const user = localStorage.getItem('user');
   const [menu, setMenu] = useState(false);
-
+  const [menuv,setMenuv] = useState('none')
+  function abrirMenu() {
+    if (menuv === 'none') {
+      setMenuv('block');
+      document.querySelector('.Usuario svg').style = 'transform: rotateX(180deg);';
+    } if (menuv === 'block') {
+      setMenuv('none');
+      document.querySelector('.Usuario svg').style = 'transform: rotateX(360deg);';
+    }
+  }
   return (
     <>
       <ContentHeader>     
@@ -46,8 +55,9 @@ export default function Header(props) {
 
           {user ? (
             <>
-              <img src={props.userPhoto} />
-              <FiChevronDown />
+              <img src={props.userPhoto} onClick={abrirMenu}/>
+              <FiChevronDown onClick={abrirMenu}/>
+              <MenuVertical tela={menuv}/>
             </>
           ) : (
             false
