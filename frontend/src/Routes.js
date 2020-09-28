@@ -2,13 +2,14 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Index from './pages/Index';
 import Announcement from './pages/Announcement';
+import CreateAnnouncement from './pages/CreateAnnouncement';
 
 import TestPage from './pages/TestPage';
 import Sacola from './pages/Sacola/Sacola';
 import Payment from './pages/Sacola/Payment';
 import Details from './pages/Sacola/Details';
 import Error404 from './pages/Error404/';
-import PainelUser from './pages/UserPanel/Index'
+import PainelUser from './pages/UserPanel/Index';
 
 function Routes() {
   return (
@@ -20,7 +21,12 @@ function Routes() {
       <Route path="/payment" component={() => <Payment />} />
       <Route path="/details" component={() => <Details />} />
       <Route path="/painel" component={() => <PainelUser />} />
-      <Route path="*" component={() => <Error404 />} />
+      <Route
+        path="/add/announcement"
+        component={() => <CreateAnnouncement />}
+      />
+
+      {/* <Route path="*" component={() => <Error404 />} />*/}
     </>
   );
 }
