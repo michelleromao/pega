@@ -6,6 +6,8 @@ const bagsRoutes = require('./bag.routes');
 const transactionsRoutes = require('./transaction.routes');
 
 const styleRoutes = require('./style.routes');
+const categoryRoutes = require('./category.routes');
+
 const paymentRoutes = require('./payment.routes');
 const deliveryRoutes = require('./delivery.routes');
 const statusAnnouncementsRoutes = require('./statusAnnouncement.routes');
@@ -20,6 +22,8 @@ routes.use('/bags/', bagsRoutes);
 routes.use('/transactions/', transactionsRoutes);
 
 routes.use('/styles/', styleRoutes);
+routes.use('/categories/', categoryRoutes);
+
 routes.use('/payments/', paymentRoutes);
 routes.use('/deliveries/', deliveryRoutes);
 
