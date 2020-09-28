@@ -57,59 +57,61 @@ function Signup() {
             <Unform
               onSubmit={handleSubmit}
               style={{
-                width: '40%',
                 display: 'flex',
                 flexFlow: 'column',
+                alignItems: 'center',
               }}
             >
-              <Input
-                marginleft="-41"
-                fSize="18px"
-                labelText="Nome"
-                name="name"
-                type="text"
-                color="#BE5599"
-                placeholder="Qual seu nome?"
-                size="170%"
-                required={true}
-                marginBottom="15%"
-              />
-              <Input
-                marginleft="-41"
-                fSize="18px"
-                labelText="E-mail"
-                name="email"
-                type="email"
-                color="#BE5599"
-                placeholder="Diz seu e-mail pra gente"
-                size="170%"
-                required={true}
-                marginBottom="15%"
-              />
-              <Input
-                marginleft="-41"
-                fSize="18px"
-                labelText="Senha"
-                name="password"
-                type="password"
-                color="#BE5599"
-                placeholder="******** (ninguém tá olhando viu)"
-                size="170%"
-                required={true}
-                marginBottom="15%"
-              />
-              <Input
-                marginleft="-41"
-                fSize="18px"
-                labelText="De novo a senha"
-                name="passwordconfirm"
-                type="password"
-                color={colorPwd}
-                placeholder="******** (confirma pra gente)"
-                size="170%"
-                required={true}
-                marginBottom="15%"
-              />
+              <div>
+                <Input
+                  fSize="18px"
+                  labelText="Nome"
+                  name="name"
+                  type="text"
+                  color="#BE5599"
+                  placeholder="Qual seu nome?"
+                  size="90%"
+                  required={true}
+                  marginBottom="8%"
+                  input="input"
+                />
+                <Input
+                  fSize="18px"
+                  labelText="E-mail"
+                  name="email"
+                  type="email"
+                  color="#BE5599"
+                  placeholder="Diz seu e-mail pra gente"
+                  size="90%"
+                  required={true}
+                  marginBottom="8%"
+                  input="input"
+                />
+                <Input
+                  fSize="18px"
+                  labelText="Senha"
+                  name="password"
+                  type="password"
+                  color="#BE5599"
+                  placeholder="******** (ninguém tá olhando viu)"
+                  size="90%"
+                  required={true}
+                  marginBottom="8%"
+                  input="input"
+                />
+                <Input
+                  fSize="18px"
+                  labelText="De novo a senha"
+                  name="passwordconfirm"
+                  type="password"
+                  color={colorPwd}
+                  placeholder="******** (confirma pra gente)"
+                  size="90%"
+                  required={true}
+                  marginBottom="10%"
+                  input="input"
+                />
+              </div>
               <Terms>
                 Ao criar sua conta você concorda com tudim dos nossos{' '}
                 <Link>Termos de uso</Link>

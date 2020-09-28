@@ -50,9 +50,9 @@ export const Form = styled.form`
   }
 `;
 export const Terms = styled.p`
-  width: 140%;
+  width: 70%;
   align-self: center;
-  margin: 0 0 10% 0;
+  margin: 0 0 5% 0;
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;

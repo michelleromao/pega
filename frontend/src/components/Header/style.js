@@ -9,19 +9,19 @@ export const ContentHeader = styled.div`
     height: 70px;
     padding: 10px 5px 10px 5px;
   }
-`
+`;
 export const Brand = styled.div`
-    svg {
-        fill: #569ccd;
-        transition: 0.5s;
-    }
-    
-    svg:hover {
-        opacity: 90%;
-        transition: 0.5s;
-        cursor: pointer;
-    }    
-`
+  svg {
+    fill: #569ccd;
+    transition: 0.5s;
+  }
+
+  svg:hover {
+    opacity: 90%;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+`;
 
 export const Categorias = styled.div`
         display: flex;
@@ -38,8 +38,8 @@ export const Categorias = styled.div`
     }
     svg {
         padding: 5px;
-      }    
-`
+      }
+`;
 
 export const Search = styled.div`
         margin: 0 15px 0 15px;
@@ -52,7 +52,7 @@ export const Search = styled.div`
         max-width: 441px;
         width: 100%;
     }
-    
+
     input {
         border: none;
         background-color: #f0f0f0;
@@ -86,64 +86,63 @@ export const Search = styled.div`
         opacity: 90%;
         cursor: pointer;
     }
-` 
+`;
 
 export const ctaVender = styled.button`
-    margin: 0 15px 0 5px;
-    background: #be5599;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 31px;
-    border: none;
-    padding: 5px 40px 5px 40px;
+  margin: 0 15px 0 5px;
+  background: #be5599;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 31px;
+  border: none;
+  padding: 5px 40px 5px 40px;
+  transition: 0.3s;
+  font-family: 'Poppins';
+
+  :hover {
+    opacity: 94%;
+    cursor: pointer;
     transition: 0.3s;
-    font-family: 'Poppins';
+  }
 
-    :hover {
-        opacity: 94%;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    :focus {
-        outline-color: none;
-        outline: none;
-    }      
-`
+  :focus {
+    outline-color: none;
+    outline: none;
+  }
+`;
 
 export const Nologgedin = styled.div`
-    p {
-        margin-bottom: 5%;
-    }
+  p {
+    margin-bottom: 5%;
+  }
 
-    a {
-        margin: 0 0 0 0;
-        font-size: 12px;
-        color: #569ccd !important;
-    }
+  a {
+    margin: 0 0 0 0;
+    font-size: 12px;
+    color: #569ccd !important;
+  }
 
-    a:hover {
-        transition: 0.3s;
-        color: rgba(86, 156, 205, 0.8) !important;
-    }
-`
+  a:hover {
+    transition: 0.3s;
+    color: rgba(86, 156, 205, 0.8) !important;
+  }
+`;
 
 export const Usuario = styled.div`
-    img {
-        padding: 4px;
-        width: 30px;
-        height: 30px;
-        border-radius: 50px;
-    }
+  img {
+    padding: 4px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+  }
 
-    p {
-        font-family: 'Poppins';
-        font-size: 14px;
-        font-weight: 600;
-        color: #202020;
-    }
-
-`
+  p {
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 600;
+    color: #202020;
+  }
+`;
 
 export const Sacola = styled.div`
     display: flex;
@@ -159,4 +158,4 @@ export const Sacola = styled.div`
     stroke: #202020;
     stroke-width: 1.8px;
   }
-`
+`;

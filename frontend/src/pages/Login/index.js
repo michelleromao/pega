@@ -51,37 +51,40 @@ function Login() {
         <Unform
           onSubmit={handleSubmit}
           style={{
-            width: '40%',
             display: 'flex',
             flexFlow: 'column',
+            alignItems: 'center',
           }}
         >
-          <Input
-            marginleft="-41"
-            fSize="18px"
-            labelText="Seu e-mail"
-            name="email"
-            type="email"
-            color={colorEmail}
-            placeholder="Escreve seu e-mail aqui"
-            size="170%"
-            required={true}
-            marginBottom="15%"
-          />
-          <Input
-            marginleft="-41"
-            fSize="18px"
-            labelText="Senha"
-            name="password"
-            type="password"
-            color={colorPwd}
-            placeholder="******** (ninguém tá olhando viu)"
-            size="170%"
-            required={true}
-            marginBottom="15%"
-          />
+          <div>
+            <Input
+              fSize="18px"
+              labelText="Seu e-mail"
+              name="email"
+              type="email"
+              color={colorEmail}
+              placeholder="Escreve seu e-mail aqui"
+              size="90%"
+              required={true}
+              marginBottom="15%"
+              input="input"
+            />
+            <Input
+              fSize="18px"
+              labelText="Senha"
+              name="password"
+              type="password"
+              color={colorPwd}
+              placeholder="******** (ninguém tá olhando viu)"
+              size="90%"
+              required={true}
+              marginBottom="15%"
+              input="input"
+            />
+          </div>
           <ActionButton text="Entrar" />
         </Unform>
+
         <Help>
           Esqueceu os dados de login? <Link>A gente te ajuda</Link>
         </Help>
