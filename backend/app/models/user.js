@@ -10,7 +10,7 @@ const Users = new Schema({
   senha: { type: String, required: true },
   cpf: { type: String, required: true },
   telefone: { type: Number, required: true },
-  profilePhoto: { type: String, required: false },
+  idImage: { type: String, required: false },
   picpay: { type: String, required: false },
   rating: { type: Number, required: false },
   interestCategories: { type: [String], required: false },

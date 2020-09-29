@@ -1,1 +1,11 @@
 node_modules
+
+tmpUser/*
+tmpAnnouncement/*
+
+
+!tmpUser/.gitkeep
+!tmpAnnouncement/.gitkeep
+
+!tmpUser/default.png
+!tmpAnnouncement/default.png

@@ -2,6 +2,7 @@ const { v4 } = require('uuid');
 const Announcement = require('../models/announcement');
 const DeliveryAnnouncement = require('../models/delivery_announcement');
 const PaymentAnnouncement = require('../models/payment_announcement');
+const PhotoAnnouncements = require('../models/photo_announcement');
 
 class AnnouncementController {
   static async index(request, response) {
@@ -41,7 +42,6 @@ class AnnouncementController {
         title,
         color,
         size,
-        photos,
         state,
         description,
         tryOn,
@@ -54,6 +54,7 @@ class AnnouncementController {
         paymentType,
         idStatus,
       } = request.body;
+
       const idAnnouncement = v4();
 
       const createPromise = await Announcement.create({
@@ -61,7 +62,6 @@ class AnnouncementController {
         title,
         color,
         size,
-        photos,
         state,
         description,
         tryOn,
@@ -74,6 +74,7 @@ class AnnouncementController {
         paymentType: 'd51c243e-8adb-41fb-8093-b9241be23665',
         idStatus,
       });
+
       const idDeliveryAnnouncement = v4();
       const createDeliveryPromise = await DeliveryAnnouncement.create({
         idDeliveryAnnouncement,
@@ -100,7 +101,6 @@ class AnnouncementController {
         title,
         color,
         size,
-        photos,
         state,
         description,
         tryOn,
@@ -131,7 +131,6 @@ class AnnouncementController {
             title,
             color,
             size,
-            photos,
             state,
             description,
             tryOn,
@@ -162,7 +161,6 @@ class AnnouncementController {
           title,
           color,
           size,
-          photos,
           state,
           description,
           tryOn,
@@ -200,7 +198,15 @@ class AnnouncementController {
           .status(400)
           .json({ message: 'Não foi possível encontrar esse anúncio' });
       }
+      const promisePhoto = await PhotoAnnouncements.find(criterio).exec();
+
+      const { idImage } = promisePhoto[0];
+
       const promiseRemove = await Announcement.deleteOne(criterio).exec();
+      const deletePromisePhoto = await PhotoAnnouncements.deleteOne({
+        idImage,
+      });
+
       const removeDeliveryAnnouncementPromise = await DeliveryAnnouncement.deleteOne(
         criterio,
       ).exec();

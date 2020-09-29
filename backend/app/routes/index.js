@@ -1,7 +1,10 @@
 const { Router } = require('express');
 
 const usersRoutes = require('./user.routes');
+const photoUsersRoutes = require('./photoUser.routes');
 const announcementsRoutes = require('./announcements.routes');
+const photoAnnouncementsRoutes = require('./photoAnnouncement.routes');
+
 const bagsRoutes = require('./bag.routes');
 const transactionsRoutes = require('./transaction.routes');
 
@@ -16,7 +19,9 @@ const statusTransactionRoutes = require('./statusTransaction.routes');
 const routes = Router();
 
 routes.use('/users', usersRoutes);
+routes.use('/photosuser', photoUsersRoutes);
 routes.use('/announcements/', announcementsRoutes);
+routes.use('/photosannouncement/', photoAnnouncementsRoutes);
 
 routes.use('/bags/', bagsRoutes);
 routes.use('/transactions/', transactionsRoutes);

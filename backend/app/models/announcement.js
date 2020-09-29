@@ -7,7 +7,6 @@ const Announcements = new Schema({
   title: { type: String, required: true },
   color: { type: String, required: true },
   size: { type: String, required: true },
-  photos: { type: [String], required: true },
   state: { type: String, required: true },
   description: { type: String, required: true },
   tryOn: { type: Boolean, required: true },
