@@ -1,5 +1,6 @@
 const { v4 } = require('uuid');
 const User = require('../models/user');
+const PhotoUsers = require('../models/photo_user');
 
 class UserController {
   static async index(request, response) {
@@ -62,7 +63,7 @@ class UserController {
           })
           .end();
       }
-
+      const idImage = v4();
       const createPromise = await User.create({
         idUser,
         name,
@@ -71,6 +72,12 @@ class UserController {
         senha,
         cpf,
         telefone,
+      });
+      const createPromisePhoto = await PhotoUsers.create({
+        idImage,
+        filename: 'default.png',
+        originalname: 'default.png',
+        idUser,
       });
       return response.json(createPromise);
     } catch (err) {
@@ -85,12 +92,12 @@ class UserController {
         cpf,
         name,
         username,
-        profilePhoto,
         email,
         senha,
         telefone,
         picpay,
       } = request.body;
+
       const criterionId = { idUser: id };
       const criterion = {
         $and: [{ idUser: { $ne: id } }, { $or: [{ email }, { cpf }] }],
@@ -131,7 +138,6 @@ class UserController {
           cpf,
           name,
           username,
-          profilePhoto,
           email,
           senha,
           telefone,
@@ -157,19 +163,23 @@ class UserController {
 
       const criterion = { idUser: id };
       const promiseUser = await User.find(criterion).exec();
-
       if (promiseUser.length === 0) {
         return response
           .status(400)
           .json({ message: 'Não foi possível encontrar esse usuário' });
       }
+      const promisePhoto = await PhotoUsers.find(criterion).exec();
+      const { idImage } = promisePhoto[0];
+
+      const deletePromisePhoto = await PhotoUsers.deleteOne({
+        idImage,
+      });
 
       const promise = await User.updateOne(criterion, {
         id,
         cpf: '',
         name: '',
         username: '',
-        profilePhoto: '',
         email: '',
         senha: '',
         telefone: '',
