@@ -9,7 +9,7 @@ const Users = new Schema({
   email: { type: String, required: true },
   senha: { type: String, required: true },
   cpf: { type: String, required: true },
-  telefone: { type: Number, required: true },
+  telefone: { type: String, required: true },
   idImage: { type: String, required: false },
   picpay: { type: String, required: false },
   rating: { type: Number, required: false },

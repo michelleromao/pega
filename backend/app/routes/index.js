@@ -1,5 +1,7 @@
 const { Router } = require('express');
 
+const authenticateRoutes = require('./authenticate.routes');
+
 const usersRoutes = require('./user.routes');
 const photoUsersRoutes = require('./photoUser.routes');
 const announcementsRoutes = require('./announcements.routes');
@@ -18,8 +20,10 @@ const statusTransactionRoutes = require('./statusTransaction.routes');
 
 const routes = Router();
 
-routes.use('/users', usersRoutes);
-routes.use('/photosuser', photoUsersRoutes);
+routes.use('/authenticate/', authenticateRoutes);
+
+routes.use('/users/', usersRoutes);
+routes.use('/photosuser/', photoUsersRoutes);
 routes.use('/announcements/', announcementsRoutes);
 routes.use('/photosannouncement/', photoAnnouncementsRoutes);
 
