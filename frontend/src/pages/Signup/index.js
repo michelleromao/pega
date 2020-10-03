@@ -19,23 +19,22 @@ import {
 } from './style';
 import Logo from '../../assets/Logo';
 import Error from '../../components/Error';
+import { useDispatch } from 'react-redux';
+import { userSignUp } from '../../store/modules/user/action';
+import api from '../../services/api';
 
 function Signup() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [active, setActive] = useState(false);
   const [colorPwd, setColorPwd] = useState('#BE5599');
   const [text, setText] = useState('');
-  function handleSubmit(data) {
-    if (data.password !== data.passwordconfirm) {
-      setActive(true);
-      setText('Ei, as senhas precisam estar iguais!');
-      setColorPwd('#ea5254');
-    } else {
-      const user = data.name.split(' ');
-      localStorage.setItem('user', user[0]);
-      history.push('/success');
-    }
+  async function handleSubmit(data) {
+    console.log(data);
+    const request = await api.post('/users/', data);
+    dispatch(userSignUp(request.data));
+    history.push('/');
   }
 
   return (
@@ -90,7 +89,7 @@ function Signup() {
                 <Input
                   fSize="18px"
                   labelText="Senha"
-                  name="password"
+                  name="senha"
                   type="password"
                   color="#BE5599"
                   placeholder="******** (ninguém tá olhando viu)"
@@ -101,11 +100,25 @@ function Signup() {
                 />
                 <Input
                   fSize="18px"
-                  labelText="De novo a senha"
-                  name="passwordconfirm"
-                  type="password"
-                  color={colorPwd}
-                  placeholder="******** (confirma pra gente)"
+                  labelText="Telefone"
+                  name="telefone"
+                  type="text"
+                  color="#BE5599"
+                  placeholder="(88) 9 9999 9999"
+                  mask="(99)\ 9 9999 9999"
+                  maskPlaceholder={null}
+                  size="90%"
+                  required={true}
+                  marginBottom="10%"
+                  input="input"
+                />
+                <Input
+                  fSize="18px"
+                  labelText="CPF"
+                  name="cpf"
+                  type="text"
+                  color="#BE5599"
+                  placeholder="seu CPF"
                   size="90%"
                   required={true}
                   marginBottom="10%"

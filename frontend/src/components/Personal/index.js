@@ -169,7 +169,7 @@ function Personal() {
                 defaultValue={user.CPF}
                 ref={inputCPFRef}
                 name="cpf"
-                type="number"
+                type="text"
                 color="#569CCD"
                 placeholder="Seu CPF"
                 required={true}
@@ -204,7 +204,7 @@ function Personal() {
                 name="tel"
                 type="text"
                 color="#569CCD"
-                placeholder="(00) 0 0000 0000"
+                placeholder="(88) 9 9999 9999"
                 mask="(99)\ 9 9999 9999"
                 maskPlaceholder={null}
                 required={true}

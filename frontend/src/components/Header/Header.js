@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { FiMenu, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import MenuVertical from '../Menu/Menu';
@@ -18,7 +20,8 @@ import {
 } from './style';
 
 export default function Header(props) {
-  const user = localStorage.getItem('user');
+  const user = useSelector((user) => user.user.name);
+  console.log(user);
   const [menu, setMenu] = useState(false);
   const [menuv, setMenuv] = useState('none');
   function abrirMenu() {
@@ -54,7 +57,7 @@ export default function Header(props) {
         <button id="cta-vender">Vender</button>
         <div className="Usuario">
           {user ? (
-            <p>{`Olá, ${user}!`}</p>
+            <p>{`Olá, ${user.split(' ')[0]}!`}</p>
           ) : (
             <Nologgedin>
               <Link
