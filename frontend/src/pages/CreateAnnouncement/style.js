@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import File from '../../components/File';
 
 export const Container = styled.div`
   display: flex;
@@ -21,11 +22,16 @@ export const Title = styled.h3`
 `;
 
 export const ContentPhoto = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-flow: row;
+  justify-content: space-between;
 `;
-
+export const ContentResume = styled.div`
+  display: flex;
+  flex-flow: column;
+  width: 25%;
+`;
 export const ContentAbout = styled.div`
   width: 100%;
   display: flex;
@@ -67,4 +73,43 @@ export const Button = styled.button`
     opacity: 0.9;
     transition: 0.3s;
   }
+`;
+
+export const Modal = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+`;
+export const Paper = styled.div`
+  background-color: white;
+  height: 293px;
+  border: 1px solid #569ccd;
+  box-sizing: border-box;
+  border-radius: 12px;
+  display: flex;
+  flex-flow: column;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+`;
+export const TitleModal = styled.h2`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  color: #be5599;
+`;
+export const ButtonGroup = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 `;

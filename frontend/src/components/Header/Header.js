@@ -8,25 +8,34 @@ import './Header.css';
 import Bolsa from '../../assets/icons/Bolsa';
 import Logo from '../../assets/Logo';
 import Pesquisa from '../../assets/icons/Lupa';
-import { ContentHeader, Brand, Categorias, Search, Nologgedin, Sacola } from './style'
-
+import {
+  ContentHeader,
+  Brand,
+  Categorias,
+  Search,
+  Nologgedin,
+  Sacola,
+} from './style';
 
 export default function Header(props) {
   const user = localStorage.getItem('user');
   const [menu, setMenu] = useState(false);
-  const [menuv,setMenuv] = useState('none')
+  const [menuv, setMenuv] = useState('none');
   function abrirMenu() {
     if (menuv === 'none') {
       setMenuv('block');
-      document.querySelector('.Usuario svg').style = 'transform: rotateX(180deg);';
-    } if (menuv === 'block') {
+      document.querySelector('.Usuario svg').style =
+        'transform: rotateX(180deg);';
+    }
+    if (menuv === 'block') {
       setMenuv('none');
-      document.querySelector('.Usuario svg').style = 'transform: rotateX(360deg);';
+      document.querySelector('.Usuario svg').style =
+        'transform: rotateX(360deg);';
     }
   }
   return (
     <>
-      <ContentHeader>     
+      <ContentHeader>
         <Brand>
           <Link to="/">
             <Logo />
@@ -48,16 +57,24 @@ export default function Header(props) {
             <p>{`Olá, ${user}!`}</p>
           ) : (
             <Nologgedin>
-              <Link to="/login">Loga aqui!</Link>
+              <Link
+                to="/login"
+                style={{ fontSize: '15px', fontFamily: 'Poppins' }}
+              >
+                Loga aqui!
+              </Link>
             </Nologgedin>
           )}
 
           {user ? (
-            <>
-              <img src={props.userPhoto} onClick={abrirMenu}/>
-              <FiChevronDown onClick={abrirMenu}/>
-              <MenuVertical tela={menuv}/>
-            </>
+            <div
+              onClick={abrirMenu}
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              <img src={props.userPhoto} />
+              <FiChevronDown />
+              <MenuVertical tela={menuv} />
+            </div>
           ) : (
             false
           )}

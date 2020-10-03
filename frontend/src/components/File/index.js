@@ -7,15 +7,13 @@ import React, {
 } from 'react';
 import { useField } from '@unform/core';
 
-import { Container, Label, Input, ContentPhotos, Photo } from './style';
+import { Label, Input } from './style';
 import Add from '../../assets/icons/addblue.svg';
 
-function ImageInput({ name, ...rest }) {
+function ImageInput({ name, height, defaultImage, width, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [preview, setPreview] = useState(defaultValue);
-  const [preview2, setPreview2] = useState(defaultValue);
-  const [preview3, setPreview3] = useState(defaultValue);
 
   const handlePreview = useCallback((e) => {
     if (e.target.files?.length !== 0) {
@@ -29,19 +27,6 @@ function ImageInput({ name, ...rest }) {
         console.log(e.target.files);
         if (!file) {
           setPreview(null);
-          setPreview2(null);
-          setPreview3(null);
-        }
-
-        if (e.target.files?.length > 1) {
-          const file2 = e.target.files?.[1];
-          const previewURL2 = URL.createObjectURL(file2);
-          setPreview2(previewURL2);
-        }
-        if (e.target.files?.length === 3) {
-          const file3 = e.target.files?.[2];
-          const previewURL3 = URL.createObjectURL(file3);
-          setPreview3(previewURL3);
         }
         const previewURL = URL.createObjectURL(file);
         setPreview(previewURL);
@@ -63,23 +48,17 @@ function ImageInput({ name, ...rest }) {
     });
   }, [fieldName, registerField]);
   return (
-    <Container>
-      <Label image={preview ? preview : preview2 ? preview2 : preview3}>
-        {preview ? <></> : <img src={Add} alt="Preview" width="20" />}
-        <Input
-          type="file"
-          ref={inputRef}
-          onChange={handlePreview}
-          multiple
-          {...rest}
-        />
-      </Label>
-      <ContentPhotos>
-        <Photo image={preview && preview} />
-        <Photo image={preview2 && preview2} />
-        <Photo image={preview3 && preview3} />
-      </ContentPhotos>
-    </Container>
+    <Label image={preview && preview} height={height} width={width}>
+      {defaultImage ? (
+        <img src={defaultImage} alt="Imagem de perfil" />
+      ) : preview ? (
+        <></>
+      ) : (
+        <img src={Add} alt="Preview" width="20" />
+      )}
+
+      <Input type="file" ref={inputRef} onChange={handlePreview} {...rest} />
+    </Label>
   );
 }
 export default ImageInput;

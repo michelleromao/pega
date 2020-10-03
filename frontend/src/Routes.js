@@ -15,16 +15,13 @@ function Routes() {
   return (
     <>
       <Route exact path="/" component={() => <Index />} />
-      <Route path="/anuncio" component={() => <Announcement />} />
+      <Route path="/anuncio/:pathId/" component={() => <Announcement />} />
       <Route path="/test" component={() => <TestPage />} />
       <Route path="/sacola" component={() => <Sacola />} />
       <Route path="/payment" component={() => <Payment />} />
       <Route path="/details" component={() => <Details />} />
       <Route path="/painel" component={() => <PainelUser />} />
-      <Route
-        path="/add/announcement"
-        component={() => <CreateAnnouncement />}
-      />
+      <Route path="/add/anuncio" component={() => <CreateAnnouncement />} />
 
       {/* <Route path="*" component={() => <Error404 />} />*/}
     </>
