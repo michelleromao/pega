@@ -4,6 +4,7 @@ import { Form as Unform } from '@unform/web';
 
 import InterestCategories from '../InterestCategories';
 import Input from '../Input';
+import File from '../File';
 import {
   Container,
   Title,
@@ -30,10 +31,12 @@ function Personal() {
   const [user, setUser] = useState({
     username: 'michelleromao123',
     name: 'Michelle Romao',
+    picpay: '',
     email: 'michelle.nunes10@gmail.com',
-    CPF: '',
-    tel: '',
+    CPF: '07286246305',
+    tel: '85997055583',
     pwd: '123',
+    newPwd: '',
     categories: ['Geek', 'Rippie', 'Conforto'],
   });
 
@@ -41,10 +44,12 @@ function Personal() {
 
   const inputUsernameRef = useRef(user.username);
   const inputNameRef = useRef(user.name);
+  const inputPicpayRef = useRef(user.picpay);
   const inputEmailRef = useRef(user.email);
   const inputCPFRef = useRef(user.CPF);
   const inputTelRef = useRef(user.tel);
   const inputPwdRef = useRef(user.pwd);
+  const inputNewPwdRef = useRef(user.newPwd);
 
   function handleSubmit(data) {
     console.log(data);
@@ -57,56 +62,30 @@ function Personal() {
     setUser({
       username: inputUsernameRef.current,
       name: inputNameRef.current,
+      picpay: inputPicpayRef.current,
       email: inputEmailRef.current,
       CPF: inputCPFRef.current,
       tel: inputTelRef.current,
       pwd: inputPwdRef.current,
+      newPwd: inputNewPwdRef.current,
       categories: ['Geek', 'Rippie', 'Conforto'],
     });
   }, [
     inputUsernameRef,
     inputNameRef,
+    inputPicpayRef,
     inputEmailRef,
     inputCPFRef,
     inputTelRef,
     inputPwdRef,
+    inputNewPwdRef,
   ]);
 
   return (
     <>
       <Container>
         <Title>Informações pessoais</Title>
-        <FirstSection>
-          <PhotoContent>
-            <img src={photo.photo} alt="Foto de usuário" />
-            <Link>
-              <Action
-                color="#569CCD"
-                onClick={(e) => setPhoto({ photo: Nanda, name: `${Nanda}` })}
-              >
-                Alterar foto
-              </Action>
-            </Link>
-            {photo.name === Default ? (
-              <Action></Action>
-            ) : (
-              <Link>
-                <Action
-                  color="#E27475"
-                  onClick={(e) =>
-                    setPhoto({ photo: Default, name: `${Default}` })
-                  }
-                >
-                  Remover foto
-                </Action>
-              </Link>
-            )}
-          </PhotoContent>
-          <Username>
-            <Label>Nome de usuário</Label>
-            <User>{user.username}</User>
-          </Username>
-        </FirstSection>
+
         <Unform
           onSubmit={handleSubmit}
           style={{
@@ -116,12 +95,26 @@ function Personal() {
             flexFlow: 'column',
           }}
         >
+          <FirstSection>
+            <PhotoContent>
+              <File
+                name="image1"
+                width="100px"
+                height="100px"
+                defaultImage="http://localhost:3333/files/user/default.png"
+              />
+            </PhotoContent>
+            <Username>
+              <Label>Nome de usuário</Label>
+              <User>{user.username}</User>
+            </Username>
+          </FirstSection>
+
           <Row>
             <Column>
               <Input
                 labelText="Nome de usuário"
                 fSize="14px"
-                marginleft="6.5"
                 defaultValue={user.username}
                 ref={inputUsernameRef}
                 name="username"
@@ -131,21 +124,24 @@ function Personal() {
                 required={true}
                 size={21}
                 onChange={(e) => setData(true)}
+                input="input"
               />
             </Column>
             <Column>
               <Input
-                labelText="CPF"
+                labelText="Picpay"
                 fSize="14px"
-                marginleft="8"
-                defaultValue={user.CPF}
-                ref={inputCPFRef}
-                name="cpf"
-                type="number"
+                defaultValue={user.picpay}
+                ref={inputPicpayRef}
+                name="picpay"
+                type="text"
                 color="#569CCD"
-                placeholder="Seu CPF"
+                placeholder="Seu @Picpay"
+                mask="@***********************"
+                maskPlaceholder={null}
                 required={true}
                 onChange={(e) => setData(true)}
+                input="input"
               />
             </Column>
           </Row>
@@ -154,7 +150,6 @@ function Personal() {
               <Input
                 labelText="Nome"
                 fSize="14px"
-                marginleft="6.5"
                 defaultValue={user.name}
                 ref={inputNameRef}
                 name="name"
@@ -164,22 +159,22 @@ function Personal() {
                 required={true}
                 size={21}
                 onChange={(e) => setData(true)}
+                input="input"
               />
             </Column>
             <Column>
               <Input
-                labelText="Telefone"
+                labelText="CPF"
                 fSize="14px"
-                marginleft="8"
-                defaultValue={user.tel}
-                ref={inputTelRef}
-                name="tel"
-                type="text"
+                defaultValue={user.CPF}
+                ref={inputCPFRef}
+                name="cpf"
+                type="number"
                 color="#569CCD"
-                placeholder="(00) 0 0000 0000"
-                maxLength={11}
+                placeholder="Seu CPF"
                 required={true}
                 onChange={(e) => setData(true)}
+                input="input"
               />
             </Column>
           </Row>
@@ -188,7 +183,6 @@ function Personal() {
               <Input
                 labelText="E-mail"
                 fSize="14px"
-                marginleft="6.5"
                 defaultValue={user.email}
                 ref={inputEmailRef}
                 name="email"
@@ -198,13 +192,32 @@ function Personal() {
                 required={true}
                 size={21}
                 onChange={(e) => setData(true)}
+                input="input"
               />
             </Column>
             <Column>
               <Input
-                labelText="Senha"
+                labelText="Telefone"
                 fSize="14px"
-                marginleft="8"
+                defaultValue={user.tel}
+                ref={inputTelRef}
+                name="tel"
+                type="text"
+                color="#569CCD"
+                placeholder="(00) 0 0000 0000"
+                mask="(99)\ 9 9999 9999"
+                maskPlaceholder={null}
+                required={true}
+                onChange={(e) => setData(true)}
+                input="input"
+              />
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <Input
+                labelText="Senha atual"
+                fSize="14px"
                 defaultValue={user.pwd}
                 ref={inputPwdRef}
                 name="pwd"
@@ -214,6 +227,23 @@ function Personal() {
                 required={true}
                 onChange={(e) => setData(true)}
                 marginBottom="5%"
+                input="input"
+              />
+            </Column>
+            <Column>
+              <Input
+                labelText="Nova senha"
+                fSize="14px"
+                defaultValue={user.newPwd}
+                ref={inputNewPwdRef}
+                name="newPwd"
+                type="password"
+                color="#569CCD"
+                placeholder="**** nova senha se quiser"
+                required={true}
+                onChange={(e) => setData(true)}
+                marginBottom="5%"
+                input="input"
               />
             </Column>
           </Row>

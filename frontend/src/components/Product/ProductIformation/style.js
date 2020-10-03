@@ -24,11 +24,12 @@ export const ContentTitle = styled.div`
 `;
 
 export const ContentDetails = styled.div`
-  width: 60%;
+  width: 80%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  p {
+  margin-top: 5%;
+
     font-style: normal;
     font-weight: normal;
     font-size: 14px;

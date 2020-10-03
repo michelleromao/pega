@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import { Form as Unform } from '@unform/web';
 import {
@@ -10,6 +11,11 @@ import {
   ContentPhoto,
   ContentAction,
   Button,
+  ContentResume,
+  Modal,
+  Paper,
+  TitleModal,
+  ButtonGroup,
 } from './style';
 import File from '../../components/File';
 import Input from '../../components/Input';
@@ -17,11 +23,15 @@ import Select from '../../components/Select/';
 import { useEffect } from 'react';
 import api from '../../services/api';
 
+import Confirm from '../../assets/icons/success.svg';
+
 function CreateAnnouncement() {
   const [draft, setDraft] = useState(false);
   const [submit, setSubmit] = useState(false);
-
-  function handleSubmit(data) {
+  const [isSend, setIsSend] = useState(false);
+  const [idAnnouncement, setIdAnnouncement] = useState('');
+  const history = useHistory();
+  async function handleSubmit(data) {
     if (
       (data.category ||
         data.color ||
@@ -30,7 +40,8 @@ function CreateAnnouncement() {
         data.size ||
         data.state ||
         data.style ||
-        data.tryon) === ''
+        data.tryon) === '' ||
+      data.image1 === undefined
     ) {
       setSubmit(false);
       setDraft(false);
@@ -40,10 +51,17 @@ function CreateAnnouncement() {
     } else {
       const price = Number(data.price.split(' ')[1]);
       const frete = Number(data.frete.split(' ')[1]);
-
+      const imagesAnnouncement = new FormData();
+      imagesAnnouncement.append('image', data.image1);
+      if (data.image2 !== undefined) {
+        imagesAnnouncement.append('image', data.image2);
+      }
+      if (data.image3 !== undefined) {
+        imagesAnnouncement.append('image', data.image3);
+      }
       if (draft === true) {
         setSubmit(false);
-        api.post('/announcements', {
+        const announcement = await api.post('/announcements', {
           title: data.title,
           color: data.color,
           size: data.size,
@@ -60,10 +78,16 @@ function CreateAnnouncement() {
           paymentType: data.payment,
           idStatus: '51f68a38-c8f0-4088-a40e-7b380dab6bd0',
         });
+        setIdAnnouncement(announcement.data.idAnnouncement);
+        await api.post(
+          `/photosannouncement/${announcement.data.idAnnouncement}`,
+          imagesAnnouncement,
+        );
+        setIsSend(true);
       }
       if (submit === true) {
         setDraft(false);
-        api.post('/announcements', {
+        const announcement = await api.post('/announcements', {
           title: data.title,
           color: data.color,
           size: data.size,
@@ -80,8 +104,14 @@ function CreateAnnouncement() {
           paymentType: data.payment,
           idStatus: 'a7249f2f-da3c-4312-8269-4d20aa326dcc',
         });
+        setIdAnnouncement(announcement.data.idAnnouncement);
+
+        await api.post(
+          `/photosannouncement/${announcement.data.idAnnouncement}`,
+          imagesAnnouncement,
+        );
+        setIsSend(true);
       }
-      console.log(data);
     }
   }
   const [categories, setCategories] = useState();
@@ -92,57 +122,57 @@ function CreateAnnouncement() {
   const state = [
     {
       label: 'Novo',
-      value: 'novo',
+      value: 'Novo',
     },
     {
       label: 'Usado',
-      value: 'usado',
+      value: 'Usado',
     },
   ];
   const color = [
     {
       label: 'Amarelo',
-      value: 'amarelo',
+      value: 'Amarelo',
     },
     {
       label: 'Azul',
-      value: 'azul',
+      value: 'Azul',
     },
     {
       label: 'Branco',
-      value: 'branco',
+      value: 'Branco',
     },
     {
       label: 'Cinza',
-      value: 'cinza',
+      value: 'Cinza',
     },
     {
       label: 'Laranja',
-      value: 'laranja',
+      value: 'Laranja',
     },
     {
       label: 'Preto',
-      value: 'preto',
+      value: 'Preto',
     },
     {
       label: 'Rosa',
-      value: 'rosa',
+      value: 'Rosa',
     },
     {
       label: 'Roxo',
-      value: 'roxo',
+      value: 'Roxo',
     },
     {
       label: 'Verde',
-      value: 'verde',
+      value: 'Verde',
     },
     {
       label: 'Vermelho',
-      value: 'vermelho',
+      value: 'Vermelho',
     },
     {
       label: 'Outro',
-      value: 'outro',
+      value: 'Outro',
     },
   ];
   const size = [
@@ -224,8 +254,39 @@ function CreateAnnouncement() {
     getDeliveryType();
   }, []);
 
+  const showModalDone = () => {
+    return (
+      <Modal>
+        <Paper>
+          <TitleModal>
+            Anúncio {draft ? <>criado!</> : <>publicado!</>}
+          </TitleModal>
+          <img src={Confirm} alt="" />
+          <ButtonGroup>
+            <Link to={`/`}>
+              <Button
+                border="transparent"
+                background="transparent"
+                color="#569CCD"
+              >
+                Voltar
+              </Button>
+            </Link>
+
+            <Link to={`/anuncio/${idAnnouncement}`}>
+              <Button border="transparent" background="#569CCD" color="#fff">
+                Ver anúncio
+              </Button>
+            </Link>
+          </ButtonGroup>
+        </Paper>
+      </Modal>
+    );
+  };
+
   return (
     <>
+      {isSend ? showModalDone() : <></>}
       <Container>
         <Title>Criar anúncio</Title>
 
@@ -238,7 +299,13 @@ function CreateAnnouncement() {
           }}
         >
           <CollumnOne>
-            <File name="images" />
+            <ContentPhoto>
+              <File name="image1" width="70%" height="307px" />
+              <ContentResume>
+                <File name="image2" width="100%" height="25%" />
+                <File name="image3" width="100%" height="25%" />
+              </ContentResume>
+            </ContentPhoto>
           </CollumnOne>
           <CollumnTwo>
             <ContentAbout>

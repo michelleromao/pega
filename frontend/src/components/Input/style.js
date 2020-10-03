@@ -17,6 +17,7 @@ export const Label = styled.label`
   margin-left: ${(props) => props.marginleft}%;
   margin-bottom: 5%;
 `;
+
 export const InputContainer = styled(ReactInputMask)`
   width: ${(props) => props.size};
   height: 50px;

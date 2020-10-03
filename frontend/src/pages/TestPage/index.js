@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Personal from '../../components/Personal';
 function TestPage() {
   return (
     <>
-      <h1>:(</h1>
+      <Personal />
     </>
   );
 }

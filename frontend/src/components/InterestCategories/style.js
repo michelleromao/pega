@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 61%;
+  width: 58%;
   align-self: center;
+  margin-left: -7%;
 `;
 
 export const Content = styled.div`

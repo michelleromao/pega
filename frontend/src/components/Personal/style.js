@@ -17,7 +17,7 @@ export const Title = styled.h3`
   font-size: 26px;
   line-height: 39px;
   color: #202020;
-  margin: 3% 0 2% 0;
+  margin: 3% 0 2% -4%;
   align-items: center;
   width: 61%;
 `;
@@ -26,6 +26,7 @@ export const FirstSection = styled.div`
   display: flex;
   align-items: center;
   width: 61%;
+  margin-bottom: 3%;
 `;
 
 export const PhotoContent = styled.div`

@@ -51,9 +51,10 @@ function ProductInformation(props) {
         <img src={Heart} alt="" />
       </ContentTitle>
       <ContentDetails>
-        <p>{props.state}</p>
+        <p>{props.style}</p>
         <p>{`Tamanho: ${props.size}`}</p>
         <p>{props.color}</p>
+        <p>{props.state}</p>
       </ContentDetails>
       <ContentChoices>
         <p>
@@ -71,13 +72,13 @@ function ProductInformation(props) {
       </ContentChoices>
       <ContentSale>
         <ContentPrice>
-          {props.promo ? (
+          {props.promo !== ' ' ? (
             <>
               <Promo> {`R$ ${props.price},00`}</Promo>
               <Price> {`R$ ${props.promo},00`}</Price>
             </>
           ) : (
-            <Promo>{`R$ ${props.price},00`}</Promo>
+            <Price>{`R$ ${props.price},00`}</Price>
           )}
         </ContentPrice>
         <Method>{textMethod}</Method>
