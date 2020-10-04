@@ -19,10 +19,6 @@ const user = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'USER_LOGIN': {
       const { user } = action.payload;
-      console.log(user);
-
-      console.log(user);
-
       return user;
     }
     case 'USER_LOGOUT': {

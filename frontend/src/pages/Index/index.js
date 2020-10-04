@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import BannerSlide from '../../components/BannerSlide';
 import ButtomCategory from '../../components/ButtomCategory/';
@@ -34,6 +35,19 @@ import {
 import api from '../../services/api';
 
 function Index() {
+  const [casual, setCasual] = useState();
+  const idUser = useSelector((user) => user.user.idUser);
+
+  useEffect(() => {
+    async function loadAnnouncementsOne() {
+      const casualAnnouncements = await api.get(
+        '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&limit=3',
+      );
+      setCasual(casualAnnouncements.data.promise);
+    }
+    loadAnnouncementsOne();
+  }, []);
+  console.log(casual);
   return (
     <>
       <BannerSlide
@@ -49,25 +63,23 @@ function Index() {
         <ButtomCategory icon="heart" nameCategory="Queridinhos" />
       </ButtomContent>
       <ContentMain>
-        <h3>Punk</h3>
+        <h3>Casual</h3>
         <ContentProductLarger>
-          <ProductLarger
-            id="000"
-            photoProductLarger={PhotoProductLarger1}
-            title="jaquetinha stickers"
-            price="45"
-          />
-          <ProductLarger
-            photoProductLarger={PhotoProductLarger2}
-            title="Blusinha soltinha"
-            promo="5"
-            price="15"
-          />
-          <ProductLarger
-            photoProductLarger={PhotoProductLarger3}
-            title="Jaqueta cropped com cintos"
-            price="30"
-          />
+          {casual &&
+            casual.map((announcement) => {
+              if (announcement.idUser !== idUser) {
+                return (
+                  <ProductLarger
+                    key={announcement.idAnnouncement}
+                    id={announcement.idAnnouncement}
+                    photoProductLarger={PhotoProductLarger1}
+                    title={announcement.title}
+                    price={announcement.initPrice}
+                    promo={announcement.offert ? announcement.valueOffert : ' '}
+                  />
+                );
+              }
+            })}
         </ContentProductLarger>
       </ContentMain>
       <ContentSub>

@@ -31,7 +31,6 @@ function Signup() {
   const [colorPwd, setColorPwd] = useState('#BE5599');
   const [text, setText] = useState('');
   async function handleSubmit(data) {
-    console.log(data);
     const request = await api.post('/users/', data);
     dispatch(userSignUp(request.data));
     history.push('/');

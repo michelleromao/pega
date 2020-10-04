@@ -7,6 +7,13 @@ const PhotoAnnouncements = require('../models/photo_announcement');
 class AnnouncementController {
   static async index(request, response) {
     try {
+      const { limit } = request.query;
+
+      if (limit) {
+        const lim = Number(limit);
+        const promise = await Announcement.find().limit(lim);
+        return response.json({ limite: lim, promise });
+      }
       const promise = await Announcement.find().exec();
       if (promise.length === 0) {
         return response
