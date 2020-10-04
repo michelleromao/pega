@@ -9,6 +9,7 @@ export const Container = styled.div`
   font-family: 'Poppins';
   img {
     max-width: 100%;
+    border-radius: 5px;
   }
   h3 {
     font-style: normal;

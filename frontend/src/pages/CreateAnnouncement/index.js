@@ -41,8 +41,6 @@ function CreateAnnouncement() {
   const telefone = useSelector((user) => user.user.telefone);
   const picpay = useSelector((user) => user.user.picpay);
 
-  console.log(idUser);
-
   const [draft, setDraft] = useState(false);
   const [submit, setSubmit] = useState(false);
   const [isSend, setIsSend] = useState(false);

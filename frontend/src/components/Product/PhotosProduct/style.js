@@ -3,9 +3,12 @@ import styled, { keyframes } from 'styled-components';
 const fadeInOpcity = keyframes`
  from {
   width: 35%;
+  background-size: cover;
+
 }
 to {
   width: 70%;
+  background-size: cover;
 }`;
 
 export const PhotosProductContent = styled.div`
@@ -14,14 +17,17 @@ export const PhotosProductContent = styled.div`
   width: 63%;
   height: 436px;
   justify-content: space-between;
+
   div {
     border-radius: 10px;
     cursor: pointer;
+    width: 35%;
   }
 
   .active {
     width: 70%;
     margin-left: 2%;
+    background-size: cover;
   }
   .inactive {
     width: 35%;
