@@ -72,6 +72,7 @@ class UserController {
         senha,
         cpf,
         telefone,
+        picpay: '',
       });
       const createPromisePhoto = await PhotoUsers.create({
         idImage,
