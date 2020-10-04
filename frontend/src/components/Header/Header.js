@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { FiMenu, FiChevronDown } from 'react-icons/fi';
@@ -18,12 +18,25 @@ import {
   Nologgedin,
   Sacola,
 } from './style';
+import api from '../../services/api';
 
 export default function Header(props) {
   const user = useSelector((user) => user.user.name);
-  console.log(user);
+  const idUser = useSelector((user) => user.user.idUser);
+  const [photoUrl, setPhotoUrl] = useState('');
   const [menu, setMenu] = useState(false);
   const [menuv, setMenuv] = useState('none');
+
+  useEffect(() => {
+    async function getPhotoUser() {
+      if (user) {
+        const idPhoto = await api.get(`/photosuser/${idUser}`);
+        setPhotoUrl(idPhoto.data[0].filename);
+      }
+    }
+    getPhotoUser();
+  }, []);
+
   function abrirMenu() {
     if (menuv === 'none') {
       setMenuv('block');
@@ -54,7 +67,16 @@ export default function Header(props) {
           ></input>
           <Pesquisa />
         </Search>
-        <button id="cta-vender">Vender</button>
+        {user ? (
+          <Link to="/add/anuncio">
+            <button id="cta-vender">Vender</button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button id="cta-vender">Vender</button>
+          </Link>
+        )}
+
         <div className="Usuario">
           {user ? (
             <p>{`Olá, ${user.split(' ')[0]}!`}</p>
@@ -74,7 +96,7 @@ export default function Header(props) {
               onClick={abrirMenu}
               style={{ display: 'flex', alignItems: 'center' }}
             >
-              <img src={props.userPhoto} />
+              <img src={`http://localhost:3333/files/user/${photoUrl}`} />
               <FiChevronDown />
               <MenuVertical tela={menuv} />
             </div>

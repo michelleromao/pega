@@ -10,6 +10,7 @@ import Payment from './pages/Sacola/Payment';
 import Details from './pages/Sacola/Details';
 import Error404 from './pages/Error404/';
 import PainelUser from './pages/UserPanel/Index';
+import Redirect from './pages/Redirect';
 
 function Routes() {
   return (
@@ -21,6 +22,8 @@ function Routes() {
       <Route path="/payment" component={() => <Payment />} />
       <Route path="/details" component={() => <Details />} />
       <Route path="/painel" component={() => <PainelUser />} />
+      <Route path="/redirect" component={() => <Redirect />} />
+
       <Route path="/add/anuncio" component={() => <CreateAnnouncement />} />
 
       {/* <Route path="*" component={() => <Error404 />} />*/}

@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Container, Content, Column, Row } from './style';
 import Star from '../../assets/icons/Estrela';
 
-function SellerInformation(props) {
+function SellerInformation({
+  photo,
+  contFav,
+  nameSeller,
+  location,
+  contComents,
+}) {
   const [star, setStar] = useState(0);
 
   const colorStar = (contFav) => {
@@ -74,15 +80,15 @@ function SellerInformation(props) {
       <Container>
         <h3>Sobre o vendedor</h3>
         <Content>
-          <img src={props.photo} alt={props.nameSeller} />
+          <img src={photo} alt={nameSeller} />
           <Column>
             <Row>
-              <h5>{props.nameSeller}</h5>
-              <p>{props.location}</p>
+              <h5>{nameSeller}</h5>
+              <p>{location}</p>
             </Row>
             <Row>
-              {colorStar(props.contFav)}
-              <span>({props.contComents})</span>
+              {colorStar(contFav)}
+              <span>({contComents})</span>
             </Row>
           </Column>
         </Content>

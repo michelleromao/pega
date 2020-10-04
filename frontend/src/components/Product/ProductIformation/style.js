@@ -29,7 +29,7 @@ export const ContentDetails = styled.div`
   flex-flow: row;
   justify-content: space-between;
   margin-top: 5%;
-
+  p {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -59,7 +59,19 @@ export const ContentChoices = styled.div`
     margin-right: 4%;
   }
 `;
+export const Frete = styled.h5`
+  margin-top: 2%;
 
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #202020;
+  span {
+    color: #569ccd;
+  }
+`;
 export const ContentSale = styled.div`
   display: flex;
   flex-flow: row;

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Link, useHistory } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import { Form as Unform } from '@unform/web';
@@ -16,21 +18,53 @@ import {
   Paper,
   TitleModal,
   ButtonGroup,
+  TextModal,
+  Bold,
 } from './style';
 import File from '../../components/File';
 import Input from '../../components/Input';
 import Select from '../../components/Select/';
 import { useEffect } from 'react';
 import api from '../../services/api';
-
+import { userUpdate } from '../../store/modules/user/action';
 import Confirm from '../../assets/icons/success.svg';
 
 function CreateAnnouncement() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const idUser = useSelector((user) => user.user.idUser);
+  const name = useSelector((user) => user.user.name);
+  const username = useSelector((user) => user.user.username);
+  const email = useSelector((user) => user.user.email);
+  const senha = useSelector((user) => user.user.senha);
+  const cpf = useSelector((user) => user.user.cpf);
+  const telefone = useSelector((user) => user.user.telefone);
+  const picpay = useSelector((user) => user.user.picpay);
+
+  console.log(idUser);
+
   const [draft, setDraft] = useState(false);
   const [submit, setSubmit] = useState(false);
   const [isSend, setIsSend] = useState(false);
   const [idAnnouncement, setIdAnnouncement] = useState('');
-  const history = useHistory();
+
+  if (!idUser) {
+    history.push('/login');
+  }
+  async function handlePicpay(data) {
+    const request = await api.put(`/users/${idUser}`, {
+      idUser,
+      name,
+      username,
+      email,
+      senha,
+      cpf,
+      telefone,
+      picpay: data.picpay,
+    });
+    dispatch(userUpdate(request.data[0]));
+  }
+
   async function handleSubmit(data) {
     if (
       (data.category ||
@@ -61,7 +95,8 @@ function CreateAnnouncement() {
       }
       if (draft === true) {
         setSubmit(false);
-        const announcement = await api.post('/announcements', {
+
+        const announcement = await api.post('/announcements/', {
           title: data.title,
           color: data.color,
           size: data.size,
@@ -70,7 +105,7 @@ function CreateAnnouncement() {
           description: data.description,
           tryOn: data.tryon,
           initPrice: price,
-          idOwner: localStorage.getItem('idUser'),
+          idOwner: idUser,
           idStyle: data.style,
           idCategory: data.category,
           deliveryType: data.delivery,
@@ -96,7 +131,7 @@ function CreateAnnouncement() {
           description: data.description,
           tryOn: data.tryon,
           initPrice: price,
-          idOwner: localStorage.getItem('idUser'),
+          idOwner: idUser,
           idStyle: data.style,
           idCategory: data.category,
           deliveryType: data.delivery,
@@ -284,9 +319,64 @@ function CreateAnnouncement() {
     );
   };
 
+  const showModalPicpay = () => {
+    return (
+      <Modal>
+        <Paper>
+          <TitleModal>Opa! Falta pouco...</TitleModal>
+          <TextModal>
+            Para <Bold>anunciar</Bold> ou <Bold>comprar</Bold> você precisa
+            informar seu Picpay
+          </TextModal>
+          <Unform
+            onSubmit={handlePicpay}
+            style={{
+              width: '75%',
+              display: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Input
+              fSize="14px"
+              name="picpay"
+              type="text"
+              color="#569CCD"
+              placeholder="@Seu_picpay"
+              mask="@************************"
+              maskPlaceholder={null}
+              size="100%"
+              required={true}
+              input="input"
+            />
+            <ButtonGroup>
+              <Link
+                to={`/`}
+                style={{
+                  color: '#569CCD',
+                  textDecoration: 'none',
+                }}
+              >
+                Agora não
+              </Link>
+
+              <Button
+                border="transparent"
+                background="#569CCD"
+                color="#fff"
+                size="150px"
+              >
+                Confirmar
+              </Button>
+            </ButtonGroup>
+          </Unform>
+        </Paper>
+      </Modal>
+    );
+  };
   return (
     <>
       {isSend ? showModalDone() : <></>}
+      {picpay === null || picpay === '' ? showModalPicpay() : <></>}
       <Container>
         <Title>Criar anúncio</Title>
 
