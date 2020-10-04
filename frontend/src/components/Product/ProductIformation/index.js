@@ -13,6 +13,7 @@ import {
   Method,
   Button,
   Receive,
+  Frete,
 } from './style';
 import Heart from '../../../assets/icons/coracaorosa.svg';
 import Gift from '../../../assets/icons/presente.svg';
@@ -58,14 +59,19 @@ function ProductInformation(props) {
       </ContentDetails>
       <ContentChoices>
         <p>
-          <img src={Gift} alt="" />
+          <img src={Gift} alt="Peça para delivery" />
           {textDelivery}
         </p>
+        <Frete>
+          Frete(estimativa): <span>R$ {props.frete}</span>
+        </Frete>
         {props.fitting ? (
-          <p>
-            <img src={CoatHanger} alt="" />
-            Pode provar
-          </p>
+          <>
+            <p>
+              <img src={CoatHanger} alt="Pode provar a peça" />
+              Pode provar
+            </p>
+          </>
         ) : (
           false
         )}
@@ -74,11 +80,11 @@ function ProductInformation(props) {
         <ContentPrice>
           {props.promo !== ' ' ? (
             <>
-              <Promo> {`R$ ${props.price},00`}</Promo>
-              <Price> {`R$ ${props.promo},00`}</Price>
+              <Promo> {`R$ ${props.price}`}</Promo>
+              <Price> {`R$ ${props.promo}`}</Price>
             </>
           ) : (
-            <Price>{`R$ ${props.price},00`}</Price>
+            <Price>{`R$ ${props.price}`}</Price>
           )}
         </ContentPrice>
         <Method>{textMethod}</Method>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 47%;
+  width: 100%;
   display: flex;
   flex-flow: column wrap;
   border-radius: 10px;
@@ -12,16 +12,15 @@ export const Container = styled.div`
   }
   h3 {
     font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 27px;
-  color: #202020;
-  margin: 3% 0 5% 0;
-}
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    color: #202020;
+    margin: 3% 0 5% 0;
   }
   :hover {
     opacity: 0.9;
-  transition: 0.3s;
+    transition: 0.3s;
   }
 `;
 

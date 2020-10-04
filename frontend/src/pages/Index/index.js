@@ -31,6 +31,7 @@ import {
   ContentBannerFashion,
   ContentIllustration,
 } from './style';
+import api from '../../services/api';
 
 function Index() {
   return (

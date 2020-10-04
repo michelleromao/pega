@@ -96,7 +96,7 @@ export const Paper = styled.div`
   border-radius: 12px;
   display: flex;
   flex-flow: column;
-  width: 30%;
+  width: 40%;
   justify-content: space-around;
   align-items: center;
 `;
@@ -112,4 +112,17 @@ export const ButtonGroup = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  margin-top: 5%;
+`;
+export const TextModal = styled.p`
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #202020;
+  margin-bottom: -5%;
+`;
+export const Bold = styled.span`
+  font-weight: bolder;
 `;

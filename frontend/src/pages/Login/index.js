@@ -24,7 +24,6 @@ function Login() {
   async function handleSubmit(data) {
     const { email, password } = data;
     const request = await api.post('/authenticate/', data);
-    console.log(request);
     if (request.data.message === 'Esse e-mail não existe aqui, viu?') {
       setText('Foi mal aí, mas não encontramos uma conta com esse e-mail não.');
       setActive(true);

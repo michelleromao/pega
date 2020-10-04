@@ -21,6 +21,8 @@ const user = (state = INITIAL_STATE, action) => {
       const { user } = action.payload;
       console.log(user);
 
+      console.log(user);
+
       return user;
     }
     case 'USER_LOGOUT': {
@@ -28,7 +30,10 @@ const user = (state = INITIAL_STATE, action) => {
     }
     case 'USER_SIGNUP': {
       const { user } = action.payload;
-
+      return user;
+    }
+    case 'USER_UPDATE': {
+      const { user } = action.payload;
       return user;
     }
     default: {

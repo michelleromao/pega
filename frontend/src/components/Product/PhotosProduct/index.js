@@ -19,6 +19,7 @@ function PhotosProduct(props) {
             className={active[props.photos.indexOf(p)] ? 'active' : 'inactive'}
             style={{
               backgroundImage: `url('http://localhost:3333/files/announcement/${p}')`,
+              backgroundSize: 'cover',
             }}
             onClick={() => handleClick(props.photos.indexOf(p))}
           />
