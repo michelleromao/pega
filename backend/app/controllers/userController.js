@@ -1,5 +1,8 @@
 const { v4 } = require('uuid');
 const User = require('../models/user');
+const Announcement = require('../models/announcement');
+const AnnouncementController = require('./announcementController');
+
 const PhotoUsers = require('../models/photo_user');
 
 class UserController {
@@ -43,6 +46,7 @@ class UserController {
       const criterionCPF = { cpf };
 
       const promiseEmail = await User.find(criterionEmail).exec();
+
       if (promiseEmail.length !== 0) {
         return response
           .status(400)
@@ -66,13 +70,14 @@ class UserController {
       const idImage = v4();
       const createPromise = await User.create({
         idUser,
-        name,
         username,
+        name,
         email,
         senha,
         cpf,
         telefone,
         picpay: '',
+        rating: 0,
       });
       const createPromisePhoto = await PhotoUsers.create({
         idImage,
@@ -143,6 +148,7 @@ class UserController {
           senha,
           telefone,
           picpay,
+          rating: promiseExist[0].rating,
         },
       );
       if (updatePromise.ok === 1) {
@@ -170,14 +176,16 @@ class UserController {
           .json({ message: 'Não foi possível encontrar esse usuário' });
       }
       const promisePhoto = await PhotoUsers.find(criterion).exec();
-      const { idImage } = promisePhoto[0];
+      if (promisePhoto.length !== 0) {
+        const { idImage } = promisePhoto[0];
 
-      const deletePromisePhoto = await PhotoUsers.deleteOne({
-        idImage,
-      });
+        const deletePromisePhoto = await PhotoUsers.deleteOne({
+          idImage,
+        });
+      }
 
       const promise = await User.updateOne(criterion, {
-        id,
+        idUser: '',
         cpf: '',
         name: '',
         username: '',
@@ -185,14 +193,25 @@ class UserController {
         senha: '',
         telefone: '',
         picpay: '',
+        rating: '',
         reason,
       }).exec();
+
+      const announcements = await Announcement.find({ idUser: id });
+      console.log(announcements);
+      if (announcements.length !== 0) {
+        announcements.map(announcement => {
+          AnnouncementController.delete(
+            `{ id: ${announcement.idAnnouncement} }`,
+          );
+          return response.json({ message: 'ok' });
+        });
+      }
 
       if (promise.ok === 1) {
         const res = await User.find(criterion).exec();
         return response.json(res);
       }
-
       return response
         .status(400)
         .json({ message: 'Não foi possível excluir o usuário' });

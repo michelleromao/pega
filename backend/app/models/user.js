@@ -12,7 +12,8 @@ const Users = new Schema({
   telefone: { type: String, required: true },
   idImage: { type: String, required: false },
   picpay: { type: String, required: false },
-  rating: { type: Number, required: false },
+  rating: { type: Number, required: true },
+
   interestCategories: { type: [String], required: false },
   reason: { type: String, required: false },
 });
