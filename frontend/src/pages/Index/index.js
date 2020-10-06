@@ -41,7 +41,7 @@ function Index() {
   useEffect(() => {
     async function loadAnnouncementsOne() {
       const casualAnnouncements = await api.get(
-        '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&limit=3',
+        '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
       );
       setCasual(casualAnnouncements.data.promise);
     }

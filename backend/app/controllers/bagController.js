@@ -49,7 +49,6 @@ class BagController {
       const idBag = v4();
       const criterion = { idAnnouncement: { $in: announcements } };
       const promiseFind = await AnnouncementBag.find(criterion);
-      console.log(promiseFind);
       if (promiseFind.length !== 0) {
         return response
           .status(400)

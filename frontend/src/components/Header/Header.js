@@ -17,11 +17,13 @@ import {
   Search,
   Nologgedin,
   Sacola,
+  Quantity,
 } from './style';
 import api from '../../services/api';
 
 export default function Header(props) {
   const user = useSelector((user) => user.user.name);
+  const bagLength = useSelector((bag) => bag.bag.announcements.length);
   const idUser = useSelector((user) => user.user.idUser);
   const [photoUrl, setPhotoUrl] = useState('');
   const [menu, setMenu] = useState(false);
@@ -104,10 +106,18 @@ export default function Header(props) {
             false
           )}
         </div>
-        <Sacola>
-          <span>{props.itemsCart}</span>
-          <Bolsa />
-        </Sacola>
+        <Link to={`/sacola`}>
+          <Sacola>
+            {bagLength ? (
+              <Quantity>
+                <p>{bagLength}</p>
+              </Quantity>
+            ) : (
+              <></>
+            )}
+            <Bolsa />
+          </Sacola>
+        </Link>
       </ContentHeader>
       {menu ? <Menu /> : <div />}
     </>

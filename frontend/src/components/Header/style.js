@@ -145,17 +145,38 @@ export const Usuario = styled.div`
 `;
 
 export const Sacola = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-weight: 600;
-    font-size: 14px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
 
   svg {
     fill: #202020;
     width: 25px;
     stroke: #202020;
     stroke-width: 1.8px;
+  }
+`;
+
+export const Quantity = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  margin: 0.5% 0 0 1%;
+  width: 14.5px;
+  height: 14.5px;
+  background: #c4c4c4;
+  border-radius: 7.25px;
+  background: #000000;
+  box-sizing: border-box;
+  p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    color: #ffffff;
+    margin-top: 1px;
   }
 `;
