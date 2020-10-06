@@ -36,14 +36,28 @@ import api from '../../services/api';
 
 function Index() {
   const [casual, setCasual] = useState();
+  const [social, setSocial] = useState();
+  const [floral, setFloral] = useState();
+  const [users, setUsers] = useState();
+
   const idUser = useSelector((user) => user.user.idUser);
 
   useEffect(() => {
     async function loadAnnouncementsOne() {
       const casualAnnouncements = await api.get(
-        '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
+        '/announcements/?idStyle=098374f5-302e-4b25-94c3-552f87bdb378&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
       );
-      setCasual(casualAnnouncements.data.promise);
+      const socialAnnouncements = await api.get(
+        '/announcements/?idStyle=8ca38a28-7a9f-4011-b07e-86dccbfb8924&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
+      );
+      const floralAnnouncements = await api.get(
+        '/announcements/?idStyle=6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
+      );
+      const sellers = await api.get('/users/?limit=4');
+      setCasual(casualAnnouncements.data.promiseFilter);
+      setSocial(socialAnnouncements.data.promiseFilter);
+      setFloral(floralAnnouncements.data.promiseFilter);
+      setUsers(sellers.data.promise);
     }
     loadAnnouncementsOne();
   }, []);
@@ -62,90 +76,96 @@ function Index() {
         <ButtomCategory icon="fav" nameCategory="Apreciados" />
         <ButtomCategory icon="heart" nameCategory="Queridinhos" />
       </ButtomContent>
-      <ContentMain>
-        <h3>Casual</h3>
-        <ContentProductLarger>
-          {casual &&
-            casual.map((announcement) => {
-              if (announcement.idUser !== idUser) {
-                return (
-                  <ProductLarger
-                    key={announcement.idAnnouncement}
-                    id={announcement.idAnnouncement}
-                    photoProductLarger={PhotoProductLarger1}
-                    title={announcement.title}
-                    price={announcement.initPrice}
-                    promo={announcement.offert ? announcement.valueOffert : ' '}
-                  />
-                );
-              }
-            })}
-        </ContentProductLarger>
-      </ContentMain>
+      {casual ? (
+        <ContentMain>
+          <h3>Casual</h3>
+          <ContentProductLarger>
+            {casual &&
+              casual.map((announcement) => {
+                if (announcement.idUser !== idUser) {
+                  return (
+                    <ProductLarger
+                      key={announcement.idAnnouncement}
+                      id={announcement.idAnnouncement}
+                      photoProductLarger={PhotoProductLarger1}
+                      title={announcement.title}
+                      price={announcement.initPrice}
+                      promo={
+                        announcement.offert ? announcement.valueOffert : ' '
+                      }
+                    />
+                  );
+                }
+              })}
+          </ContentProductLarger>
+        </ContentMain>
+      ) : (
+        <></>
+      )}
+
       <ContentSub>
-        <ContentSubCategory>
-          <h4>Geek</h4>
-          <Items>
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-          </Items>
-          <Items>
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-              className="noMargin"
-            />
-          </Items>
-        </ContentSubCategory>
-        <ContentSubCategory>
-          <h4>Praiero</h4>
-          <Items>
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-          </Items>
-          <Items>
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-            <ProductSmall
-              photoProductSmall={PhotoProductLarger1}
-              title="jaquetinha"
-              price="5"
-            />
-          </Items>
-        </ContentSubCategory>
+        {social ? (
+          <ContentSubCategory>
+            <h4>Confortável</h4>
+            <Items>
+              {social &&
+                social.map((announcement) => {
+                  return (
+                    <ProductSmall
+                      key={announcement.idAnnouncement}
+                      id={announcement.idAnnouncement}
+                      photoProductSmall={PhotoProductLarger1}
+                      title={announcement.title}
+                      price={announcement.initPrice}
+                      promo={
+                        announcement.offert ? announcement.valueOffert : ' '
+                      }
+                    />
+                  );
+                })}
+            </Items>
+          </ContentSubCategory>
+        ) : (
+          <></>
+        )}
+        {floral ? (
+          <ContentSubCategory>
+            <h4>Floral</h4>
+            <Items>
+              {floral &&
+                floral.map((announcement) => {
+                  return (
+                    <ProductSmall
+                      key={announcement.idAnnouncement}
+                      id={announcement.idAnnouncement}
+                      photoProductSmall={PhotoProductLarger1}
+                      title={announcement.title}
+                      price={announcement.initPrice}
+                      promo={
+                        announcement.offert ? announcement.valueOffert : ' '
+                      }
+                    />
+                  );
+                })}
+            </Items>
+          </ContentSubCategory>
+        ) : (
+          <></>
+        )}
       </ContentSub>
       <ContentTopSellers>
         <h3>Vendedores top</h3>
         <TopSellers>
-          <BestSeller photoUser={PhotoUser} nameSeller="Fernanda" />
-          <BestSeller photoUser={PhotoUser2} nameSeller="Michelle" />
-          <BestSeller photoUser={PhotoUser3} nameSeller="Yan" />
-          <BestSeller photoUser={PhotoUser4} nameSeller="Kainan" />
+          {users &&
+            users.map((user) => {
+              return (
+                <BestSeller
+                  photoUser={PhotoUser}
+                  id={user.idUser}
+                  nameSeller={user.name}
+                />
+              );
+            })}
         </TopSellers>
       </ContentTopSellers>
       <ContentBannerFashion>

@@ -25,7 +25,7 @@ function ProductSmall(props) {
         <img
           src={`http://localhost:3333/files/announcement/${photoProduct}`}
           alt={props.title}
-          width={250}
+          width={200}
           height={250}
         />
         <h3>{props.title}</h3>

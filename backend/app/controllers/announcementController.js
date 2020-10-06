@@ -8,12 +8,23 @@ class AnnouncementController {
   static async index(request, response) {
     try {
       const { limit } = request.query;
+      const { idStyle } = request.query;
+      const { idStatus } = request.query;
 
       if (limit) {
         const lim = Number(limit);
         const promise = await Announcement.find().limit(lim);
+        if (idStyle || idStatus) {
+          const criterion = {
+            $and: [{ idStyle }, { idStatus }],
+          };
+          const promiseFilter = await Announcement.find(criterion).limit(lim);
+          return response.json({ limite: lim, promiseFilter });
+        }
+
         return response.json({ limite: lim, promise });
       }
+
       const promise = await Announcement.find().exec();
       if (promise.length === 0) {
         return response

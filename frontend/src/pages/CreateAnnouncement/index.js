@@ -248,20 +248,21 @@ function CreateAnnouncement() {
   useEffect(() => {
     const getCategory = async () => {
       const { data } = await api.get('/categories');
+
       const category = data.map((d) => {
         return { label: d.name, value: d.idCategory };
       });
       setCategories(category);
     };
     const getStyle = async () => {
-      const { data } = await api.get('/styles');
+      const { data } = await api.get('/styles/');
       const style = data.map((d) => {
         return { label: d.name, value: d.idStyle };
       });
       setStyles(style);
     };
     const getPaymentType = async () => {
-      const { data } = await api.get('/payments');
+      const { data } = await api.get('/payments/');
       const payment = data.map((d) => {
         return {
           label: d.type,
