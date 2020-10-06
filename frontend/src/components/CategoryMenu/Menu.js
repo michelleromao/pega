@@ -1,13 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
-import './Menu.css'
+import {Categorias} from './style'
 
 export default function Menu () {
 
     return (
         <>
-        <div className="menu">
+        <Categorias>
             <Link to="/">Todas as categorias</Link>
             <Link to="/">Calças</Link>
             <Link to="/">Moda íntima</Link>
@@ -18,7 +17,7 @@ export default function Menu () {
             <Link to="/">Camisas</Link>
             <Link to="/">Infantil</Link>
             <Link to="/">Acessórios</Link>
-        </div>
+        </Categorias>
         </>
     ) 
 }
