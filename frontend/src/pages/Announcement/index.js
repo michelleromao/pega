@@ -5,7 +5,7 @@ import api from '../../services/api';
 
 import Breadcrumbs from '../../components/Breadcrumbs';
 import PhotosProduct from '../../components/Product/PhotosProduct';
-import ProductIformation from '../../components/Product/ProductIformation';
+import ProductInformation from '../../components/Product/ProductInformation';
 import DescriptionProduct from '../../components/Product/DescriptionProduct';
 import Comment from '../../components/Product/CommentsArea/Comments/Comments';
 
@@ -42,7 +42,7 @@ function Announcement() {
 
   useEffect(() => {
     async function getData(id) {
-      const { data } = await api.get(`/announcements/${id}`);
+      const { data } = await api.get(`/announcements/${id}?limit=1`);
       const dataImg = await api.get(`/photosannouncement/${id}`);
       const nameStyle = await api.get(`/styles/${data[0].idStyle}`);
       const nameCategory = await api.get(`/categories/${data[0].idCategory}`);
@@ -63,7 +63,7 @@ function Announcement() {
     }
     getData(pathId);
   }, []);
-
+  console.log(announcement);
   return (
     <>
       <ContentBreadcrumbs>
@@ -71,7 +71,8 @@ function Announcement() {
       </ContentBreadcrumbs>
       <ContentFirst>
         <PhotosProduct photos={photos} />
-        <ProductIformation
+        <ProductInformation
+          data={announcement}
           title={announcement?.[0].title}
           state={announcement?.[0].state}
           size={announcement?.[0].size}
@@ -81,8 +82,12 @@ function Announcement() {
           frete={announcement?.[0].priceDelivery}
           method={['Picpay']}
           fitting={announcement?.[0].tryOn}
-          promo={announcement?.[0].offert ? announcement?.[0].offertValue : ' '}
-          price={announcement?.[0].initPrice}
+          promo={announcement?.[0].offert ? announcement?.[0].valueOffert : ' '}
+          price={
+            announcement?.[0].offert
+              ? announcement?.[0].initPrice
+              : announcement?.[0].initPrice
+          }
         />
       </ContentFirst>
       <ContentSecond>

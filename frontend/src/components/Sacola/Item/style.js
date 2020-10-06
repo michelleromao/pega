@@ -11,9 +11,10 @@ export const ContentPhoto = styled.div`
   width: 20%;
   display: flex;
   flex-flow: column;
+  margin-right: 2%;
   img {
-    width: 109px;
-    height: 109px;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -142,4 +143,15 @@ export const Price = styled.div`
   font-size: 25px;
   line-height: 37px;
   color: #569ccd;
+`;
+export const ButtonDelete = styled.button`
+  width: 26px;
+  height: 26px;
+  background: #be5599;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 `;

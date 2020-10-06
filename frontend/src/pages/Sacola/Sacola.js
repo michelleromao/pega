@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 import api from '../../services/api';
 import Item from '../../components/Sacola/Item';
@@ -14,19 +15,6 @@ function Sacola() {
   const [color2, setColor2] = useState('#878787');
 
   const [stage, setStage] = useState(1);
-  const [sacola, setSacola] = useState([
-    {
-      id: '',
-      owner: '',
-      title: '',
-      state: '',
-      size: '',
-      color: '',
-      price: '',
-      promo: '',
-      reserve: '',
-    },
-  ]);
 
   return (
     <>

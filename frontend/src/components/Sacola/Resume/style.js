@@ -69,6 +69,7 @@ export const Button = styled.button`
 `;
 
 export const Wait = styled.button`
+  width: 100%;
   margin-top: 8%;
   height: 54px;
   border: 2px solid #be5599;

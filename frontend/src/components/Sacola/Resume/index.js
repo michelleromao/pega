@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   Container,
@@ -14,10 +15,37 @@ import {
   Text,
 } from './style';
 import Suscess from '../../../assets/icons/success.svg';
+import { buyProductsInBag } from '../../../store/modules/bag/action';
 
 function Resume(props) {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [stage, setStage] = useState(props.stage);
   const [stageClick, setStageClick] = useState(props.stageClick);
+  const bagResume = useSelector((bag) => bag.bag);
+
+  console.log(bagResume);
+  const idUser = useSelector((user) => user.user.idUser);
+
+  const handleContinue = () => {
+    if (bagResume.announcements.length === 0) {
+      alert('Comece selecionando produtos para comprar');
+      history.push('/');
+    } else {
+      history.push('/payment');
+    }
+  };
+
+  const handlePayment = () => {
+    if (!idUser) {
+      alert(
+        'Peraí um momento! Para comprar você precisa se logar, vou te redirecionar rapidim',
+      );
+      history.push('/login');
+    } else {
+      dispatch(buyProductsInBag(idUser));
+    }
+  };
 
   return (
     <>
@@ -28,7 +56,7 @@ function Resume(props) {
             <Content>
               <Detail>
                 <p>produtos</p>
-                <p>R$ 120.00</p>
+                <p>{bagResume.value}</p>
               </Detail>
               <Detail>
                 <p>cupom</p>
@@ -36,27 +64,18 @@ function Resume(props) {
               </Detail>
               <Detail>
                 <Total>Total a pagar</Total>
-                <Price>R$ 120.00</Price>
+                <Price>{bagResume.value}</Price>
               </Detail>
               <Line />
               {stageClick === 1 ? (
-                <Link to="/payment">
-                  <Button>Continuar</Button>
-                </Link>
+                <Button onClick={() => handleContinue()}>Continuar</Button>
               ) : (
                 <></>
               )}
-
-              {stageClick === 2 ? (
-                <Link to="/details">
-                  <Button>Continuar</Button>
-                </Link>
-              ) : (
-                <></>
-              )}
-              {stageClick === 3 ? <></> : <></>}
             </Content>
-            <Wait>Pera, quero pegar mais coisas</Wait>
+            <Link to="/">
+              <Wait>Pera, quero pegar mais coisas</Wait>
+            </Link>
           </>
         ) : (
           <></>
@@ -67,7 +86,7 @@ function Resume(props) {
             <Content>
               <Detail>
                 <p>produtos</p>
-                <p>R$ 120.00</p>
+                <p>{bagResume.value}</p>
               </Detail>
               <Detail>
                 <p>cupom</p>
@@ -75,10 +94,10 @@ function Resume(props) {
               </Detail>
               <Detail>
                 <Total>Total a pagar</Total>
-                <Price>R$ 120.00</Price>
+                <Price>{bagResume.value}</Price>
               </Detail>
               <Line />
-              <Button>Continuar</Button>
+              <Button onClick={() => handlePayment()}>Continuar</Button>
             </Content>
           </>
         ) : (
@@ -90,7 +109,7 @@ function Resume(props) {
             <Content>
               <Detail>
                 <p>produtos</p>
-                <p>R$ 120.00</p>
+                <p>{bagResume.value}</p>
               </Detail>
               <Detail>
                 <p>cupom</p>
@@ -98,7 +117,7 @@ function Resume(props) {
               </Detail>
               <Detail>
                 <Total>Total a pagar</Total>
-                <Price>R$ 120.00</Price>
+                <Price>{bagResume.value}</Price>
               </Detail>
               <Line />
               <Success>

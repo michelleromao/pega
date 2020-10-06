@@ -10,33 +10,24 @@ import { Container, Breadcrumb, Stage, Column } from './style';
 import PaySafeWithPicPay from '../../components/PaySafeWithPicPay/PaySafeWithPicpay';
 import TipsFrete from '../../components/TipsFrete/TipsFrete';
 import Resume from '../../components/Sacola/Resume';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Payment() {
+  const bagAnnouncements = useSelector((bag) => bag.bag.announcements);
+  const history = useHistory();
   const [color, setColor] = useState('#000');
   const [color2, setColor2] = useState('#878787');
 
   const [stage, setStage] = useState(1);
-  const [sacola, setSacola] = useState([
-    {
-      id: '',
-      owner: '',
-      title: '',
-      state: '',
-      size: '',
-      color: '',
-      price: '',
-      promo: '',
-      reserve: '',
-    },
-  ]);
+
+  if (bagAnnouncements.length === 0) {
+    history.push('/');
+  }
 
   return (
     <>
       <Breadcrumb>
-        <Link to="/sacola">
-          <Stage color={color2}>Sacola</Stage>
-        </Link>
+        <Stage color={color2}>Sacola</Stage>
         <img src={Arrow} alt="" />
         <Stage color={color}>Pagamento e Entrega</Stage>
         <img src={Arrow} alt="" />
@@ -48,7 +39,7 @@ function Payment() {
         <Column>
           <TipsFrete />
           <PaySafeWithPicPay />
-          <Resume stage={1} stageClick={2} />
+          <Resume stage={2} stageClick={2} />
         </Column>
       </Container>
     </>

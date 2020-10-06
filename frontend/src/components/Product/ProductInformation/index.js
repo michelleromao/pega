@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Container,
@@ -18,10 +18,11 @@ import {
 import Heart from '../../../assets/icons/coracaorosa.svg';
 import Gift from '../../../assets/icons/presente.svg';
 import CoatHanger from '../../../assets/icons/cruzeta.svg';
+import { addProductToBag } from '../../../store/modules/bag/action';
 
 function ProductInformation(props) {
   const productDetails = useSelector((state) => state);
-
+  const dispatch = useDispatch();
   const delivery = props.delivery;
   const method = props.method;
 
@@ -44,6 +45,28 @@ function ProductInformation(props) {
   } else {
     textMethod = `No ${method[0]}`;
   }
+  const handleAddToCart = () => {
+    const announcement = {
+      idAnnouncement: props.data[0].idAnnouncement,
+      title: props.data[0].title,
+      color: props.data[0].color,
+      size: props.data[0].size,
+      state: props.data[0].state,
+      description: props.data[0].description,
+      tryOn: props.data[0].tryOn,
+      initPrice: props.data[0].initPrice,
+      idOwner: props.data[0].idOwner,
+      idStyle: props.data[0].idStyle,
+      idCategory: props.data[0].idCategory,
+      deliveryType: props.data[0].deliveryType,
+      priceDelivery: props.data[0].priceDelivery,
+      paymentType: props.data[0].paymentType,
+      idStatus: props.data[0].idStatus,
+      offert: props.data[0]?.offert,
+      valueOffert: props.data[0]?.valueOffert,
+    };
+    dispatch(addProductToBag(announcement));
+  };
 
   return (
     <Container>
@@ -96,7 +119,7 @@ function ProductInformation(props) {
           retirar o produto em mãos.
         </Receive>
       ) : (
-        <Button>Adicionar ao carrinho</Button>
+        <Button onClick={() => handleAddToCart()}>Adicionar ao carrinho</Button>
       )}
     </Container>
   );
