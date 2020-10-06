@@ -8,7 +8,15 @@ const PhotoUsers = require('../models/photo_user');
 class UserController {
   static async index(request, response) {
     try {
+      const { limit } = request.query;
+      if (limit) {
+        const lim = Number(limit);
+        const promise = await User.find().limit(lim);
+        return response.json({ limite: lim, promise });
+      }
+
       const promise = await User.find().exec();
+
       if (promise.length === 0) {
         return response
           .status(400)
