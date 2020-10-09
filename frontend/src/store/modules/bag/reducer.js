@@ -77,25 +77,14 @@ const bag = (state = INITIAL_STATE, action) => {
         break;
       }
       case 'BUY_PRODUCTS_IN_BAG': {
-        const { user } = action.payload;
-        draft.idBuyer = user;
-
-        const idAnnouncements = state.announcements.map((a) => {
-          return a.idAnnouncement;
-        });
-        api
-          .post('/bags', {
-            idBuyer: draft.idBuyer,
-            announcements: idAnnouncements,
-            idPayment: draft.idPayment,
-            value: draft.value,
-            idCupom: draft.idCupom,
-            totalValue: draft.totalValue,
-          })
-          .then((response) => {
-            draft.idBag = response.data.idBag;
-          });
-
+        draft.idBag = null;
+        draft.idBuyer = null;
+        draft.idBuyer = null;
+        draft.announcements = [];
+        draft.idPayment = 'd51c243e-8adb-41fb-8093-b9241be23665';
+        draft.value = null;
+        draft.idCupom = null;
+        draft.totalValue = null;
         break;
       }
 

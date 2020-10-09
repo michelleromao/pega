@@ -16,9 +16,9 @@ export function removeProductToBag(idAnnouncement) {
   };
 }
 
-export function buyProductsInBag(user) {
+export function buyProductsInBag() {
   return {
     type: 'BUY_PRODUCTS_IN_BAG',
-    payload: { user },
+    payload: {},
   };
 }

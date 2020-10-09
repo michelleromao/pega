@@ -16,6 +16,7 @@ import {
 } from './style';
 import Suscess from '../../../assets/icons/success.svg';
 import { buyProductsInBag } from '../../../store/modules/bag/action';
+import api from '../../../services/api';
 
 function Resume(props) {
   const history = useHistory();
@@ -36,14 +37,28 @@ function Resume(props) {
     }
   };
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (!idUser) {
       alert(
         'Peraí um momento! Para comprar você precisa se logar, vou te redirecionar rapidim',
       );
       history.push('/login');
     } else {
-      dispatch(buyProductsInBag(idUser));
+      const idAnnouncements = bagResume.announcements.map((a) => {
+        return a.idAnnouncement;
+      });
+      const request = await api.post('/bags', {
+        idBuyer: idUser,
+        announcements: idAnnouncements,
+        idPayment: bagResume.idPayment,
+        value: bagResume.value,
+        idCupom: bagResume.idCupom,
+        totalValue: bagResume.totalValue,
+      });
+      console.log(request);
+
+      dispatch(buyProductsInBag());
+      history.push(`/details/${request.data.idBag}`);
     }
   };
 
@@ -97,7 +112,7 @@ function Resume(props) {
                 <Price>{bagResume.value}</Price>
               </Detail>
               <Line />
-              <Button onClick={() => handlePayment()}>Continuar</Button>
+              <Button onClick={() => handlePayment()}>Comprar</Button>
             </Content>
           </>
         ) : (

@@ -8,25 +8,32 @@ import api from '../../../services/api';
 
 function GroupItem(props) {
   const bagAnnouncements = useSelector((bag) => bag.bag.announcements);
-
+  console.log(bagAnnouncements);
   const [owner, setOwner] = useState(' ');
   const [ownerProduct, setOwnerProduct] = useState(' ');
-
+  const data = props.data;
   useEffect(() => {
-    async function getOwnerName(id) {
-      console.log(id);
-      if (id !== ' ') {
-        const { data } = await api.get(`/users/${id}`);
-        setOwner({
-          name: data[0].name.split(' ')[0],
-          telefone: data[0].telefone,
+    async function getOwnerName(announcementsToGetId) {
+      if (announcementsToGetId !== null) {
+        const results = announcementsToGetId.map(async (item) => {
+          const { data } = await api.get(`/users/${item.idOwner}`);
+          console.log('data');
+          console.log(data);
         });
+        if (results.length !== 0) {
+          Promise.all(results).then((completed) =>
+            setOwner({
+              name: completed[0].name.split(' ')[0],
+              telefone: completed[0].telefone,
+            }),
+          );
+        }
       } else {
         setOwner(' ');
         setOwnerProduct(' ');
       }
     }
-    getOwnerName(bagAnnouncements.idOwner);
+    getOwnerName(bagAnnouncements);
   }, []);
 
   const [stageTitle, setStageTitle] = useState(props.stageTitle);
@@ -104,6 +111,29 @@ function GroupItem(props) {
               </>
             );
           })}
+          {bagAnnouncements.length === 0 && props.data ? (
+            props.data.map((announcement) => {
+              return (
+                <Item
+                  id={announcement.idAnnouncement}
+                  stage={props.stage}
+                  status={props.status}
+                  title={announcement.title}
+                  state={announcement.state}
+                  size={announcement.size}
+                  color={announcement.color}
+                  promo={announcement.offert ? announcement.valueOffert : ' '}
+                  price={
+                    announcement.offert
+                      ? announcement.initPrice
+                      : announcement.initPrice
+                  }
+                />
+              );
+            })
+          ) : (
+            <></>
+          )}
         </Content>
       </Container>
     </>

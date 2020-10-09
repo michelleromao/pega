@@ -37,7 +37,11 @@ import api from '../../services/api';
 function Index() {
   const [casual, setCasual] = useState();
   const [social, setSocial] = useState();
+  const [social2, setSocial2] = useState();
+
   const [floral, setFloral] = useState();
+  const [floral2, setFloral2] = useState();
+
   const [users, setUsers] = useState();
 
   const idUser = useSelector((user) => user.user.idUser);
@@ -50,13 +54,23 @@ function Index() {
       const socialAnnouncements = await api.get(
         '/announcements/?idStyle=8ca38a28-7a9f-4011-b07e-86dccbfb8924&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
       );
+      const socialAnnouncements2 = await api.get(
+        '/announcements/?idStyle=8ca38a28-7a9f-4011-b07e-86dccbfb8924&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&skip=2&limit=2',
+      );
       const floralAnnouncements = await api.get(
         '/announcements/?idStyle=6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
+      );
+      const floralAnnouncements2 = await api.get(
+        '/announcements/?idStyle=6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&skip=2&limit=2',
       );
       const sellers = await api.get('/users/?limit=4');
       setCasual(casualAnnouncements.data.promiseFilter);
       setSocial(socialAnnouncements.data.promiseFilter);
+      setSocial2(socialAnnouncements2.data.promiseFilterSkip);
+
       setFloral(floralAnnouncements.data.promiseFilter);
+      setFloral2(floralAnnouncements.data.promiseFilterSkip);
+
       setUsers(sellers.data.promise);
     }
     loadAnnouncementsOne();
@@ -110,18 +124,39 @@ function Index() {
             <Items>
               {social &&
                 social.map((announcement) => {
-                  return (
-                    <ProductSmall
-                      key={announcement.idAnnouncement}
-                      id={announcement.idAnnouncement}
-                      photoProductSmall={PhotoProductLarger1}
-                      title={announcement.title}
-                      price={announcement.initPrice}
-                      promo={
-                        announcement.offert ? announcement.valueOffert : ' '
-                      }
-                    />
-                  );
+                  if (announcement.idUser !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ' '
+                        }
+                      />
+                    );
+                  }
+                })}
+            </Items>
+            <Items>
+              {social2 &&
+                social2.map((announcement) => {
+                  if (announcement.idUser !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ' '
+                        }
+                      />
+                    );
+                  }
                 })}
             </Items>
           </ContentSubCategory>
@@ -134,18 +169,39 @@ function Index() {
             <Items>
               {floral &&
                 floral.map((announcement) => {
-                  return (
-                    <ProductSmall
-                      key={announcement.idAnnouncement}
-                      id={announcement.idAnnouncement}
-                      photoProductSmall={PhotoProductLarger1}
-                      title={announcement.title}
-                      price={announcement.initPrice}
-                      promo={
-                        announcement.offert ? announcement.valueOffert : ' '
-                      }
-                    />
-                  );
+                  if (announcement.idUser !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ' '
+                        }
+                      />
+                    );
+                  }
+                })}
+            </Items>
+            <Items>
+              {floral2 &&
+                floral2.map((announcement) => {
+                  if (announcement.idUser !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ' '
+                        }
+                      />
+                    );
+                  }
                 })}
             </Items>
           </ContentSubCategory>
