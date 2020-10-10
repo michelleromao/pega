@@ -253,17 +253,32 @@ function CreateAnnouncement() {
     const getCategory = async () => {
       const { data } = await api.get('/categories');
 
-      const category = data.map((d) => {
-        return { label: d.name, value: d.idCategory };
+      let categories = data.map((category) => {
+        return {
+          label: category.name,
+         value: category.idCategory
+        };
       });
-      setCategories(category);
+      categories = categories.sort((a, b) => {
+        return a.label > b.label ? 1 : b.label > a.label ? -1 : 0;
+      });
+
+      setCategories(categories);
     };
     const getStyle = async () => {
       const { data } = await api.get('/styles/');
-      const style = data.map((d) => {
-        return { label: d.name, value: d.idStyle };
+      let styles = data.map((style) => {
+        return {
+          label: style.name,
+         value: style.idCategory
+        };
       });
-      setStyles(style);
+      styles = styles.sort((a, b) => {
+        return a.label > b.label ? 1 : b.label > a.label ? -1 : 0;
+      });
+
+
+      setStyles(styles);
     };
     const getPaymentType = async () => {
       const { data } = await api.get('/payments/');

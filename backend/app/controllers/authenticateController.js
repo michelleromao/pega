@@ -19,7 +19,6 @@ class AuthenticateController {
           message: 'Senha: algo de errado não está certo',
         });
       }
-      console.log(promiseUser);
 
       return response.json(promiseUser);
     } catch (err) {
