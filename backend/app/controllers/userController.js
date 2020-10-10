@@ -191,26 +191,29 @@ class UserController {
           idImage,
         });
       }
+      const promise = await User.updateOne(
+        { idUser: id },
+        {
+          idUser: '',
+          cpf: '',
+          name: '',
+          username: '',
+          email: '',
+          senha: '',
+          telefone: '',
+          idImage: '',
+          picpay: '',
+          rating: '',
+          reason,
+        },
+      ).exec();
 
-      const promise = await User.updateOne(criterion, {
-        idUser: '',
-        cpf: '',
-        name: '',
-        username: '',
-        email: '',
-        senha: '',
-        telefone: '',
-        picpay: '',
-        rating: '',
-        reason,
-      }).exec();
-
-      const announcements = await Announcement.find({ idUser: id });
-      console.log(announcements);
+      const announcements = await Announcement.find({ idOwner: id });
+      console.log('announcements');
       if (announcements.length !== 0) {
-        announcements.map(announcement => {
-          AnnouncementController.delete(
-            `{ id: ${announcement.idAnnouncement} }`,
+        announcements.map(async announcement => {
+          const announcementsDelete = await Announcement.deleteMany(
+            announcement.idAnnouncement,
           );
           return response.json({ message: 'ok' });
         });

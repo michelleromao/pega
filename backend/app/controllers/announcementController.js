@@ -18,16 +18,23 @@ class AnnouncementController {
       const { idStyle } = request.query;
       const { idStatus } = request.query;
       const { skip } = request.query;
+      const { idOwner } = request.query;
 
       if (limit) {
         const lim = Number(limit);
         const promiseLimit = await Announcement.find().limit(lim);
+        if (idOwner) {
+          const promiseUser = await Announcement.find({ idOwner }).limit(lim);
+          return response.json({
+            promiseUser,
+          });
+        }
         if (idStyle || idStatus) {
           const criterion = {
             $and: [{ idStyle }, { idStatus }],
           };
+
           if (skip) {
-            console.log('aqui');
             if (promise.length > lim + skip) {
               const promiseFilterSkip = await Announcement.find(criterion)
                 .skip(skip)
@@ -81,6 +88,8 @@ class AnnouncementController {
         tryOn,
         initPrice,
         idOwner,
+        nameOwner,
+        telOwner,
         idStyle,
         idCategory,
         deliveryType,
@@ -101,6 +110,8 @@ class AnnouncementController {
         tryOn,
         initPrice,
         idOwner,
+        nameOwner,
+        telOwner,
         idStyle,
         idCategory,
         deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
@@ -140,6 +151,8 @@ class AnnouncementController {
         tryOn,
         initPrice,
         idOwner,
+        telOwner,
+        nameOwner,
         idStyle,
         idCategory,
         deliveryType,
@@ -172,6 +185,8 @@ class AnnouncementController {
             offert: true,
             valueOffert: initPrice,
             idOwner,
+            nameOwner,
+            telOwner,
             idStyle,
             idCategory,
             deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
@@ -202,6 +217,8 @@ class AnnouncementController {
           offert: false,
           valueOffert: null,
           idOwner,
+          telOwner,
+          nameOwner,
           idStyle,
           idCategory,
           deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
