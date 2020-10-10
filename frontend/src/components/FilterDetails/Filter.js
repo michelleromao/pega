@@ -2,8 +2,8 @@ import React,{useState, useEffect}from 'react'
 import { Container } from './Filterstyled';
 import api from '../../services/api';
 export default function Filter() {
-    const [categorias,setCategorias] = useState();
-    const [styles,setStyles] = useState();
+    const [categorias,setCategorias] = useState([]);
+    const [styles,setStyles] = useState([]);
     useEffect(()=>{
         const getCategory = async ()=>{
         const {data} = await api.get('/categories');
@@ -37,14 +37,14 @@ export default function Filter() {
                        
                         {
                            categorias.map( 
-                            category => 
+                            category => {return (
                                 
                                 <label key={category.idCategory}>
                                     <input type="checkbox" />
                                     <span className="check"><div className="selectedCheckbox"></div></span>
                                     <div className="labelCheck">{category.name}</div>
-                                </label>
-                            
+                                </label>);
+                            }
                            ) 
                         }
                         
@@ -60,14 +60,13 @@ export default function Filter() {
                     <div className="checkboxList estilo">
                     {
                            categorias.map( 
-                            style => 
-                                
+                            style => { return(
                                 <label key={style.idStyle}>
                                     <input type="checkbox" />
                                     <span className="check"><div className="selectedCheckbox"></div></span>
                                     <div className="labelCheck">{styles.name}</div>
-                                </label>
-                            
+                                </label>);
+                            }
                            ) 
                         }
 
