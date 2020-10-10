@@ -6,7 +6,7 @@ export const Content = styled.div`
         justify-content: flex-start;
         max-width:720px;
         width: 100%;
-       
+        margin-bottom:20px;
         max-height:100%;
         border: solid 1px #569CCD;
         border-radius: 6px;
