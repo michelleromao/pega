@@ -40,7 +40,6 @@ function Item(props) {
   useEffect(() => {
     async function loadPhoto() {
       const photoName = await api.get(`/photosannouncement/${props.id}`);
-      console.log(photoName);
       setFilename(photoName.data[0].originalname[0]);
     }
     loadPhoto();

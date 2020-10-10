@@ -16,22 +16,7 @@ function Details() {
   const bagAnnouncements = useSelector((bag) => bag.bag.announcements);
   const [color, setColor] = useState('#000');
   const [color2, setColor2] = useState('#878787');
-  const [announcementsData, setAnnouncementsData] = useState();
 
-  useEffect(() => {
-    async function loadTransaction() {
-      const bag = await api.get(`/bags/${pathId}`);
-
-      const results = bag.data[0].announcements.map(async (item) => {
-        const product = await api.get(`/announcements/${item}/`);
-        return product.data[0];
-      });
-      Promise.all(results).then((completed) => setAnnouncementsData(completed));
-    }
-    loadTransaction();
-  }, []);
-  console.log('announcementsData');
-  console.log(announcementsData);
   return (
     <>
       <Breadcrumb>
@@ -48,7 +33,6 @@ function Details() {
             stage={true}
             status={3}
             stageTitle={3}
-            data={announcementsData}
           />
           <Column>
             <Resume stage={3} />

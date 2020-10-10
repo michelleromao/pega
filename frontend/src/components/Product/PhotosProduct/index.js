@@ -20,7 +20,6 @@ function PhotosProduct(props) {
             style={{
               backgroundImage: `url('http://localhost:3333/files/announcement/${p}')`,
               backgroundSize: 'cover',
-              width: '500px',
               height: '100%',
             }}
             onClick={() => handleClick(props.photos.indexOf(p))}

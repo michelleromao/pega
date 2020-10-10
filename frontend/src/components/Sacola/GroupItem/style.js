@@ -8,8 +8,19 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: space-between;
+  font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 18px;
+color: #202020;
+
+`;
+
+export const textTitle = styled.p`
+  margin-top: 2%;
 `;
 export const Seller = styled.h3`
   font-family: Poppins;
@@ -25,19 +36,17 @@ export const Seller = styled.h3`
   }
 `;
 
-export const Contact = styled.button`
-  background: #be5599;
+export const Contact = styled.p`
   border-radius: 31px;
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
-  color: #ffffff;
+  color: #569CCD;
   border: none;
-  width: 30%;
-  height: 37px;
-  cursor: pointer;
+  margin-top: 1%;
+
   :hover {
     opacity: 0.9;
     transition: 0.3s;

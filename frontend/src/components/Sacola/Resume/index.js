@@ -25,7 +25,6 @@ function Resume(props) {
   const [stageClick, setStageClick] = useState(props.stageClick);
   const bagResume = useSelector((bag) => bag.bag);
 
-  console.log(bagResume);
   const idUser = useSelector((user) => user.user.idUser);
 
   const handleContinue = () => {
@@ -55,7 +54,6 @@ function Resume(props) {
         idCupom: bagResume.idCupom,
         totalValue: bagResume.totalValue,
       });
-      console.log(request);
 
       dispatch(buyProductsInBag());
       history.push(`/details/${request.data.idBag}`);
@@ -122,19 +120,7 @@ function Resume(props) {
           <>
             {' '}
             <Content>
-              <Detail>
-                <p>produtos</p>
-                <p>{bagResume.value}</p>
-              </Detail>
-              <Detail>
-                <p>cupom</p>
-                <p>- R$ 0</p>
-              </Detail>
-              <Detail>
-                <Total>Total a pagar</Total>
-                <Price>{bagResume.value}</Price>
-              </Detail>
-              <Line />
+
               <Success>
                 <Text>Pagamento efetuado</Text>
                 <img src={Suscess} alt="" />
