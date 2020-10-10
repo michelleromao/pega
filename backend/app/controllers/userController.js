@@ -1,4 +1,5 @@
 const { v4 } = require('uuid');
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Announcement = require('../models/announcement');
 const AnnouncementController = require('./announcementController');
@@ -49,6 +50,7 @@ class UserController {
     try {
       const { name, email, senha, cpf, telefone } = request.body;
       const idUser = v4();
+
       const username = name.toLowerCase().split(' ')[0] + idUser;
       const criterionEmail = { email };
       const criterionCPF = { cpf };
@@ -108,6 +110,7 @@ class UserController {
         username,
         email,
         senha,
+        novaSenha,
         telefone,
         picpay,
       } = request.body;
@@ -144,6 +147,29 @@ class UserController {
               'Não foi possível atualizar os dados, username já consta na plataforma',
           })
           .end();
+      }
+      if (novaSenha) {
+        const updatePromise = await User.updateOne(
+          { idUser: id },
+          {
+            id,
+            cpf,
+            name,
+            username,
+            email,
+            senha: novaSenha,
+            telefone,
+            picpay,
+            rating: promiseExist[0].rating,
+          },
+        );
+        if (updatePromise.ok === 1) {
+          const res = await User.find(criterionId).exec();
+          return response.json(res);
+        }
+        return response
+          .status(400)
+          .json({ message: 'Não foi possível atualizar o usuário' });
       }
       const updatePromise = await User.updateOne(
         { idUser: id },
@@ -183,6 +209,7 @@ class UserController {
           .status(400)
           .json({ message: 'Não foi possível encontrar esse usuário' });
       }
+
       const promisePhoto = await PhotoUsers.find(criterion).exec();
       if (promisePhoto.length !== 0) {
         const { idImage } = promisePhoto[0];
@@ -191,30 +218,28 @@ class UserController {
           idImage,
         });
       }
-      const promise = await User.updateOne(
-        { idUser: id },
-        {
-          idUser: '',
-          cpf: '',
-          name: '',
-          username: '',
-          email: '',
-          senha: '',
-          telefone: '',
-          idImage: '',
-          picpay: '',
-          rating: '',
-          reason,
-        },
-      ).exec();
+
+      const promise = await User.updateOne(criterion, {
+        idUser: id,
+        username: id,
+        name: id,
+        email: id,
+        senha: id,
+        cpf: id,
+        telefone: id,
+        idImage: id,
+        picpay: id,
+        rating: 0,
+        interestCategories: [],
+        reason,
+      }).exec();
 
       const announcements = await Announcement.find({ idOwner: id });
-      console.log('announcements');
       if (announcements.length !== 0) {
         announcements.map(async announcement => {
-          const announcementsDelete = await Announcement.deleteMany(
-            announcement.idAnnouncement,
-          );
+          const announcementsDelete = await Announcement.deleteMany({
+            idAnnouncement: announcement.idAnnouncement,
+          });
           return response.json({ message: 'ok' });
         });
       }
