@@ -20,7 +20,7 @@ function Routes() {
       <Route path="/test" component={() => <TestPage />} />
       <Route path="/sacola" component={() => <Sacola />} />
       <Route path="/payment" component={() => <Payment />} />
-      <Route path="/details" component={() => <Details />} />
+      <Route path="/details/:pathId/" component={() => <Details />} />
       <Route path="/painel" component={() => <PainelUser />} />
       <Route path="/redirect" component={() => <Redirect />} />
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import api from '../../services/api';
@@ -12,26 +12,11 @@ import TipsFrete from '../../components/TipsFrete/TipsFrete';
 import Resume from '../../components/Sacola/Resume';
 
 function Details() {
-  const history = useHistory();
-
+  const { pathId } = useParams();
   const bagAnnouncements = useSelector((bag) => bag.bag.announcements);
-  const idBag = useSelector((bag) => bag.bag);
-
   const [color, setColor] = useState('#000');
   const [color2, setColor2] = useState('#878787');
 
-  const [announcementsData, setAnnouncementsData] = useState('#878787');
-
-  useEffect(() => {
-    async function loadTransaction() {
-      const bag = api.get(`/bags/${idBag}`);
-      const products = bag.data[0].announcements.map((item) => {
-        return item;
-      });
-      setAnnouncementsData(products);
-    }
-    loadTransaction();
-  }, []);
   return (
     <>
       <Breadcrumb>
@@ -48,7 +33,6 @@ function Details() {
             stage={true}
             status={3}
             stageTitle={3}
-            data={announcementsData}
           />
           <Column>
             <Resume stage={3} />

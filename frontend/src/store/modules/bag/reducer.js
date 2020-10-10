@@ -27,6 +27,7 @@ const bag = (state = INITIAL_STATE, action) => {
           tryOn: announcement.tryOn,
           initPrice: announcement.initPrice,
           idOwner: announcement.idOwner,
+          nameOwner: announcement.nameOwner,
           idStyle: announcement.idStyle,
           idCategory: announcement.idCategory,
           deliveryType: announcement.deliveryType,
@@ -62,8 +63,6 @@ const bag = (state = INITIAL_STATE, action) => {
           (item) => item.idAnnouncement === idAnnouncement,
         );
         const productToRemove = state.announcements[productInBagIndex];
-        console.log('productInBagIndex');
-        console.log(productInBagIndex);
 
         if (productToRemove?.offert === true) {
           draft.totalValue -= productToRemove.valueOffert;
@@ -77,25 +76,13 @@ const bag = (state = INITIAL_STATE, action) => {
         break;
       }
       case 'BUY_PRODUCTS_IN_BAG': {
-        const { user } = action.payload;
-        draft.idBuyer = user;
-
-        const idAnnouncements = state.announcements.map((a) => {
-          return a.idAnnouncement;
-        });
-        api
-          .post('/bags', {
-            idBuyer: draft.idBuyer,
-            announcements: idAnnouncements,
-            idPayment: draft.idPayment,
-            value: draft.value,
-            idCupom: draft.idCupom,
-            totalValue: draft.totalValue,
-          })
-          .then((response) => {
-            draft.idBag = response.data.idBag;
-          });
-
+        draft.idBag = null;
+        draft.idBuyer = null;
+        draft.announcements = [];
+        draft.idPayment = 'd51c243e-8adb-41fb-8093-b9241be23665';
+        draft.value = null;
+        draft.idCupom = null;
+        draft.totalValue = null;
         break;
       }
 

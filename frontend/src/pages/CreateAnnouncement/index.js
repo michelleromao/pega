@@ -34,6 +34,7 @@ function CreateAnnouncement() {
   const dispatch = useDispatch();
   const idUser = useSelector((user) => user.user.idUser);
   const name = useSelector((user) => user.user.name);
+
   const username = useSelector((user) => user.user.username);
   const email = useSelector((user) => user.user.email);
   const senha = useSelector((user) => user.user.senha);
@@ -104,6 +105,7 @@ function CreateAnnouncement() {
           tryOn: data.tryon,
           initPrice: price,
           idOwner: idUser,
+          nameOwner: name,
           idStyle: data.style,
           idCategory: data.category,
           deliveryType: data.delivery,
@@ -130,6 +132,8 @@ function CreateAnnouncement() {
           tryOn: data.tryon,
           initPrice: price,
           idOwner: idUser,
+          nameOwner: name,
+          telOwner: telefone,
           idStyle: data.style,
           idCategory: data.category,
           deliveryType: data.delivery,

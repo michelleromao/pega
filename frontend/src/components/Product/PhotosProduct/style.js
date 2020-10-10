@@ -1,15 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-const fadeInOpcity = keyframes`
- from {
-  width: 35%;
-  background-size: cover;
-
-}
-to {
-  width: 70%;
-  background-size: cover;
-}`;
 
 export const PhotosProductContent = styled.div`
   display: flex;
@@ -33,8 +23,5 @@ export const PhotosProductContent = styled.div`
     width: 35%;
     opacity: 0.7;
     margin-left: 2%;
-    animation-name: ${fadeInOpcity};
-    animation-timing-function: ease-in;
-    animation-duration: 0.8s;
   }
 `;

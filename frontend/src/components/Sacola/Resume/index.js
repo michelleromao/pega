@@ -16,6 +16,7 @@ import {
 } from './style';
 import Suscess from '../../../assets/icons/success.svg';
 import { buyProductsInBag } from '../../../store/modules/bag/action';
+import api from '../../../services/api';
 
 function Resume(props) {
   const history = useHistory();
@@ -24,7 +25,6 @@ function Resume(props) {
   const [stageClick, setStageClick] = useState(props.stageClick);
   const bagResume = useSelector((bag) => bag.bag);
 
-  console.log(bagResume);
   const idUser = useSelector((user) => user.user.idUser);
 
   const handleContinue = () => {
@@ -36,14 +36,27 @@ function Resume(props) {
     }
   };
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (!idUser) {
       alert(
         'Peraí um momento! Para comprar você precisa se logar, vou te redirecionar rapidim',
       );
       history.push('/login');
     } else {
-      dispatch(buyProductsInBag(idUser));
+      const idAnnouncements = bagResume.announcements.map((a) => {
+        return a.idAnnouncement;
+      });
+      const request = await api.post('/bags', {
+        idBuyer: idUser,
+        announcements: idAnnouncements,
+        idPayment: bagResume.idPayment,
+        value: bagResume.value,
+        idCupom: bagResume.idCupom,
+        totalValue: bagResume.totalValue,
+      });
+
+      dispatch(buyProductsInBag());
+      history.push(`/details/${request.data.idBag}`);
     }
   };
 
@@ -97,7 +110,7 @@ function Resume(props) {
                 <Price>{bagResume.value}</Price>
               </Detail>
               <Line />
-              <Button onClick={() => handlePayment()}>Continuar</Button>
+              <Button onClick={() => handlePayment()}>Comprar</Button>
             </Content>
           </>
         ) : (
@@ -107,19 +120,7 @@ function Resume(props) {
           <>
             {' '}
             <Content>
-              <Detail>
-                <p>produtos</p>
-                <p>{bagResume.value}</p>
-              </Detail>
-              <Detail>
-                <p>cupom</p>
-                <p>- R$ 0</p>
-              </Detail>
-              <Detail>
-                <Total>Total a pagar</Total>
-                <Price>{bagResume.value}</Price>
-              </Detail>
-              <Line />
+
               <Success>
                 <Text>Pagamento efetuado</Text>
                 <img src={Suscess} alt="" />

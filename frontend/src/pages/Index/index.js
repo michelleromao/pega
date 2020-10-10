@@ -36,8 +36,12 @@ import api from '../../services/api';
 
 function Index() {
   const [casual, setCasual] = useState();
-  const [social, setSocial] = useState();
+  const [confortavel, setConfortavel] = useState();
+  const [confortavel2, setConfortavel2] = useState();
+
   const [floral, setFloral] = useState();
+  const [floral2, setFloral2] = useState();
+
   const [users, setUsers] = useState();
 
   const idUser = useSelector((user) => user.user.idUser);
@@ -45,23 +49,33 @@ function Index() {
   useEffect(() => {
     async function loadAnnouncementsOne() {
       const casualAnnouncements = await api.get(
-        '/announcements/?idStyle=098374f5-302e-4b25-94c3-552f87bdb378&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
+        '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
       );
-      const socialAnnouncements = await api.get(
-        '/announcements/?idStyle=8ca38a28-7a9f-4011-b07e-86dccbfb8924&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
+      const confortavelAnnouncements = await api.get(
+        '/announcements/?idStyle=961f0303-71ac-4362-825b-5d29864aa89d&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
+      );
+
+      const confortavelAnnouncements2 = await api.get(
+        '/announcements/?idStyle=961f0303-71ac-4362-825b-5d29864aa89d&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&skip=2&limit=2',
       );
       const floralAnnouncements = await api.get(
         '/announcements/?idStyle=6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
       );
+      const floralAnnouncements2 = await api.get(
+        '/announcements/?idStyle=6d8ff57f-cbc4-43c2-8d7f-f72966de2c9e&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&skip=2&limit=2',
+      );
       const sellers = await api.get('/users/?limit=4');
       setCasual(casualAnnouncements.data.promiseFilter);
-      setSocial(socialAnnouncements.data.promiseFilter);
+      setConfortavel(confortavelAnnouncements.data.promiseFilter);
+      setConfortavel2(confortavelAnnouncements2.data.promiseFilterSkip);
+
       setFloral(floralAnnouncements.data.promiseFilter);
+      setFloral2(floralAnnouncements.data.promiseFilterSkip);
+
       setUsers(sellers.data.promise);
     }
     loadAnnouncementsOne();
   }, []);
-  console.log(casual);
   return (
     <>
       <BannerSlide
@@ -82,7 +96,7 @@ function Index() {
           <ContentProductLarger>
             {casual &&
               casual.map((announcement) => {
-                if (announcement.idUser !== idUser) {
+                if (announcement.idOwner !== idUser) {
                   return (
                     <ProductLarger
                       key={announcement.idAnnouncement}
@@ -104,24 +118,46 @@ function Index() {
       )}
 
       <ContentSub>
-        {social ? (
+        {confortavel ? (
           <ContentSubCategory>
             <h4>Confortável</h4>
             <Items>
-              {social &&
-                social.map((announcement) => {
-                  return (
-                    <ProductSmall
-                      key={announcement.idAnnouncement}
-                      id={announcement.idAnnouncement}
-                      photoProductSmall={PhotoProductLarger1}
-                      title={announcement.title}
-                      price={announcement.initPrice}
-                      promo={
-                        announcement.offert ? announcement.valueOffert : ' '
-                      }
-                    />
-                  );
+              {confortavel &&
+
+confortavel.map((announcement) => {
+                  if (announcement.idOwner !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ''
+                        }
+                      />
+                    );
+                  }
+                })}
+            </Items>
+            <Items>
+              {confortavel2 &&
+                confortavel2.map((announcement) => {
+                  if (announcement.idOwner !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ''
+                        }
+                      />
+                    );
+                  }
                 })}
             </Items>
           </ContentSubCategory>
@@ -134,18 +170,39 @@ function Index() {
             <Items>
               {floral &&
                 floral.map((announcement) => {
-                  return (
-                    <ProductSmall
-                      key={announcement.idAnnouncement}
-                      id={announcement.idAnnouncement}
-                      photoProductSmall={PhotoProductLarger1}
-                      title={announcement.title}
-                      price={announcement.initPrice}
-                      promo={
-                        announcement.offert ? announcement.valueOffert : ' '
-                      }
-                    />
-                  );
+                  if (announcement.idOwner!== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ''
+                        }
+                      />
+                    );
+                  }
+                })}
+            </Items>
+            <Items>
+              {floral2 &&
+                floral2.map((announcement) => {
+                  if (announcement.idOwner !== idUser) {
+                    return (
+                      <ProductSmall
+                        key={announcement.idAnnouncement}
+                        id={announcement.idAnnouncement}
+                        photoProductSmall={PhotoProductLarger1}
+                        title={announcement.title}
+                        price={announcement.initPrice}
+                        promo={
+                          announcement.offert ? announcement.valueOffert : ''
+                        }
+                      />
+                    );
+                  }
                 })}
             </Items>
           </ContentSubCategory>

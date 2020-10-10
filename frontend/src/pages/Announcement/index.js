@@ -49,9 +49,9 @@ function Announcement() {
       const owner = await api.get(`/users/${data[0].idOwner}`);
       const photoOwner = await api.get(`/photosuser/${owner.data[0].idUser}`);
       const products = await api.get(
-        `/announcements/?idOwner=${data[0].idOwner}&limit=4`,
+        `/announcements/?idOwner=${owner.data[0].idUser}&limit=4`,
       );
-      setProductsOwner(products.data.promise);
+      setProductsOwner(products.data.promiseUser);
       setOwnerData({
         name: owner.data[0].name,
         fileUser: `http://localhost:3333/files/user/${photoOwner.data[0].filename}`,
@@ -63,7 +63,6 @@ function Announcement() {
     }
     getData(pathId);
   }, []);
-  console.log(announcement);
   return (
     <>
       <ContentBreadcrumbs>

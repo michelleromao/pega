@@ -7,30 +7,53 @@ const PhotoAnnouncements = require('../models/photo_announcement');
 class AnnouncementController {
   static async index(request, response) {
     try {
-      const { limit } = request.query;
-      const { idStyle } = request.query;
-      const { idStatus } = request.query;
-
-      if (limit) {
-        const lim = Number(limit);
-        const promise = await Announcement.find().limit(lim);
-        if (idStyle || idStatus) {
-          const criterion = {
-            $and: [{ idStyle }, { idStatus }],
-          };
-          const promiseFilter = await Announcement.find(criterion).limit(lim);
-          return response.json({ limite: lim, promiseFilter });
-        }
-
-        return response.json({ limite: lim, promise });
-      }
-
       const promise = await Announcement.find().exec();
       if (promise.length === 0) {
         return response
           .status(400)
           .json({ message: 'Ops, não há anúncios aqui' });
       }
+
+      const { limit } = request.query;
+      const { idStyle } = request.query;
+      const { idStatus } = request.query;
+      const { skip } = request.query;
+      const { idOwner } = request.query;
+
+      if (limit) {
+        const lim = Number(limit);
+        const promiseLimit = await Announcement.find().limit(lim);
+        if (idOwner) {
+          const promiseUser = await Announcement.find({ idOwner }).limit(lim);
+          return response.json({
+            promiseUser,
+          });
+        }
+        if (idStyle || idStatus) {
+          const criterion = {
+            $and: [{ idStyle }, { idStatus }],
+          };
+
+          if (skip) {
+            if (promise.length > lim + skip) {
+              const promiseFilterSkip = await Announcement.find(criterion)
+                .skip(skip)
+                .limit(lim);
+
+              return response.json({
+                limite: lim,
+                skip,
+                promiseFilterSkip,
+              });
+            }
+          }
+          const promiseFilter = await Announcement.find(criterion).limit(lim);
+          return response.json({ limite: lim, promiseFilter });
+        }
+
+        return response.json({ limite: lim, promiseLimit });
+      }
+
       return response.json(promise);
     } catch (err) {
       return err;
@@ -65,6 +88,8 @@ class AnnouncementController {
         tryOn,
         initPrice,
         idOwner,
+        nameOwner,
+        telOwner,
         idStyle,
         idCategory,
         deliveryType,
@@ -85,6 +110,8 @@ class AnnouncementController {
         tryOn,
         initPrice,
         idOwner,
+        nameOwner,
+        telOwner,
         idStyle,
         idCategory,
         deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
@@ -124,6 +151,8 @@ class AnnouncementController {
         tryOn,
         initPrice,
         idOwner,
+        telOwner,
+        nameOwner,
         idStyle,
         idCategory,
         deliveryType,
@@ -156,6 +185,8 @@ class AnnouncementController {
             offert: true,
             valueOffert: initPrice,
             idOwner,
+            nameOwner,
+            telOwner,
             idStyle,
             idCategory,
             deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
@@ -186,6 +217,8 @@ class AnnouncementController {
           offert: false,
           valueOffert: null,
           idOwner,
+          telOwner,
+          nameOwner,
           idStyle,
           idCategory,
           deliveryType: 'e005eb43-21ac-48ff-9944-b1f2510e6126',

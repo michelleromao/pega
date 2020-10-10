@@ -56,6 +56,8 @@ function ProductInformation(props) {
       tryOn: props.data[0].tryOn,
       initPrice: props.data[0].initPrice,
       idOwner: props.data[0].idOwner,
+      nameOwner: props.data[0].nameOwner,
+      telOwner: props.data[0].telOwner,
       idStyle: props.data[0].idStyle,
       idCategory: props.data[0].idCategory,
       deliveryType: props.data[0].deliveryType,
