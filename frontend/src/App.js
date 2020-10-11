@@ -13,23 +13,10 @@ import Signup from './pages/Signup/';
 import Error404 from './pages/Error404/';
 
 import Succeed from './pages/Succeed';
-
+import Order from './components/OrderBy/OrderBy';
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route path="/login" component={() => <Login />} />
-          <Route path="/signup" component={() => <Signup />} />
-          <Route exact path="/success" component={() => <Succeed />} />
-          <Fragment>
-            <Header userPhoto={Userphoto} />
-            <Routes />
-            <Footer />
-          </Fragment>
-        </Switch>
-      </Router>
-    </Provider>
+   <Order></Order>
   );
 }
 
