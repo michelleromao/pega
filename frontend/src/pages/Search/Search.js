@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from './SearchStyled';
+import { Container, Items, ContainerAnnouncements } from './SearchStyled';
 import Filter from '../../components/FilterDetails/Filter';
 import OrderBy from '../../components/OrderBy/OrderBy';
 import api from '../../services/api';
 import Anuncio from '../../components/ProductSmall/index';
 export default function Search() {
-    const [produtos, setProdutos] = useState([]);
+  const [produtos, setProdutos] = useState([]);
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await api.get('/announcements/');
@@ -18,27 +18,30 @@ export default function Search() {
             <Filter />
             <div className="vitrine">
                 <div className="orderby"><OrderBy /></div>
-                <div className="produtos">
+                <ContainerAnnouncements>
+
                 {
                     produtos.map(
                         produto => {
                             return (
-
+                            <Items>
                                 <Anuncio
-                                    key={produto.id}
-                                    id={produto.id}
+                                    key={produto.idAnnouncement}
+                                    id={produto.idAnnouncement}
                                     title={produto.title}
                                     price={produto.initPrice}
                                     promo={produto.offert ? produto.valueOffert : ''}
-                                />
+                                    size={"250px"}
 
-                               
+                                />
+                            </Items>
                             );
                         }
                     )
                 }
-                </div>
-                
+                </ContainerAnnouncements>
+
+
             </div>
         </Container>
     );
