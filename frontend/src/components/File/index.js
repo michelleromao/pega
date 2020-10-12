@@ -14,6 +14,7 @@ function ImageInput({ name, height, defaultImage, width, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [preview, setPreview] = useState(defaultValue);
+  const [defaultImageProps, setDefaultImageProps] = useState(defaultImage);
 
   const handlePreview = useCallback((e) => {
     if (e.target.files?.length !== 0) {
@@ -48,14 +49,13 @@ function ImageInput({ name, height, defaultImage, width, ...rest }) {
     });
   }, [fieldName, registerField]);
   return (
-    <Label image={preview && preview} height={height} width={width}>
-      {defaultImage ? (
-        <img src={defaultImage} alt="Imagem de perfil" />
-      ) : preview ? (
-        <></>
+    <Label image={preview ? preview : defaultImageProps} height={height} width={width}>
+     {preview ? (
+      <></>
       ) : (
         <img src={Add} alt="Preview" width="20" />
       )}
+
 
       <Input type="file" ref={inputRef} onChange={handlePreview} {...rest} />
     </Label>

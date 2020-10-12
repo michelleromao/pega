@@ -129,6 +129,7 @@ function Index() {
                     return (
                       <ProductSmall
                         key={announcement.idAnnouncement}
+
                         id={announcement.idAnnouncement}
                         title={announcement.title}
                         price={announcement.initPrice}

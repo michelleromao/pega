@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom';
 import Index from './pages/Index';
 import Announcement from './pages/Announcement';
 import CreateAnnouncement from './pages/CreateAnnouncement';
+import EditAnnouncement from './pages/EditAnnouncement';
+
 
 import TestPage from './pages/TestPage';
 import Sacola from './pages/Sacola/Sacola';
@@ -25,6 +27,8 @@ function Routes() {
       <Route path="/redirect" component={() => <Redirect />} />
 
       <Route path="/add/anuncio" component={() => <CreateAnnouncement />} />
+      <Route path="/editar/anuncio/:pathId/" component={() => <EditAnnouncement />} />
+
 
       {/* <Route path="*" component={() => <Error404 />} />*/}
     </>
