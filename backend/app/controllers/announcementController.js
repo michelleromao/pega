@@ -35,9 +35,9 @@ class AnnouncementController {
           };
 
           if (skip) {
-            if (promise.length > lim + skip) {
+            if (promise.length >= skip) {
               const promiseFilterSkip = await Announcement.find(criterion)
-                .skip(skip)
+                .skip(Number(skip))
                 .limit(lim);
 
               return response.json({

@@ -52,7 +52,7 @@ function Index() {
         '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
       );
       const confortavelAnnouncements = await api.get(
-        '/announcements/?idStyle=961f0303-71ac-4362-825b-5d29864aa89d&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
+        '/announcements/?idStyle=961f0303-71ac-4362-825b-5d29864aa89d&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=2',
       );
 
       const confortavelAnnouncements2 = await api.get(
@@ -70,7 +70,7 @@ function Index() {
       setConfortavel2(confortavelAnnouncements2.data.promiseFilterSkip);
 
       setFloral(floralAnnouncements.data.promiseFilter);
-      setFloral2(floralAnnouncements.data.promiseFilterSkip);
+      setFloral2(floralAnnouncements2.data.promiseFilterSkip);
 
       setUsers(sellers.data.promise);
     }
@@ -124,7 +124,7 @@ function Index() {
             <Items>
               {confortavel &&
 
-confortavel.map((announcement) => {
+              confortavel.map((announcement) => {
                   if (announcement.idOwner !== idUser) {
                     return (
                       <ProductSmall

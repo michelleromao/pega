@@ -61,7 +61,6 @@ export const ContentChoices = styled.div`
 `;
 export const Frete = styled.h5`
   margin-top: 2%;
-
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
@@ -87,21 +86,21 @@ export const ContentPrice = styled.div`
 export const Promo = styled.p`
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 14px;
   text-decoration-line: line-through;
   color: #424242;
+
 `;
 export const Price = styled.p`
   font-style: normal;
   font-weight: 500;
-  font-size: 25px;
-  line-height: 37px;
+  font-size: 20px;
   color: #569ccd;
+  margin-top: 5%;
+
 `;
 
 export const Method = styled.p`
-  width: 40%;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

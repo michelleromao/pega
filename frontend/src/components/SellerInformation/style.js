@@ -17,8 +17,11 @@ export const Content = styled.div`
   flex-flow: row;
   align-items: center;
   margin-top: 8%;
+
   img {
     width: 41.5%;
+  border-radius: 100px;
+
   }
   img:hover {
     opacity: 0.9;
