@@ -10,6 +10,7 @@ export const Content = styled.div`
     height: 130px;
     width:100%; 
     max-width:720px;
+    margin-bottom:20px;
 `
 
 export const Title = styled.div`

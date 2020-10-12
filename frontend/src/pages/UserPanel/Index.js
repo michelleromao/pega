@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import PanelMenu from '../../components/PanelMenu'
 import PanelContent from '../../components/PanelContent'
-import {PanelUser, Title, Content, Sidebar, Hove} from './style'
+import {PanelUser, Title, Content, Sidebar, Hove, Favs} from './style'
 import ProductPanel from '../../components/ProductPanel'
 import Foto from '../../assets/photos/userphoto.png'
 import { Link } from 'react-router-dom';
+import PersonalInformation from '../../components/Personal'
+import AnuncioPanel from '../../components/AnuncioPanel'
+import Filter from '../../components/FilterPanel'
+import Endereco from '../../components/EnderecoPanel'
+import Favorito from '../../components/FavoritoPanel'
 
 export default function Panel() {
     
-    const [infos, setInfos] = useState(false);
+    const [infos, setInfos] = useState(true);
     const [compras, setCompras] = useState(false);
     const [anuncios, setAnuncios] = useState(false);
     const [enderecos, setEnderecos] = useState(false);
@@ -41,45 +46,69 @@ export default function Panel() {
                 <button onClick={() => click(setAnuncios)}>Meus anúncios<Hove></Hove></button>
                 <button onClick={() => click(setEnderecos)}>Meus endereços<Hove></Hove></button>
                 <button onClick={() => click(setFavoritos)}>Meus favoritos<Hove></Hove></button>
-                <button onClick={() => click(setPagamentos)}>Pagamentos<Hove></Hove></button>
             </ul>
         </Sidebar>
             <Content>
                 {infos ? 
-                    <ProductPanel nome="Camisa Vasco Kappa 2020" valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho="M" estado="Nova" cor="Preto" notify="1" valor="50" vendedor="Michelle" data="15 Novembro"></ProductPanel>
+                    <>
+                    <Title>Informações pessoais</Title>
+                    <PersonalInformation></PersonalInformation>
+                    </>
                         
                  : <div></div> 
                 }
 
                 {compras ? 
-                    <h4>Compras</h4>
-                        
+                    <>
+                    <Title>Minhas compras</Title>
+                    <Filter></Filter>
+                    <ProductPanel nome="Camisa Vasco Kappa 2020" valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho="M" estado="Nova" cor="Preto" notify="1" valor="50" vendedor="Michelle" data="15 Novembro"></ProductPanel>
+                    <ProductPanel nome="Camisa Vasco Kappa 2020" valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho="M" estado="Nova" cor="Preto" notify="1" valor="50" vendedor="Michelle" data="15 Novembro"></ProductPanel>
+                    <ProductPanel nome="Camisa Vasco Kappa 2020" valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho="M" estado="Nova" cor="Preto" notify="1" valor="50" vendedor="Michelle" data="15 Novembro"></ProductPanel>
+
+                    </>
                  : <div></div> 
                 }
 
                 {anuncios ? 
-                    <h4>Anúncios</h4>
+                    <>
+                    <Title>Meus anúncios</Title>
+                    <Filter></Filter>
+                    <AnuncioPanel></AnuncioPanel>
+                    <AnuncioPanel></AnuncioPanel>
+                    <AnuncioPanel></AnuncioPanel>
+                    </>
+                    
                         
                  : <div></div> 
                 }
 
                 {enderecos ? 
-                    <h4>Endereços</h4>
+                    <>
+                    <Title>Meus endereços</Title>
+                    <Endereco></Endereco> 
+                    <Endereco></Endereco> 
+                    <Endereco></Endereco>                    
+                    </>
                         
                  : <div></div> 
                 }
 
                 {favoritos ? 
-                    <h4>Favoritos</h4>
+                    <>
+                    <Title>Meus favoritos</Title>
+                    <Filter></Filter>
+                    <Favs>
+                        <Favorito></Favorito>
+                        <Favorito></Favorito>
+                        <Favorito></Favorito>
+                    </Favs>
+                    
+                    </>
                         
                  : <div></div> 
                 }
 
-                {pagamentos ? 
-                    <h4>Pagamentos</h4>
-                        
-                 : <div></div> 
-                }
             </Content>          
         </PanelUser>            
         </>

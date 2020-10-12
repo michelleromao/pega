@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
+  max-width:720px;
   display: flex;
   flex-direction: column;
   align-self: center;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 `;
 
 export const Title = styled.h3`
@@ -80,13 +81,26 @@ export const SecondSection = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-flow: row;
-  margin-bottom: 3%;
+  justify-content: space-between;
+  width:762px;
+  margin-bottom: 2%;
+
+  input {
+    height:40px;
+    width:350px;
+  }
+
+  label {
+    margin-bottom:2%;
+  }
 `;
 
 export const Column = styled.div`
   display: flex;
   flex-flow: column;
   width: 100%;
+  max-width:762px;
+  margin-right:5%;
 `;
 
 export const Button = styled.button`
@@ -105,14 +119,20 @@ export const Button = styled.button`
 
 export const ContentButton = styled.div`
   display: flex;
-  align-self: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 0% 3% 2% 0;
+  width:762px;
   Button:first-child {
     color: #ea5254;
   }
 `;
 
 export const Delete = styled.p`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:60%;
   align-self: initial;
   margin: 5% 0% 0 52%;
   a {

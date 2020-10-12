@@ -19,11 +19,20 @@ export const PanelUser = styled.div`
         padding:10px;
     }
 `
+export const Favs = styled.div`
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin-top:40px;
+`
 
 export const Title = styled.h4`
     color: #4E4E4E;
-    font-size:26px;
+    font-size:22px;
     font-family:'Poppins';
+    font-weight:500;
+    margin-bottom:30px;
 `
 
 export const Content = styled.div`
