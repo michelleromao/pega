@@ -58,14 +58,14 @@ function EditAnnouncement() {
 
 
 
-/*
+
   if (!idUser) {
     history.push('/login');
   }
   if(idUser && (idUser !== announcement.idUser)){
     history.push('/');
   }
-*/
+
   useEffect(() =>{
     const loadAnnouncement = async() =>{
       const {data} = await api.get(`/announcements/${pathId}`);
