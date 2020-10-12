@@ -1,20 +1,22 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 
 import api from '../../services/api';
 import Item from '../../components/Sacola/Item';
 import Arrow from '../../assets/icons/arrow.svg';
 import GroupItem from '../../components/Sacola/GroupItem';
 
-import { Container, Breadcrumb, Stage, Column } from './style';
+import { Container, Breadcrumb, Stage, Column
+} from './style';
 import Cupom from '../../components/Cupom/Cupom';
 import Resume from '../../components/Sacola/Resume';
 
 function Sacola() {
+
   const [color, setColor] = useState('#000');
   const [color2, setColor2] = useState('#878787');
 
   const [stage, setStage] = useState(1);
+
 
   return (
     <>

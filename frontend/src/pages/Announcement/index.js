@@ -52,8 +52,10 @@ function Announcement() {
         `/announcements/?idOwner=${owner.data[0].idUser}&limit=4`,
       );
       setProductsOwner(products.data.promiseUser);
+      console.log(owner);
       setOwnerData({
         name: owner.data[0].name,
+        rate: owner.data[0].rating,
         fileUser: `http://localhost:3333/files/user/${photoOwner.data[0].filename}`,
       });
       setStyle(nameStyle.data[0].name);
@@ -94,7 +96,7 @@ function Announcement() {
         <SellerInformation
           photo={ownerData && ownerData.fileUser}
           nameSeller={ownerData && ownerData.name}
-          contFav="4"
+          contFav={ownerData && `${ownerData.rate}`}
           contComents="0"
         />
       </ContentSecond>

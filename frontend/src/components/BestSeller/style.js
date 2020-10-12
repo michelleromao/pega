@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-flow: column;
   align-content: center;
   cursor: pointer;
+  img{
+  border-radius: 100px;
+
+  }
   p {
     font-family: Poppins;
     font-style: normal;

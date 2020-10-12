@@ -7,7 +7,7 @@ function BestSeller(props) {
   useEffect(() => {
     async function loadPhoto() {
       const photo = await api.get(`/photosuser/${props.id}`);
-      setPhotoUser(photo.data[0].originalname);
+      setPhotoUser(photo.data[0].filename);
     }
     loadPhoto();
   }, []);

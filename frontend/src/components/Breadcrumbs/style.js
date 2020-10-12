@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 12%;
+  width: 30%;
   display: flex;
   flex-flow: row;
   margin: 2% 0 1% 0;

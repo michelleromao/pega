@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Link, useHistory } from 'react-router-dom';
-import InputMask from 'react-input-mask';
 import { Form as Unform } from '@unform/web';
 import {
   Container,
@@ -32,9 +31,9 @@ import Confirm from '../../assets/icons/success.svg';
 function CreateAnnouncement() {
   const history = useHistory();
   const dispatch = useDispatch();
+
   const idUser = useSelector((user) => user.user.idUser);
   const name = useSelector((user) => user.user.name);
-
   const username = useSelector((user) => user.user.username);
   const email = useSelector((user) => user.user.email);
   const senha = useSelector((user) => user.user.senha);
@@ -253,32 +252,17 @@ function CreateAnnouncement() {
     const getCategory = async () => {
       const { data } = await api.get('/categories');
 
-      let categories = data.map((category) => {
-        return {
-          label: category.name,
-         value: category.idCategory
-        };
+      const category = data.map((d) => {
+        return { label: d.name, value: d.idCategory };
       });
-      categories = categories.sort((a, b) => {
-        return a.label > b.label ? 1 : b.label > a.label ? -1 : 0;
-      });
-
-      setCategories(categories);
+      setCategories(category);
     };
     const getStyle = async () => {
       const { data } = await api.get('/styles/');
-      let styles = data.map((style) => {
-        return {
-          label: style.name,
-         value: style.idCategory
-        };
+      const style = data.map((d) => {
+        return { label: d.name, value: d.idStyle };
       });
-      styles = styles.sort((a, b) => {
-        return a.label > b.label ? 1 : b.label > a.label ? -1 : 0;
-      });
-
-
-      setStyles(styles);
+      setStyles(style);
     };
     const getPaymentType = async () => {
       const { data } = await api.get('/payments/');

@@ -7,9 +7,12 @@ export const Container = styled.div`
   border-radius: 10px;
   cursor: pointer;
   font-family: 'Poppins';
+  margin-right: 10%;
+
   img {
     max-width: 100%;
-    margin-right: 5%;
+    height: 200px;
+    border-radius: 5px;
   }
   h3 {
     font-style: normal;
