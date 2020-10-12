@@ -1,3 +1,4 @@
+
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -13,10 +14,23 @@ import Signup from './pages/Signup/';
 import Error404 from './pages/Error404/';
 
 import Succeed from './pages/Succeed';
-import Order from './components/OrderBy/OrderBy';
+
 function App() {
   return (
-   <Order></Order>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/login" component={() => <Login />} />
+          <Route path="/signup" component={() => <Signup />} />
+          <Route exact path="/success" component={() => <Succeed />} />
+          <Fragment>
+            <Header userPhoto={Userphoto} />
+            <Routes />
+            <Footer />
+          </Fragment>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
