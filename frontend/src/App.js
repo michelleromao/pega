@@ -1,8 +1,9 @@
+
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import Filter from './components/FilterDetails/Filter';
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer';
 import Routes from './Routes';
@@ -16,11 +17,20 @@ import Succeed from './pages/Succeed';
 
 function App() {
   return (
-    <>
-      <Filter>
-
-      </Filter>
-    </>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/login" component={() => <Login />} />
+          <Route path="/signup" component={() => <Signup />} />
+          <Route exact path="/success" component={() => <Succeed />} />
+          <Fragment>
+            <Header userPhoto={Userphoto} />
+            <Routes />
+            <Footer />
+          </Fragment>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
