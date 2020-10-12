@@ -19,7 +19,7 @@ export default function Filter() {
         }
         getStyles();
     },[styles]);
-    
+
     function mostrar(aba){
         let estado = document.querySelector(`.${aba}`);
         (estado.style.display ==='' |estado.style.display ==='none' ) ? estado.style = 'display:flex!important' : estado.style = 'display:none!important';
@@ -28,27 +28,27 @@ export default function Filter() {
         <Container>
             <div className="titulo">Filtre Sua busca</div>
             <ul className="listaFiltro">
-                <li> 
+                <li>
                     <div className='tituloFiltro' onClick={()=>mostrar('categoria')}>Categoria <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L4 4L7 1" stroke="#BE5599" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     </div>
                     <div className="checkboxList categoria">
-                       
+
                         {
-                           categorias.map( 
+                           categorias.map(
                             category => {return (
-                                
+
                                 <label key={category.idCategory}>
                                     <input type="checkbox" />
                                     <span className="check"><div className="selectedCheckbox"></div></span>
                                     <div className="labelCheck">{category.name}</div>
                                 </label>);
                             }
-                           ) 
+                           )
                         }
-                        
-                        
+
+
                     </div>
                 </li>
 
@@ -59,21 +59,21 @@ export default function Filter() {
                     </div>
                     <div className="checkboxList estilo">
                     {
-                           categorias.map( 
+                           styles.map(
                             style => { return(
                                 <label key={style.idStyle}>
                                     <input type="checkbox" />
                                     <span className="check"><div className="selectedCheckbox"></div></span>
-                                    <div className="labelCheck">{styles.name}</div>
+                                    <div className="labelCheck">{style.name}</div>
                                 </label>);
                             }
-                           ) 
+                           )
                         }
 
-                       
-                       
+
+
                     </div>
-                    
+
                 </li>
 
                 <li >
@@ -86,37 +86,37 @@ export default function Filter() {
                         <div><p>R$</p><input placeholder="00,00"/></div> até <div><p>R$</p><input placeholder="00,00"/></div>
                     </div>
                     <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Até<p>R$</p>10,00</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck"><p>R$</p>10,00 - <p>R$</p> 20,00</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck"><p>R$</p>20,00 - <p>R$</p> 30,00</div>
                         </label>
                         <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck"><p>R$</p>30,00 - <p>R$</p> 40,00</div>
                         </label>
                         <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck"><p>R$</p>50,00 - <p>R$</p> 60,00</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Acima de <p>R$</p>50,00</div>
@@ -154,13 +154,13 @@ export default function Filter() {
                     </div>
                     <div className="checkboxList condicao">
                     <label>
-                          
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Novo</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Usado</div>
@@ -206,10 +206,10 @@ export default function Filter() {
                         </div>
                         <div className="tamanhoNumeros">
                             <input value="38"/>
-                            <div className="barra"> 
+                            <div className="barra">
                                     <div className="barra2">
                                         <div className="bola"></div>
-                                        <div className="bola"></div> 
+                                        <div className="bola"></div>
                                     </div>
                             </div>
                             <input value="42"/>
@@ -229,75 +229,75 @@ export default function Filter() {
                             <div className="CorBola amarelo"> </div>
                         </label>
                         <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Azul</div>
                             <div className="CorBola azul"> </div>
                         </label>
                         <label>
-                        
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Branco</div>
                             <div className="CorBola branco"> </div>
                         </label>
                         <label>
-                          
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Cinza</div>
                             <div className="CorBola cinza"> </div>
                         </label>
                         <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">laranja</div>
                             <div className="CorBola laranja"> </div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Preto</div>
                             <div className="CorBola preto"> </div>
                         </label>
                         <label>
-                          
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Rosa</div>
                             <div className="CorBola rosa"> </div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Roxo</div>
                             <div className="CorBola roxo"> </div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Verde</div>
                             <div className="CorBola verde"> </div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Vermelho</div>
                             <div className="CorBola vermelho"> </div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Outro</div>
                         </label>
-                       
+
                     </div>
                 </li>
                 <li >
@@ -332,78 +332,78 @@ export default function Filter() {
                             <div className="labelCheck">Banabuiú</div>
                         </label>
                         <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Choró</div>
                         </label>
                         <label>
-                        
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Dep Irapuan Pinheiro</div>
                         </label>
                         <label>
-                          
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Ibaretama</div>
                         </label>
                         <label>
-                           
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Ibicuitinga</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Milhã</div>
                         </label>
                         <label>
-                          
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Mombaça</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Pedra Branca</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Piquet Carneiro</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Quixadá</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Quixeramobim</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Senador Pompeu</div>
                         </label>
                         <label>
-                            
+
                             <input type="checkbox" />
                             <span className="check"><div className="selectedCheckbox"></div></span>
                             <div className="labelCheck">Solonópole</div>
                         </label>
-                       
+
                     </div>
                 </li>
             </ul>

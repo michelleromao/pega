@@ -130,7 +130,6 @@ function Index() {
                       <ProductSmall
                         key={announcement.idAnnouncement}
                         id={announcement.idAnnouncement}
-                        photoProductSmall={PhotoProductLarger1}
                         title={announcement.title}
                         price={announcement.initPrice}
                         promo={
