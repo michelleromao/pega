@@ -53,6 +53,14 @@ class AnnouncementController {
 
         return response.json({ limite: lim, promiseLimit });
       }
+      if (!limit) {
+        if (idOwner) {
+          const promiseUser = await Announcement.find({ idOwner }).exec();
+          return response.json({
+            promiseUser,
+          });
+        }
+      }
 
       return response.json(promise);
     } catch (err) {
