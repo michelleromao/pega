@@ -12,6 +12,7 @@ export const Content = styled.div`
         border: solid 1px #569CCD; 
         border-radius: 6px;
         padding: 20px;
+        margin-bottom:20px;
     }
 ` 
 

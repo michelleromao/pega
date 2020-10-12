@@ -84,13 +84,10 @@ function Personal() {
   return (
     <>
       <Container>
-        <Title>Informações pessoais</Title>
-
         <Unform
           onSubmit={handleSubmit}
           style={{
-            marginTop: '3%',
-            width: '65%',
+            width: '100%',
             display: 'flex',
             flexFlow: 'column',
           }}
@@ -122,7 +119,6 @@ function Personal() {
                 color="#569CCD"
                 placeholder="Seu nome de usuário"
                 required={true}
-                size={21}
                 onChange={(e) => setData(true)}
                 input="input"
               />
@@ -190,7 +186,7 @@ function Personal() {
                 color="#569CCD"
                 placeholder="Seu melhor e-mail"
                 required={true}
-                size={21}
+                size={30}
                 onChange={(e) => setData(true)}
                 input="input"
               />
@@ -250,8 +246,12 @@ function Personal() {
 
           {data ? (
             <ContentButton>
-              <Button type="reset">Cancelar</Button>
-              <Button type="submit">Salvar alterações</Button>
+              <div></div>
+              <div>
+                <Button type="reset">Cancelar</Button>
+                <Button type="submit">Salvar alterações</Button>
+              </div>
+              
             </ContentButton>
           ) : (
             <></>
@@ -259,6 +259,7 @@ function Personal() {
         </Unform>
         <InterestCategories categories={user.categories}></InterestCategories>
         <Delete>
+          <div></div>
           <Link>Excluir conta</Link>
         </Delete>
       </Container>
