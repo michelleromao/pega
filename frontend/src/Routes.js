@@ -13,11 +13,14 @@ import Details from './pages/Sacola/Details';
 import Error404 from './pages/Error404/';
 import PainelUser from './pages/UserPanel/Index';
 import Redirect from './pages/Redirect';
+import Profile from './pages/Profile';
 
 function Routes() {
   return (
     <>
       <Route exact path="/" component={() => <Index />} />
+      <Route path="/profile/:pathId/" component={() => <Profile />} />
+
       <Route path="/anuncio/:pathId/" component={() => <Announcement />} />
       <Route path="/test" component={() => <TestPage />} />
       <Route path="/sacola" component={() => <Sacola />} />

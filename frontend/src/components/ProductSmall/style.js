@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
+  width: ${(props) => props.width};
+  opacity: ${(props) => props.notLink ? 0.5 : 1};
   display: flex;
   flex-flow: column wrap;
   border-radius: 10px;
   cursor: pointer;
   font-family: 'Poppins';
   margin-right: 10%;
-
   img {
     max-width: 100%;
-    height: 200px;
     border-radius: 5px;
   }
   h3 {
@@ -23,16 +22,17 @@ export const Container = styled.div`
     margin: 3% 0 5% 0;
   }
   :hover {
-    opacity: 0.9;
     transition: 0.3s;
+    opacity: ${(props) => props.notLink ? 0.5 : 0.9};
+
   }
 `;
 
 export const ContentSale = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
   justify-content: space-between;
-  width: 42%;
+  width: 70%;
 `;
 export const Promo = styled.p`
   font-style: normal;
