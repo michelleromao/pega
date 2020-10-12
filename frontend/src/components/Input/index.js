@@ -16,6 +16,7 @@ function Input({
   name,
   required,
   maxLength,
+
   input,
   ...rest
 }) {

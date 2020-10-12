@@ -12,8 +12,6 @@ import TipsFrete from '../../components/TipsFrete/TipsFrete';
 import Resume from '../../components/Sacola/Resume';
 
 function Details() {
-  const { pathId } = useParams();
-  const bagAnnouncements = useSelector((bag) => bag.bag.announcements);
   const [color, setColor] = useState('#000');
   const [color2, setColor2] = useState('#878787');
 

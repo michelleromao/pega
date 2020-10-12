@@ -64,7 +64,6 @@ class PhotoAnnouncement {
       const originalNames = photos.map(img => {
         return img.originalname;
       });
-      console.log(originalNames);
       const fileNames = photos.map(img => {
         return img.filename;
       });
@@ -81,9 +80,9 @@ class PhotoAnnouncement {
         { idAnnouncement: id },
         {
           idImage,
-          filename: fileNames,
-          originalname: originalNames,
-          idUser: id,
+          filename: originalNames,
+          originalname: fileNames,
+          idAnnouncement: id,
         },
       );
       if (updatePromise.ok === 1) {
