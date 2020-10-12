@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Link, useHistory } from 'react-router-dom';
 import { userLogout } from '../../store/modules/user/action.js';
@@ -7,6 +7,7 @@ import { MenuStyled } from './menuStyled.js';
 
 export default function Menu({ tela }) {
   const history = useHistory();
+  const idUser =  useSelector((user) => user.user.idUser);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -29,7 +30,7 @@ export default function Menu({ tela }) {
           <Link>Minhas Compras</Link>
         </li>
         <li>
-          <Link>Meu Perfil</Link>
+          <Link to={`/profile/${idUser}`}>Meu Perfil</Link>
         </li>
         <li onClick={() => handleLogout()}>Sair</li>
       </ul>
