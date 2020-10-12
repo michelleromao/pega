@@ -6,12 +6,12 @@ export default function OrderBy(){
     function abrirMenu() {
         if (order === 'none') {
           setOrder('block');
-          document.querySelector('svg').style =
+          document.querySelector('.ordenar svg').style =
             'transform: rotateX(180deg);';
         }
         if (order === 'block') {
           setOrder('none');
-          document.querySelector('svg').style =
+          document.querySelector('.ordenar svg').style =
             'transform: rotateX(360deg);';
         }
       }
