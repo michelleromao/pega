@@ -1,9 +1,9 @@
 import React from 'react';
-import Personal from '../../components/Personal';
+import FilterDetails from '../../components/FilterDetails/Filter';
 function TestPage() {
   return (
     <>
-      <Personal />
+      <FilterDetails/>
     </>
   );
 }

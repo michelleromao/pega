@@ -1,11 +1,21 @@
 import React from 'react';
 import './style.css';
 import { FiInstagram } from 'react-icons/fi';
-function Footer(props) {
+import {
+  Container,
+  FooterRow,
+  FooterColumn,
+  ColumnContent,
+  Line,
+  Credits
+
+} from './style';
+
+function Footer() {
   return (
-    <footer>
-      <div className="footerRow">
-        <div className="footerColumn">
+    <Container>
+      <FooterRow >
+        <FooterColumn >
           <h2>Sobre o Pega!</h2>
           <ul>
             <li>Quem somos</li>
@@ -13,8 +23,8 @@ function Footer(props) {
             <li>Slow Fashion</li>
             <li>Valores</li>
           </ul>
-        </div>
-        <div className="footerColumn">
+        </FooterColumn>
+        <FooterColumn >
           <h2>Relacionamento</h2>
           <ul>
             <li>Contato</li>
@@ -22,8 +32,8 @@ function Footer(props) {
             <li>Privacidade</li>
             <li>Segurança</li>
           </ul>
-        </div>
-        <div className="footerColumn">
+        </FooterColumn>
+        <FooterColumn >
           <h2>Faq</h2>
           <ul>
             <li>Como vender?</li>
@@ -31,18 +41,18 @@ function Footer(props) {
             <li>Posso experimentar?</li>
             <li>Posso devolver?</li>
           </ul>
-        </div>
+        </FooterColumn>
 
-        <div className="footerColumn">
+        <FooterColumn >
           <h2>Dicas do Pega!</h2>
           <ul>
             <li>Foto ideal</li>
             <li>Tendências</li>
             <li>Conquistado o cliente</li>
           </ul>
-        </div>
-        <div className="footerColumn">
-          <div className="columnContent">
+        </FooterColumn>
+        <FooterColumn >
+          <ColumnContent>
             <h2>Formas de pagamento</h2>
             <ul>
               <li>Cartão de credito, boleto ou picpay</li>
@@ -51,19 +61,23 @@ function Footer(props) {
             <ul>
               <li>
                 <a href="https://www.instagram.com/pegaoficial/">
-                  <FiInstagram className="instagram" />
+                  <FiInstagram style={{
+                      color: '#83bde6',
+                      width: '25px',
+                      height: '25px',
+                  }} />
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-      <div className="line"></div>
-      <div className="credits">
+          </ColumnContent>
+        </FooterColumn>
+      </FooterRow>
+      <Line/>
+      <Credits>
         <p>Copyright © 2020 - Pega!</p>
         <p>Desenvolvido por Exclamados!</p>
-      </div>
-    </footer>
+      </Credits>
+    </Container>
   );
 }
 export default Footer;
