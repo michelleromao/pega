@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import BannerSlide from '../../components/BannerSlide';
 import ButtomCategory from '../../components/ButtomCategory/';
 import ProductLarger from '../../components/ProductLarger/';
@@ -84,11 +84,12 @@ function Index() {
         title="Para você bombar na quarentena"
       />
       <ButtomContent>
-        <ButtomCategory icon="shirt" nameCategory="Camisas" />
-        <ButtomCategory icon="bag" nameCategory="Acessórios" />
-        <ButtomCategory icon="offer" nameCategory="Ofertas" />
-        <ButtomCategory icon="fav" nameCategory="Apreciados" />
-        <ButtomCategory icon="heart" nameCategory="Queridinhos" />
+
+      <Link to="/search"><ButtomCategory icon="shirt" nameCategory="Camisas" /></Link>
+        <Link to="/search"><ButtomCategory icon="bag" nameCategory="Acessórios" /></Link>
+        <Link to="/search"> <ButtomCategory icon="offer" nameCategory="Ofertas" /></Link>
+        <Link to="/search"> <ButtomCategory icon="fav" nameCategory="Apreciados" /></Link>
+        <Link to="/search"><ButtomCategory icon="heart" nameCategory="Queridinhos" /></Link>
       </ButtomContent>
       {casual ? (
         <ContentMain>

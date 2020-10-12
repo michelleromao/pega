@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Button = styled.div`
-  width: 18.5%;
-  height: 69px;
+  width: 200px;
+  height: 75px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;

@@ -67,7 +67,8 @@ export default function Header(props) {
             type="search"
             placeholder="Encontre seu produto aqui! =D"
           ></input>
-          <Pesquisa />
+          <Link to="/search"><Pesquisa /></Link>
+          
         </Search>
         {user ? (
           <Link to="/add/anuncio">
