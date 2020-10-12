@@ -7,17 +7,18 @@ import Anuncio from '../../components/ProductSmall/index';
 export default function Search() {
     const [produtos, setProdutos] = useState([]);
     useEffect(() => {
-        const getCategory = async () => {
+        const getProduct = async () => {
             const { data } = await api.get('/announcements/');
             setProdutos(data);
         }
-        getCategory();
+        getProduct();
     }, [produtos]);
     return (
         <Container>
             <Filter />
-            <div className="orderby">
-                <OrderBy />
+            <div className="vitrine">
+                <div className="orderby"><OrderBy /></div>
+                <div className="produtos">
                 {
                     produtos.map(
                         produto => {
@@ -36,6 +37,8 @@ export default function Search() {
                         }
                     )
                 }
+                </div>
+                
             </div>
         </Container>
     );
