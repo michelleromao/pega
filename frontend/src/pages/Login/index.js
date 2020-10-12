@@ -89,7 +89,7 @@ function Login() {
         </Unform>
 
         <Help>
-          Esqueceu os dados de login? <Link>A gente te ajuda</Link>
+          Esqueceu os dados de login? <Link to="/recovery">A gente te ajuda</Link>
         </Help>
         <Signin>
           Ainda não tem cadastro? <Link to="/signup">Corre aqui!</Link>
