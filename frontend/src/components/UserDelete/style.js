@@ -5,11 +5,13 @@ export const Exclusao = styled.div`
         flex-direction: column; 
         justify-content: space-between;
         width: 100%;
-        max-width:550px;        
+        max-width:700px;        
         height: 250px;
         border: solid 2px #EA5254;
         border-radius: 12px;
         padding:25px;
+        margin-right:20px;
+        margin-bottom:50px;
     }
 `
 
@@ -90,6 +92,7 @@ export const CTAExclusao = styled.div`
         color: #fff;
         font-family:'Poppins';
         font-weight:500;
+        margin-bottom:10px;
     }
 `
 

@@ -39,6 +39,10 @@ export const Categorias = styled.div`
     flex-wrap:wrap;
     width:100%;
     max-width:750px;
+
+    div {
+        margin:10px;
+    }
 `
 
 export const Categoria = styled.button`

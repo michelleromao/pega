@@ -1,5 +1,7 @@
 import React from 'react'
-import {WDelete, Title} from './style'
+import { Link } from 'react-router-dom'
+
+import {WDelete, Title, CTA} from './style'
 
 export default function WhyDelete () {
     return (
@@ -28,7 +30,11 @@ export default function WhyDelete () {
                         Outro
                     </label> 
                     <textarea placeholder="Conte pra gente"></textarea>
-                    <button>Enviar</button>                 
+                    <CTA>
+                        <Link>Cancelar</Link>
+                        <button>Enviar</button>      
+                    </CTA>
+                               
                 </form>
             </WDelete>
         </>

@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Content, Title, Actions, BoxCategorias, Categoria, Categorias, Botoes} from './style'
 import Camiseta from '../../assets/icons/Camisa'
-
+import Category from '../../components/ButtomCategory'
 
 export default function CategoriaSelect (props) {
     return (
@@ -14,82 +14,12 @@ export default function CategoriaSelect (props) {
                 </Title>
                 <BoxCategorias>
                     <Categorias>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Punk</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Geek</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Floral</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Gótica</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Tropical</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Casual</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Vintage</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Gótica</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Tropical</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Casual</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Vintage</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Gótica</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Tropical</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Casual</h4>
-                        </Categoria>
-
-                        <Categoria>
-                            <Camiseta></Camiseta>
-                            <h4>Vintage</h4>
-                        </Categoria>
-
+                        <Category icon="heart" nameCategory="Loved"></Category>
+                        <Category icon="heart" nameCategory="Loved"></Category>
+                        <Category icon="heart" nameCategory="Loved"></Category>
+                        <Category icon="heart" nameCategory="Loved"></Category>
+                        <Category icon="heart" nameCategory="Loved"></Category>
+                        <Category icon="heart" nameCategory="Loved"></Category>
                     </Categorias>
                 </BoxCategorias>
                 
