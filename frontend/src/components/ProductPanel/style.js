@@ -14,7 +14,8 @@ export const Content = styled.div`
         font-family:'Poppins';
     }
 `
-
+export const Endereco = styled.div`
+`
 export const H4 = styled.h4`
     font-size: 16px;
     color: #202020;
@@ -82,6 +83,13 @@ export const Acompanhamento = styled.div`
 
 `
 
+export const Centro = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-top:25px;
+`
+
 export const Rastreamento = styled.div`
     font-size:16px;
     h6 {
@@ -96,12 +104,22 @@ export const Rastreamento = styled.div`
     }
 `
 
+export const RastreamentoInput = styled.input`
+        font-size:16px;
+        background:transparent;
+        padding: 0 30px 0 30px;
+        border: solid 2px #569CCD;
+        border-radius:6px;
+        margin-top:20px;
+        color: #569CCD;
+`
+
 export const MaisDinheiro = styled.div`
     margin-top:20px;
     margin-bottom:20px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: Column;
+    
     font-size:16px;
     h6 {
         font-weight:600;
@@ -288,6 +306,10 @@ export const Details = styled.div`
         font-family: 'Poppins';
         font-weight: 600;
         color: #569CCD;
+    }
+
+    h6 {
+        margin-bottom:15px;
     }
 
 

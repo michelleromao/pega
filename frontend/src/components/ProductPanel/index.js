@@ -7,11 +7,14 @@ import {
     MaisDinheiro,
     Rastreamento,
     Acompanhamento,
+    RastreamentoInput,
     Status,
     OutrosDetalhes,
     DetalhesVenda,
+    Endereco,
     H4,
     DetalhesItem,
+    Centro,
     Infos,
     Product,
     ProductItem,
@@ -29,6 +32,8 @@ import Stars from '../../assets/icons/stars.svg'
 
 export default function MinhasCompras (props) {
     const [details, setDetails] = useState(true);
+    const [venda, setVenda] = useState((props.tipo === "venda"))
+
     return(
         <>
             <Content>
@@ -45,7 +50,15 @@ export default function MinhasCompras (props) {
                     </ProductItem>
                     <span>R${props.valor}</span>
                     <User>
-                        <span>Vendido por</span><Name><span>{props.vendedor}</span></Name>
+                        {venda ? 
+                        <>
+                            <span>Comprado por</span><Name><span>{props.comprador}</span></Name>
+                        </>
+                         :
+                        <>
+                            <span>Vendido por</span><Name><span>{props.vendedor}</span></Name>
+                        </>
+                        }
                     </User>
                     
                     <Avaliacao>
@@ -79,7 +92,17 @@ export default function MinhasCompras (props) {
                         </DetalhesItem>
                         <ValorDetalhes><h3>R${props.valor}</h3><span>no {props.tipoPagamento}</span></ValorDetalhes>
                         <User>
-                            <span>Vendido por </span><Name><span>{props.vendedor}</span></Name>
+                            { venda ? 
+                            <>
+                            <span>Comprado por </span><Name><span>{props.comprador}</span></Name>
+                            </>
+                             :
+                             <>
+                                <span>Vendido por </span><Name><span>{props.vendedor}</span></Name>
+                             </>
+                                
+                            }
+                            
                         </User>                        
                     </Infos>
                     </DetalhesVenda>
@@ -114,21 +137,55 @@ export default function MinhasCompras (props) {
                     </Status>                                        
                     
                 </Acompanhamento>
-                <MaisDinheiro>
+                <Centro>
+                { venda ? 
+                    <>
+                        <Endereco>
+                            <h4>Endereço de entrega</h4>
+                            <h6>{props.cidade}</h6>
+                            <h6>{props.cep}</h6>
+                        </Endereco>
+                        <div></div>
+                    </>
+                    :
+                    <>
                     <div>
                         <h6>Você adicionou</h6>
                         <span>R${props.valorAdicionado}</span>
                     </div>                    
                     <div id="right">
-                        <Link>+ Adicionar dinheiro</Link>
-                        <Link>Avaliar pedido</Link>
+                        <MaisDinheiro>
+                            <Link>+ Adicionar dinheiro</Link>
+                            <Link>Avaliar pedido</Link>
+                        </MaisDinheiro>
                     </div>
-                </MaisDinheiro>
-                <Details>
-                    <Rastreamento>
-                    <h6>Código de rastreamento</h6>
-                    <span>{props.rastreamento}</span>
-                    </Rastreamento>
+                    </>
+                    }
+                </Centro>
+                    
+                
+                <Details>         
+                    <div>
+                    
+                    { venda ? 
+                    <>
+                    <h5>Código de rastreamento</h5>
+                    <RastreamentoInput placeholder="Digite o código" />
+                    </>
+
+            
+                     :
+                     <>
+                     <h6>Código de rastreamento</h6>
+                     <Rastreamento>
+                         <span>{props.rastreamento}</span>
+                     </Rastreamento>
+                     </>
+                                          
+                    }
+                    </div>              
+                    
+                                        
                     <BotaoDetails>
                         <Link onClick={() => setDetails(!details)}>
                             <span>Minimizar</span>
