@@ -15,7 +15,7 @@ import PainelUser from './pages/UserPanel/Index';
 import Redirect from './pages/Redirect';
 import Profile from './pages/Profile';
 import Search from './pages/Search/Search';
-
+import ExcluirConta from './pages/ExcluirConta'
 
 function Routes() {
   return (
@@ -31,6 +31,7 @@ function Routes() {
       <Route path="/painel" component={() => <PainelUser />} />
       <Route path="/redirect" component={() => <Redirect />} />
       <Route path="/search" component={()=> <Search/>}/>
+      <Route path="/excluir-conta" component={()=> <ExcluirConta/>}/>
       <Route path="/add/anuncio" component={() => <CreateAnnouncement />} />
       <Route path="/editar/anuncio/:pathId/" component={() => <EditAnnouncement />} />
 
