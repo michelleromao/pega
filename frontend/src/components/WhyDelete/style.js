@@ -5,7 +5,7 @@ export const WDelete = styled.div`
         flex-direction: column; 
         justify-content: flex-start;
         width: 100%;
-        max-width:630px;        
+        max-width:700px;       
         height: 390px;
         border: solid 2px #EA5254;
         border-radius: 12px;

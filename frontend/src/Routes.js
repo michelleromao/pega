@@ -16,7 +16,7 @@ import Redirect from './pages/Redirect';
 import Profile from './pages/Profile';
 import Search from './pages/Search/Search';
 import ExcluirConta from './pages/ExcluirConta'
-
+import ContaExcluida from './pages/ContaRemovida'
 function Routes() {
   return (
     <>
@@ -33,6 +33,7 @@ function Routes() {
       <Route path="/search" component={()=> <Search/>}/>
       <Route path="/excluir-conta" component={()=> <ExcluirConta/>}/>
       <Route path="/add/anuncio" component={() => <CreateAnnouncement />} />
+      <Route path="/contaremovida" component={() => <ContaExcluida />} />
       <Route path="/editar/anuncio/:pathId/" component={() => <EditAnnouncement />} />
 
 
