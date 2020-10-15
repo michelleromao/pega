@@ -5,7 +5,7 @@ import { Form as Unform } from '@unform/web';
 import ActionButton from '../../components/ActionButton';
 import Input from '../../components/Input';
 
-import Test from '../../assets/photos/test.jpg';
+import Sun from '../../assets/illustrations/sun.png';
 
 import {
   LogoContent,
@@ -45,7 +45,7 @@ function Signup() {
       </LogoContent>
       <Row>
         <Illustration>
-          <img src={Test} alt="" />
+          <img src={Sun} alt="" />
         </Illustration>
         <Container>
           <Title>Crie sua conta</Title>
@@ -85,17 +85,18 @@ function Signup() {
                   marginBottom="8%"
                   input="input"
                 />
-                <Input
-                  fSize="18px"
-                  labelText="Senha"
-                  name="senha"
-                  type="password"
-                  color="#BE5599"
-                  placeholder="******** (ninguém tá olhando viu)"
-                  size="90%"
-                  required={true}
-                  marginBottom="8%"
-                  input="input"
+                    <Input
+                    fSize="18px"
+                    labelText="Senha"
+                    name="senha"
+                    type="password"
+                    password={true}
+                    color="#BE5599"
+                    placeholder="********"
+                    size="94%"
+                    required={true}
+                    marginBottom="8%"
+                    input="input"
                 />
                 <Input
                   fSize="18px"

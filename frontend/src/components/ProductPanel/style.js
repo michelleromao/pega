@@ -20,16 +20,16 @@ export const H4 = styled.h4`
     font-size: 16px;
     color: #202020;
     font-weight: 600;
-` 
+`
 export const Detalhes = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    img {        
+    img {
         width:100px;
         height:140px;
-        object-fit:cover;  
-        border-radius:20%;      
+        object-fit:cover;
+        border-radius:20%;
         margin-right:10px;
     }
 `
@@ -38,7 +38,7 @@ export const DetalhesVenda = styled.div`
     flex-direction: row;
     justify-content: space-between;
 
-   
+
 `
 export const OutrosDetalhes = styled.div`
     display: flex;
@@ -75,7 +75,7 @@ export const ValorDetalhes = styled.div`
         margin-right: 5px;
     }
 
-`   
+`
 export const Acompanhamento = styled.div`
         margin-top: 30px;
         display: flex;
@@ -119,7 +119,7 @@ export const MaisDinheiro = styled.div`
     margin-bottom:20px;
     display: flex;
     flex-direction: Column;
-    
+
     font-size:16px;
     h6 {
         font-weight:600;
@@ -195,6 +195,29 @@ export const Status = styled.div`
         font-size:10px;
     }
 `
+export const NotStatus = styled.div`
+
+    display: flex;
+    flex-direction:column;
+    align-items:left;
+    color: #4E4E4E;
+    border-top:none;
+    width:170px;
+    padding-top:20px;
+
+    h6 {
+        margin-left:-13px;
+        font-weight:500;
+        font-size:12px;
+    }
+
+    span {
+        margin-left:-13px;
+        margin-top:5px;
+        font-weight:400;
+        font-size:10px;
+    }
+`
 
 export const Circle = styled.div`
     width:15px;
@@ -241,7 +264,7 @@ export const Title = styled.div`
         color: #EA5254;
         font-weight: 600;
     }
-    
+
 `
 
 export const Product = styled.div`
@@ -264,11 +287,11 @@ export const ProductItem = styled.div`
         align-items:center;
     }
 
-    img {        
+    img {
         width:40px;
         height:60px;
-        object-fit:cover;  
-        border-radius:20%;      
+        object-fit:cover;
+        border-radius:20%;
         margin-right:10px;
     }
 
@@ -284,7 +307,7 @@ export const Details = styled.div`
         flex-direction:row;
         justify-content:space-between;
         aligh-content: baseline;
-    }    
+    }
     a {
         font-family: 'Poppins';
         font-weight: 600;
@@ -325,7 +348,7 @@ export const Avaliacao = styled.div`
 
 export const BotaoDetails = styled.div`
         display: flex;
-        flex-direction: row;        
+        flex-direction: row;
         align-items: center;
     }
 
@@ -344,7 +367,7 @@ export const BotaoDetails = styled.div`
         fill:#569CCD;
     }
 
-` 
+`
 
 export const User = styled.div`
         display: flex;

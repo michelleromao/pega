@@ -14,6 +14,7 @@ import Signup from './pages/Signup/';
 import Error404 from './pages/Error404/';
 
 import Succeed from './pages/Succeed';
+import Redirect from './pages/Redirect';
 
 function App() {
   return (
@@ -24,11 +25,13 @@ function App() {
           <Route path="/signup" component={() => <Signup />} />
           <Route path="/recovery" component={() => <Recovery />} />
           <Route exact path="/success" component={() => <Succeed />} />
+
           <Fragment>
             <Header userPhoto={Userphoto} />
             <Routes />
             <Footer />
           </Fragment>
+
         </Switch>
       </Router>
     </Provider>
