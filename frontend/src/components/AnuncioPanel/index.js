@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-import {Content, ProductDetail, NamePrice, Name, Price, Actions, Editar} from './style'
+import {Content, ProductDetail, NamePrice, Name, Price, Actions, Editar, Modal,
+ Paper, CTAModal, Excluir, Pausar} from './style'
 import api from '../../services/api';
 
 export default function AnuncioPainelv (props) {
-
+  const [modal, setModal] = useState(false);
+  const history = useHistory();
   const [photoProduct, setPhotoProduct] = useState();
   useEffect(() => {
     async function loadPhoto() {
@@ -14,8 +16,31 @@ export default function AnuncioPainelv (props) {
     }
     loadPhoto();
   }, []);
+
+
+  const handleDeleteAnnouncement = async () => {
+    const request = await api.delete(`/announcements/${props.id}`);
+    history.push("/");
+  }
+
+const showModalExclusao = () => {
+  return (
+    <Modal>
+      <Paper>
+      <h4>Você confirma que quer excluir seu anúncio?</h4>
+          <CTAModal>
+              <Link onClick={() => setModal(false)}>Cancelar</Link>
+              <button onClick={() => handleDeleteAnnouncement()}>Confirmar</button>
+          </CTAModal>
+      </Paper>
+    </Modal>
+  );
+};
+
     return (
         <>
+        { modal ? showModalExclusao() : <></> }
+
         {props.vendido || props.reservado ?
          <Content>
                 <ProductDetail>
@@ -29,21 +54,25 @@ export default function AnuncioPainelv (props) {
                 {(props.vendido || props.reservado) ? <></> :
                   props.rascunho ?
                   <>
-                   <Link >Excluir</Link>
+                   <Excluir onClick={() => setModal(true)}>Excluir</Excluir>
                    <Editar>
                         <Link to={`editar/anuncio/${props.id}`}>Editar</Link>
                     </Editar>
                   </> :
                   <>
-                   <Link >Excluir</Link>
-                    <button>Pausar</button>
+                   <Pausar>Pausar</Pausar>
+                   <Excluir onClick={() => setModal(true)}>Excluir</Excluir>
+
                     <Editar>
                         <Link to={`editar/anuncio/${props.id}`}>Editar</Link>
                     </Editar>
                   </>}
                 </Actions>
             </Content>  :
-            <Link to={`anuncio/${props.id}`}>            <Content>
+            <>
+             <Content>
+            <Link to={`anuncio/${props.id}`}>
+
                 <ProductDetail>
                     <img src={`http://localhost:3333/files/announcement/${photoProduct}`}></img>
                     <NamePrice>
@@ -51,25 +80,29 @@ export default function AnuncioPainelv (props) {
                     <Price>R$ {props.preco}</Price>
                     </NamePrice>
                 </ProductDetail>
+            </Link>
+
                 <Actions>
                 {(props.vendido || props.reservado) ? <></> :
                   props.rascunho ?
                   <>
-                   <Link >Excluir</Link>
+                   <Excluir onClick={() => setModal(true)}>Excluir</Excluir>
                    <Editar>
                         <Link to={`editar/anuncio/${props.id}`}>Editar</Link>
                     </Editar>
                   </> :
                   <>
-                   <Link >Excluir</Link>
-                    <button>Pausar</button>
+                   <Pausar>Pausar</Pausar>
+                   <Excluir onClick={() => setModal(true)}>Excluir</Excluir>
+
+
                     <Editar>
                         <Link to={`editar/anuncio/${props.id}`}>Editar</Link>
                     </Editar>
                   </>}
                 </Actions>
             </Content>
-            </Link>
+            </>
           }
         </>
     )

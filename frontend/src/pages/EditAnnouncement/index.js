@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Link, useHistory,useParams } from 'react-router-dom';
 import { Form as Unform } from '@unform/web';
@@ -32,7 +32,6 @@ function EditAnnouncement() {
   const [isLoad, setIsLoad] = useState(true);
 
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const idUser = useSelector((user) => user.user.idUser);
   const name = useSelector((user) => user.user.name);
