@@ -13,12 +13,23 @@ class AnnouncementController {
           .status(400)
           .json({ message: 'Ops, não há anúncios aqui' });
       }
-
+      const { id } = request.query;
       const { limit } = request.query;
       const { idStyle } = request.query;
       const { idStatus } = request.query;
       const { skip } = request.query;
       const { idOwner } = request.query;
+      const { published } = request.query;
+      const { paused } = request.query;
+      const { sold } = request.query;
+      const { draft } = request.query;
+      const { reserved } = request.query;
+
+      if (id && idOwner) {
+        const criterio = { $and: [{ idOwner }, { idAnnouncement: id }] };
+        const promiseUser = await Announcement.find(criterio).exec();
+        return response.json(promiseUser);
+      }
 
       if (limit) {
         const lim = Number(limit);
@@ -56,6 +67,47 @@ class AnnouncementController {
       if (!limit) {
         if (idOwner) {
           const promiseUser = await Announcement.find({ idOwner }).exec();
+          if (published) {
+            promiseUser.forEach(p => {
+              if (p.idStatus === 'a7249f2f-da3c-4312-8269-4d20aa326dcc') {
+                return response.json({ promiseUser: [p] });
+              }
+            });
+          }
+          if (paused) {
+            promiseUser.forEach(p => {
+              if (p.idStatus === '0b438541-f970-4e20-be51-ba9398326369') {
+                return response.json({ promiseUser: [p] });
+              }
+              return response.json({ message: 'Nao tem' });
+            });
+          }
+
+          if (sold) {
+            promiseUser.forEach(p => {
+              if (p.idStatus === '7336a7a2-07cc-4966-adb4-5a19758b1506') {
+                return response.json({ promiseUser: [p] });
+              }
+              return response.json({ message: 'Nao tem' });
+            });
+          }
+          if (draft) {
+            promiseUser.forEach(p => {
+              if (p.idStatus === '51f68a38-c8f0-4088-a40e-7b380dab6bd0') {
+                return response.json({ promiseUser: [p] });
+              }
+              return response.json({ message: 'Nao tem' });
+            });
+          }
+          if (reserved) {
+            promiseUser.forEach(p => {
+              if (p.idStatus === '9008a1d4-59af-4fa2-9595-e868c6c0e4bb') {
+                return response.json({ promiseUser: [p] });
+              }
+              return response.json({ message: 'Nao tem' });
+            });
+          }
+
           return response.json({
             promiseUser,
           });
@@ -72,6 +124,7 @@ class AnnouncementController {
     try {
       const { id } = request.params;
       const criterion = { idAnnouncement: id };
+
       const promise = await Announcement.find(criterion).exec();
       if (promise.length === 0) {
         return response

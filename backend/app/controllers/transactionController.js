@@ -6,6 +6,149 @@ const Bag = require('../models/bag');
 class TransactionController {
   static async index(request, response) {
     try {
+      const { compras } = request.query;
+      const { vendas } = request.query;
+
+      const { andamento } = request.query;
+      const { completed } = request.query;
+      const { canceled } = request.query;
+
+      if (compras) {
+        const transactions = await Transaction.find().exec();
+        const bagsToSearch = transactions.map(b => {
+          return { idBag: b.idBag, statusTransaction: b.statusTransaction };
+        });
+        if (andamento) {
+          bagsToSearch.forEach(tS => {
+            if (
+              tS.statusTransaction === '00fd31a5-d50f-4ac2-945e-08166aff88bd'
+            ) {
+              bagsToSearch.forEach(b => {
+                const cr = { idBag: tS.idBag, idBuyer: compras };
+                Bag.find(cr)
+                  .exec()
+                  .then(r => {
+                    return response.json(r);
+                  });
+              });
+            } else {
+              return response.json({ message: 'Não há compras em andamento' });
+            }
+          });
+        }
+        if (completed) {
+          bagsToSearch.forEach(tS => {
+            if (
+              tS.statusTransaction === '852091cf-a079-4c54-bf8f-86ce8af424a4'
+            ) {
+              bagsToSearch.forEach(b => {
+                const cr = { idBag: tS.idBag, idBuyer: compras };
+                Bag.find(cr)
+                  .exec()
+                  .then(r => {
+                    return response.json(r);
+                  });
+              });
+            } else {
+              return response.json({ message: 'Não há compras concluídas' });
+            }
+          });
+        }
+        if (canceled) {
+          bagsToSearch.forEach(tS => {
+            if (
+              tS.statusTransaction === 'a8cd0bbc-21a4-4295-8a81-d8c138197028'
+            ) {
+              bagsToSearch.forEach(b => {
+                const cr = { idBag: tS.idBag, idBuyer: compras };
+                Bag.find(cr)
+                  .exec()
+                  .then(r => {
+                    return response.json(r);
+                  });
+              });
+            } else {
+              return response.json({ message: 'Não há compras canceladas' });
+            }
+          });
+        }
+        bagsToSearch.forEach(b => {
+          const cr = { idBag: b.idBag, idBuyer: compras };
+          Bag.find(cr)
+            .exec()
+            .then(r => {
+              return response.json(r);
+            });
+        });
+      }
+      if (vendas) {
+        const transactions = await Transaction.find().exec();
+        const bagsToSearch = transactions.map(b => {
+          return { idBag: b.idBag, statusTransaction: b.statusTransaction };
+        });
+        if (andamento) {
+          bagsToSearch.forEach(tS => {
+            if (
+              tS.statusTransaction === '00fd31a5-d50f-4ac2-945e-08166aff88bd'
+            ) {
+              bagsToSearch.forEach(b => {
+                const cr = { idBag: tS.idBag };
+                Bag.find(cr)
+                  .exec()
+                  .then(r => {
+                    return response.json(r);
+                  });
+              });
+            } else {
+              return response.json({ message: 'Não há compras em andamento' });
+            }
+          });
+        }
+        if (completed) {
+          bagsToSearch.forEach(tS => {
+            if (
+              tS.statusTransaction === '852091cf-a079-4c54-bf8f-86ce8af424a4'
+            ) {
+              bagsToSearch.forEach(b => {
+                const cr = { idBag: tS.idBag };
+                Bag.find(cr)
+                  .exec()
+                  .then(r => {
+                    return response.json(r);
+                  });
+              });
+            } else {
+              return response.json({ message: 'Não há compras concluídas' });
+            }
+          });
+        }
+        if (canceled) {
+          bagsToSearch.forEach(tS => {
+            if (
+              tS.statusTransaction === 'a8cd0bbc-21a4-4295-8a81-d8c138197028'
+            ) {
+              bagsToSearch.forEach(b => {
+                const cr = { idBag: tS.idBag };
+                Bag.find(cr)
+                  .exec()
+                  .then(r => {
+                    return response.json(r);
+                  });
+              });
+            } else {
+              return response.json({ message: 'Não há compras canceladas' });
+            }
+          });
+        }
+        bagsToSearch.forEach(b => {
+          const cr = { idBag: b.idBag };
+          Bag.find(cr)
+            .exec()
+            .then(r => {
+              return response.json(r);
+            });
+        });
+      }
       const promise = await Transaction.find().exec();
       if (promise.length === 0) {
         return response
