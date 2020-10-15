@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PanelUser = styled.div`
-        display: flex;        
+        display: flex;
         flex-direction: row;
         max-width: 1130px;
         width: 100%;
@@ -18,14 +18,14 @@ export const PanelUser = styled.div`
         color:#fff;
         padding:10px;
     }
-`
+`;
 export const Favs = styled.div`
     display: flex;
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: space-between;
     margin-top:40px;
-`
+`;
 
 export const Title = styled.h4`
     color: #4E4E4E;
@@ -33,7 +33,7 @@ export const Title = styled.h4`
     font-family:'Poppins';
     font-weight:500;
     margin-bottom:30px;
-`
+`;
 
 export const Content = styled.div`
         border-radius: 0 12px 12px 0;
@@ -42,24 +42,22 @@ export const Content = styled.div`
         width: 800px;
         height: 730px;
         padding: 50px;
-    }
-`
+`;
 
 export const Favoritos = styled.div`
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-    }
-`
+`;
 
 export const Sidebar = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 260px;
-        background-color: #83BDE6;   
-        border-radius: 12px; 
+        background-color: #83BDE6;
+        border-radius: 12px;
         height: 100%;
         padding: 50px 0 50px 10px;
     }
@@ -90,31 +88,51 @@ export const Sidebar = styled.div`
         justify-content: space-between;
         align-items: center;
         font-family: 'Poppins';
-        color: #fff;    
+        color: #fff;
         font-size: 15px;
         height: 20px;
-        padding: 25px 0 25px 35px;   
-    }   
+        padding: 25px 0 25px 35px;
+    }
     button:hover{
         background:#fff;
         color: #83BDE6;
         cursor: pointer;
         border-radius:10px 0 0 10px;
         transition: 0.2s;
-    } 
-
+    }
     button:focus{
         background:#fff;
         color: #83BDE6;
         cursor: pointer;
         border-radius:10px 0 0 10px;
     }
-`
+`;
 export const Hove = styled.div`
-        padding: 15px 0 15px 15px;  
+        padding: 15px 0 15px 15px;
         height: 20px;
         background-color:#fff;
         border-radius: 7px 0 0 7px;
-    }
-`
+`;
 
+export const Filter = styled.div`
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom:20px;
+`;
+
+export const Item = styled.button`
+        border: solid 2px #569CCD;
+        border-radius: 12px;
+        background: none;
+        padding: 5px 25px 5px 25px;
+        margin-right: 10px;
+        color: #569CCD;
+        font-family: 'Poppins';
+        font-weight:500;
+    }
+    :hover {
+        opacity: 90%;
+        cursor: pointer;
+    }
+`;

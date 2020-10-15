@@ -24,6 +24,8 @@ import { useHistory } from 'react-router-dom';
 function ProductInformation(props) {
   const history = useHistory();
   const productDetails = useSelector((state) => state);
+  const idUser = useSelector((user) => user.user.idUser);
+
   const dispatch = useDispatch();
   const delivery = props.delivery;
   const method = props.method;
@@ -101,7 +103,9 @@ function ProductInformation(props) {
     <Container>
       <ContentTitle>
         <h1>{props.title}</h1>
-        <img src={Heart} alt="" />
+      {(idUser && props.data && (props.data[0].idOwner === idUser)) ? <></> :
+
+        <img src={Heart} alt="" />}
       </ContentTitle>
       <ContentDetails>
         <p>{props.style}</p>
@@ -141,7 +145,9 @@ function ProductInformation(props) {
         </ContentPrice>
         <Method>{textMethod}</Method>
       </ContentSale>
-      <Button btnBuy onClick={() => handleBag()}>Comprar</Button>
+      {(idUser && props.data && (props.data[0].idOwner === idUser)) ? <></> :
+      <>
+        <Button btnBuy onClick={() => handleBag()}>Comprar</Button>
       {statusReceive ? (
         <Receive>
           não é possivel adicionar o produto na sacola, pois você pode apenas
@@ -150,6 +156,8 @@ function ProductInformation(props) {
       ) : (
         <Button onClick={() => handleAddToCart()}>Adicionar a sacola</Button>
       )}
+      </>}
+
     </Container>
   );
 }

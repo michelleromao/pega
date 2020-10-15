@@ -52,7 +52,6 @@ function Announcement() {
         `/announcements/?idOwner=${owner.data[0].idUser}&limit=4`,
       );
       setProductsOwner(products.data.promiseUser);
-      console.log(owner);
       setOwnerData({
         name: owner.data[0].name,
         rate: owner.data[0].rating,
@@ -65,6 +64,7 @@ function Announcement() {
     }
     getData(pathId);
   }, []);
+
   return (
     <>
       <ContentBreadcrumbs>

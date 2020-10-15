@@ -28,6 +28,8 @@ export const FirstSection = styled.div`
   align-items: center;
   width: 61%;
   margin-bottom: 3%;
+  color: #202020;
+
 `;
 
 export const PhotoContent = styled.div`
@@ -63,13 +65,13 @@ export const Username = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+    color: #202020;
+
   }
 `;
 export const Label = styled.p`
-  color: #202020;
 `;
 export const User = styled.p`
-  color: #b8b8b8;
 `;
 
 export const SecondSection = styled.div`

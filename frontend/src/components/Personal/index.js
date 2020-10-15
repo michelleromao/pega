@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form as Unform } from '@unform/web';
 
@@ -21,249 +22,286 @@ import {
   Delete,
 } from './style';
 import Default from '../../assets/photos/default.png';
-import Nanda from '../../assets/photos/bestSeller.png';
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import api from '../../services/api';
+import { userUpdate } from '../../store/modules/user/action';
 
 function Personal() {
-  const [photo, setPhoto] = useState({ photo: Default, name: `${Default}` });
-
-  const [user, setUser] = useState({
-    username: 'michelleromao123',
-    name: 'Michelle Romao',
-    picpay: '',
-    email: 'michelle.nunes10@gmail.com',
-    CPF: '07286246305',
-    tel: '85997055583',
-    pwd: '123',
-    newPwd: '',
-    categories: ['Geek', 'Rippie', 'Conforto'],
-  });
-
+  const dispatch = useDispatch();
+  const idUser = useSelector((user) => user.user.idUser);
+  const name = useSelector((user) => user.user.name);
+  const username = useSelector((user) => user.user.username);
+  const email = useSelector((user) => user.user.email);
+  const senha = useSelector((user) => user.user.senha);
+  const cpf = useSelector((user) => user.user.cpf);
+  const telefone = useSelector((user) => user.user.telefone);
+  const picpay = useSelector((user) => user.user.picpay);
+  const interestCategories = useSelector((user) => user.user.interestCategories);
   const [data, setData] = useState(false);
+  const [photo, setPhoto] = useState();
 
-  const inputUsernameRef = useRef(user.username);
-  const inputNameRef = useRef(user.name);
-  const inputPicpayRef = useRef(user.picpay);
-  const inputEmailRef = useRef(user.email);
-  const inputCPFRef = useRef(user.CPF);
-  const inputTelRef = useRef(user.tel);
-  const inputPwdRef = useRef(user.pwd);
-  const inputNewPwdRef = useRef(user.newPwd);
+  const inputUsernameRef = useRef(username);
+  const inputNameRef = useRef(name);
+  const inputPicpayRef = useRef(picpay);
+  const inputEmailRef = useRef(email);
+  const inputCPFRef = useRef(cpf);
+  const inputTelRef = useRef(telefone);
+  const inputPwdRef = useRef(senha);
+  const inputNewPwdRef = useRef();
 
-  function handleSubmit(data) {
+  async function handleSubmit(data) {
     console.log(data);
-    console.log(user);
-    alert('Muito bem! Tudo salvo, pode ir se divertir vendo produtos.');
-    setData(false);
+    if((data.username
+      || data.picpay
+      || data.name
+      || data.cpf
+      || data.telefone
+      || data.email
+      || data.senha) === ''){
+        alert(
+          'Ops! Parece que há informações faltando, da mais uma olhadinha aí',
+        );
+      }else{
+      const imagesUser = new FormData();
+      if (data.avatar !== undefined) {
+        imagesUser.append('avatar', data.avatar);
+        await api.put(
+          `/photosuser/${idUser}`,
+          imagesUser,
+        );
+      }
+      if(data.novaSenha !== ''){
+        const user = await api.put(`/users/${idUser}`, {
+          cpf: data.cpf,
+          name: data.name,
+          username: data.username,
+          email: data.email,
+          senha: data.senha,
+          novaSenha: data.novaSenha,
+          telefone: data.telefone,
+          picpay: data.picpay,
+        });
+        dispatch(userUpdate(user.data[0]));
+        alert('Muito bem! Tudo salvo, pode ir se divertir vendo produtos.');
+
+      }
+      else{
+        const user = await api.put(`/users/${idUser}`, {
+          cpf: data.cpf,
+          name: data.name,
+          username: data.username,
+          email: data.email,
+          senha: data.senha,
+          telefone: data.telefone,
+          picpay: data.picpay,
+        });
+        dispatch(userUpdate(user.data[0]));
+        alert('Muito bem! Tudo salvo, pode ir se divertir vendo produtos.');
+      }
+      setData(false);
+    }
   }
 
-  useEffect(() => {
-    setUser({
-      username: inputUsernameRef.current,
-      name: inputNameRef.current,
-      picpay: inputPicpayRef.current,
-      email: inputEmailRef.current,
-      CPF: inputCPFRef.current,
-      tel: inputTelRef.current,
-      pwd: inputPwdRef.current,
-      newPwd: inputNewPwdRef.current,
-      categories: ['Geek', 'Rippie', 'Conforto'],
-    });
-  }, [
-    inputUsernameRef,
-    inputNameRef,
-    inputPicpayRef,
-    inputEmailRef,
-    inputCPFRef,
-    inputTelRef,
-    inputPwdRef,
-    inputNewPwdRef,
-  ]);
-
+  useEffect(()=>{
+    const loadPhoto = async () =>{
+      if(idUser){
+        const photoUser = await api.get(`/photosuser/${idUser}`);
+        console.log(photoUser);
+        setPhoto(photoUser.data[0].filename);
+      }
+    }
+    loadPhoto()
+  },[]);
+  console.log(photo);
   return (
     <>
+
+
       <Container>
-        <Unform
-          onSubmit={handleSubmit}
-          style={{
-            width: '100%',
-            display: 'flex',
-            flexFlow: 'column',
-          }}
-        >
-          <FirstSection>
-            <PhotoContent>
-              <File
-                name="image1"
-                width="100px"
-                height="100px"
-                defaultImage="http://localhost:3333/files/user/default.png"
-              />
-            </PhotoContent>
-            <Username>
-              <Label>Nome de usuário</Label>
-              <User>{user.username}</User>
-            </Username>
-          </FirstSection>
+      <Unform
+        onSubmit={handleSubmit}
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexFlow: 'column',
+        }}
+      >
+        <FirstSection>
+          <PhotoContent>
+          {photo &&
+               <File
+                defaultImage={photo}
+                select={"user"}
+                border={true}
+                name="avatar" width="89px" height="89px"
+                onChange={(e) => setData(true)}
 
-          <Row>
-            <Column>
-              <Input
-                labelText="Nome de usuário"
-                fSize="14px"
-                defaultValue={user.username}
-                ref={inputUsernameRef}
-                name="username"
-                type="text"
-                color="#569CCD"
-                placeholder="Seu nome de usuário"
-                required={true}
-                onChange={(e) => setData(true)}
-                input="input"
-              />
-            </Column>
-            <Column>
-              <Input
-                labelText="Picpay"
-                fSize="14px"
-                defaultValue={user.picpay}
-                ref={inputPicpayRef}
-                name="picpay"
-                type="text"
-                color="#569CCD"
-                placeholder="Seu @Picpay"
-                mask="@***********************"
-                maskPlaceholder={null}
-                required={true}
-                onChange={(e) => setData(true)}
-                input="input"
-              />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Input
-                labelText="Nome"
-                fSize="14px"
-                defaultValue={user.name}
-                ref={inputNameRef}
-                name="name"
-                type="text"
-                color="#569CCD"
-                placeholder="Seu lindo nome"
-                required={true}
-                size={21}
-                onChange={(e) => setData(true)}
-                input="input"
-              />
-            </Column>
-            <Column>
-              <Input
-                labelText="CPF"
-                fSize="14px"
-                defaultValue={user.CPF}
-                ref={inputCPFRef}
-                name="cpf"
-                type="text"
-                color="#569CCD"
-                placeholder="Seu CPF"
-                required={true}
-                onChange={(e) => setData(true)}
-                input="input"
-              />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Input
-                labelText="E-mail"
-                fSize="14px"
-                defaultValue={user.email}
-                ref={inputEmailRef}
-                name="email"
-                type="text"
-                color="#569CCD"
-                placeholder="Seu melhor e-mail"
-                required={true}
-                size={30}
-                onChange={(e) => setData(true)}
-                input="input"
-              />
-            </Column>
-            <Column>
-              <Input
-                labelText="Telefone"
-                fSize="14px"
-                defaultValue={user.tel}
-                ref={inputTelRef}
-                name="tel"
-                type="text"
-                color="#569CCD"
-                placeholder="(88) 9 9999 9999"
-                mask="(99)\ 9 9999 9999"
-                maskPlaceholder={null}
-                required={true}
-                onChange={(e) => setData(true)}
-                input="input"
-              />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Input
-                labelText="Senha atual"
-                fSize="14px"
-                defaultValue={user.pwd}
-                ref={inputPwdRef}
-                name="pwd"
-                type="password"
-                color="#569CCD"
-                placeholder="*****************"
-                required={true}
-                onChange={(e) => setData(true)}
-                marginBottom="5%"
-                input="input"
-              />
-            </Column>
-            <Column>
-              <Input
-                labelText="Nova senha"
-                fSize="14px"
-                defaultValue={user.newPwd}
-                ref={inputNewPwdRef}
-                name="newPwd"
-                type="password"
-                color="#569CCD"
-                placeholder="**** nova senha se quiser"
-                required={true}
-                onChange={(e) => setData(true)}
-                marginBottom="5%"
-                input="input"
-              />
-            </Column>
-          </Row>
+                />
+                }
+          </PhotoContent>
+          <Username>
+            <Label>Nome de usuário</Label>
+            <User>{username}</User>
+          </Username>
+        </FirstSection>
 
-          {data ? (
-            <ContentButton>
-              <div></div>
-              <div>
-                <Button type="reset">Cancelar</Button>
-                <Button type="submit">Salvar alterações</Button>
-              </div>
-              
-            </ContentButton>
-          ) : (
-            <></>
-          )}
-        </Unform>
-        <InterestCategories categories={user.categories}></InterestCategories>
-        <Delete>
-          <div></div>
-          <Link>Excluir conta</Link>
-        </Delete>
-      </Container>
-    </>
+        <Row>
+          <Column>
+            <Input
+              labelText="Nome de usuário"
+              fSize="14px"
+              defaultValue={username}
+              ref={inputUsernameRef}
+              name="username"
+              mask="*********************************"
+              maskPlaceholder={null}
+              type="text"
+              color="#569CCD"
+              placeholder="Seu nome de usuário"
+              required={true}
+              onChange={(e) => setData(true)}
+              input="input"
+            />
+          </Column>
+          <Column>
+            <Input
+              labelText="Picpay"
+              fSize="14px"
+              defaultValue={picpay}
+              ref={inputPicpayRef}
+              name="picpay"
+              type="text"
+              color="#569CCD"
+              placeholder="Seu @Picpay"
+              mask="@***********************"
+              maskPlaceholder={null}
+              required={true}
+              onChange={(e) => setData(true)}
+              input="input"
+            />
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Input
+              labelText="Nome"
+              fSize="14px"
+              defaultValue={name}
+              ref={inputNameRef}
+              name="name"
+              type="text"
+              color="#569CCD"
+              placeholder="Seu lindo nome"
+              required={true}
+              size={21}
+              onChange={(e) => setData(true)}
+              input="input"
+            />
+          </Column>
+          <Column>
+            <Input
+              labelText="CPF"
+              fSize="14px"
+              defaultValue={cpf}
+              ref={inputCPFRef}
+              name="cpf"
+              type="text"
+              color="#569CCD"
+              placeholder="Seu CPF"
+              required={true}
+              onChange={(e) => setData(true)}
+              input="input"
+            />
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Input
+              labelText="E-mail"
+              fSize="14px"
+              defaultValue={email}
+              ref={inputEmailRef}
+              name="email"
+              type="text"
+              color="#569CCD"
+              placeholder="Seu melhor e-mail"
+              required={true}
+              size={30}
+              onChange={(e) => setData(true)}
+              input="input"
+            />
+          </Column>
+          <Column>
+            <Input
+              labelText="Telefone"
+              fSize="14px"
+              defaultValue={telefone}
+              ref={inputTelRef}
+              name="telefone"
+              type="text"
+              color="#569CCD"
+              placeholder="(88) 9 9999 9999"
+              mask="(99)\ 9 9999 9999"
+              maskPlaceholder={null}
+              required={true}
+              onChange={(e) => setData(true)}
+              input="input"
+            />
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Input
+              labelText="Senha atual"
+              fSize="14px"
+              defaultValue={senha}
+              ref={inputPwdRef}
+              name="senha"
+              type="password"
+              color="#569CCD"
+              placeholder="*****************"
+              required={true}
+              onChange={(e) => setData(true)}
+              marginBottom="5%"
+              input="input"
+            />
+          </Column>
+          <Column>
+            <Input
+              labelText="Nova senha"
+              fSize="14px"
+              ref={inputNewPwdRef}
+              name="novaSenha"
+              type="password"
+              color="#569CCD"
+              placeholder="**** nova senha se quiser"
+              onChange={(e) => setData(true)}
+              marginBottom="5%"
+              input="input"
+            />
+          </Column>
+        </Row>
+
+        {data ? (
+          <ContentButton>
+            <div></div>
+            <div>
+              <Button  onClick={() => setData(false)}>Cancelar</Button>
+              <Button type="submit">Salvar alterações</Button>
+            </div>
+
+          </ContentButton>
+        ) : (
+          <></>
+        )}
+      </Unform>
+      <InterestCategories categories={interestCategories ? interestCategories : []}></InterestCategories>
+      <Delete>
+        <div></div>
+        <Link to="">Excluir conta</Link>
+      </Delete>
+    </Container>
+
+      </>
   );
 }
 export default Personal;

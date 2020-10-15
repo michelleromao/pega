@@ -179,7 +179,7 @@ class UserController {
           name,
           username,
           email,
-          senha,
+          senha: promiseExist[0].senha,
           telefone,
           picpay,
           rating: promiseExist[0].rating,

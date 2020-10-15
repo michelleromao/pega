@@ -59,17 +59,15 @@ function EditAnnouncement() {
 
 
 
-  if (!idUser) {
-    history.push('/login');
-  }
-  if(idUser && (idUser !== announcement.idUser)){
-    history.push('/');
-  }
+
 
   useEffect(() =>{
     const loadAnnouncement = async() =>{
       const {data} = await api.get(`/announcements/${pathId}`);
       setAnnouncement(data[0]);
+      if(idUser && (idUser !== data[0].idOwner)){
+        history.push('/');
+      }
       const category = await api.get(`/categories/${data[0].idCategory}`);
       setCategoryAnnouncement({label: category.data[0].name, value: category.data[0].idCategory});
       const style = await api.get(`/styles/${data[0].idStyle}`);
@@ -138,6 +136,12 @@ function EditAnnouncement() {
     getDeliveryType();
     loadAnnouncement();
   },[isLoad, announcementPhoto1, announcementPhoto2,announcementPhoto3]);
+
+  if (!idUser) {
+    history.push('/login');
+  }
+
+
   async function handleSubmit(data) {
     if (
       (data.category ||

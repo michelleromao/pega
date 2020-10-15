@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { Container } from './style';
 
@@ -12,6 +13,7 @@ function BestSeller(props) {
     loadPhoto();
   }, []);
   return (
+    <Link to={`/profile/${props.id}`}>
     <Container>
       <img
         src={`http://localhost:3333/files/user/${photoUser}`}
@@ -21,6 +23,7 @@ function BestSeller(props) {
       />
       <p>{props.nameSeller}</p>
     </Container>
+    </Link>
   );
 }
 export default BestSeller;
