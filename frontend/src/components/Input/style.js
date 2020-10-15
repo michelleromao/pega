@@ -7,6 +7,40 @@ export const Container = styled.div`
   width: 100%;
   align-items: flex-start;
 `;
+export const ContainerInput = styled.div`
+  width: ${(props) => props.size};
+  border: 2px solid ${(props) => props.color};
+  margin-bottom: ${(props) => props.marginBottom};
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  :required:focus {
+  outline: none;
+  height: 50px;
+  border: 2px solid #ea5254;
+
+}
+`;
+
+export const InputContainerPWD = styled(ReactInputMask)`
+width: 80%;
+height: 50px;
+background: #ffffff;
+border: none;
+border-radius: 6px;
+padding-left: 3%;
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+color: #000;
+
+`;
+export const ButtonEye = styled.button`
+background: #ffffff;
+border: none;
+`;
 
 export const Label = styled.label`
   font-family: Poppins;
@@ -17,6 +51,7 @@ export const Label = styled.label`
   margin-left: ${(props) => props.marginleft}%;
   margin-bottom: 5%;
 `;
+
 
 export const InputContainer = styled(ReactInputMask)`
   width: ${(props) => props.size};

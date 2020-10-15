@@ -77,9 +77,10 @@ function Login() {
               labelText="Senha"
               name="password"
               type="password"
+              password={true}
               color={colorPwd}
-              placeholder="******** (ninguém tá olhando viu)"
-              size="90%"
+              placeholder="********"
+              size="94%"
               required={true}
               marginBottom="15%"
               input="input"
@@ -89,10 +90,10 @@ function Login() {
         </Unform>
 
         <Help>
-          Esqueceu os dados de login? <Link to="/recovery">A gente te ajuda</Link>
+        <Link to="/recovery">Esqueceu os dados de login? A gente te ajuda</Link>
         </Help>
         <Signin>
-          Ainda não tem cadastro? <Link to="/signup">Corre aqui!</Link>
+        <Link to="/signup">Ainda não tem cadastro? Corre aqui!</Link>
         </Signin>
       </Form>
     </>

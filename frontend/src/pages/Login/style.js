@@ -25,7 +25,7 @@ export const Form = styled.form`
   box-sizing: border-box;
   border-radius: 12px;
   padding: 4% 0 5% 0;
-
+  margin-bottom: 5%;
   a {
     text-decoration-line: underline;
     color: #569ccd;
@@ -40,7 +40,7 @@ export const Help = styled.p`
   margin-top: 10%;
   font-family: Poppins;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 12px;
   line-height: 18px;
   color: #000000;
@@ -49,7 +49,7 @@ export const Signin = styled.p`
   margin-top: 5%;
   font-family: Poppins;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 12px;
   line-height: 18px;
   color: #000000;

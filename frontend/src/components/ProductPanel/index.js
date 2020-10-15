@@ -9,6 +9,7 @@ import {
     Acompanhamento,
     RastreamentoInput,
     Status,
+    NotStatus,
     OutrosDetalhes,
     DetalhesVenda,
     Endereco,
@@ -124,24 +125,24 @@ export default function MinhasCompras (props) {
                 <Acompanhamento>
                     <Circle></Circle>
                     <Status>
-                        <h6>Pagamento realizado</h6>
+                        <h6>Pagamento efetuado</h6>
                         <span>16 de Novembro - 18h</span>
                     </Status>
                     <Circle></Circle>
                     <Status>
-                        <h6>Pagamento realizado</h6>
+                        <h6>Pagamento arpovado</h6>
                         <span>16 de Novembro - 18h</span>
                     </Status>
                     <Circle></Circle>
-                    <Status>
+                    <NotStatus>
                         <h6>Produto enviado</h6>
                         <span></span>
-                    </Status>
+                    </NotStatus>
                     <Circle></Circle>
-                    <Status>
+                    <NotStatus>
                         <h6>Produto entregue</h6>
                         <span></span>
-                    </Status>
+                    </NotStatus>
 
                 </Acompanhamento>
                 <Centro>
