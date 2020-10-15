@@ -297,7 +297,7 @@ function Personal() {
       <InterestCategories categories={interestCategories ? interestCategories : []}></InterestCategories>
       <Delete>
         <div></div>
-        <Link to="">Excluir conta</Link>
+        <Link to="/excluir-conta/">Excluir conta</Link>
       </Delete>
     </Container>
 
