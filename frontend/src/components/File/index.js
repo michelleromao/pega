@@ -10,7 +10,7 @@ import { useField } from '@unform/core';
 import { Label, Input } from './style';
 import Add from '../../assets/icons/addblue.svg';
 
-function ImageInput({ name, height, defaultImage, width, ...rest }) {
+function ImageInput({ name, height, select, defaultImage, width, border, ...rest }) {
   const inputRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [preview, setPreview] = useState(defaultValue);
@@ -25,7 +25,6 @@ function ImageInput({ name, height, defaultImage, width, ...rest }) {
         setPreview(null);
       } else {
         const file = e.target.files?.[0];
-        console.log(e.target.files);
         if (!file) {
           setPreview(null);
         }
@@ -49,11 +48,14 @@ function ImageInput({ name, height, defaultImage, width, ...rest }) {
     });
   }, [fieldName, registerField]);
   return (
-    <Label image={preview ? preview : defaultImageProps} height={height} width={width}>
-     {preview ? (
-      <></>
-      ) : (
-        <img src={Add} alt="Preview" width="20" />
+    <Label image={preview ? preview : defaultImageProps} height={height} width={width} border={border}>
+     {preview ?
+          preview
+       : (
+        defaultImageProps ? (
+          <img src={`http://localhost:3333/files/${select}/${defaultImage}`} alt="Photo" style={{borderRadius: '100px'}} />
+        ) :
+      <img src={Add} alt="Photo"  />
       )}
 
 
