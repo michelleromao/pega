@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
     Content,
     Title,
@@ -25,14 +25,23 @@ import {
     User,
     Name
 } from './style'
-import FotoProduto from '../../assets/photos/photoproduct.png'
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import Stars from '../../assets/icons/stars.svg'
+import api from '../../services/api';
 
 export default function MinhasCompras (props) {
     const [details, setDetails] = useState(true);
     const [venda, setVenda] = useState((props.tipo === "venda"))
+
+    const [photoProduct, setPhotoProduct] = useState();
+    useEffect(() => {
+      async function loadPhoto() {
+        const photo = await api.get(`/photosannouncement/${props.id}`);
+        setPhotoProduct(photo.data[0].originalname[0]);
+      }
+      loadPhoto();
+    }, []);
 
     return(
         <>
@@ -45,7 +54,7 @@ export default function MinhasCompras (props) {
                 </Title>
                 <Product>
                     <ProductItem>
-                        <img src={FotoProduto}></img>
+                        <img src={`http://localhost:3333/files/announcement/${photoProduct}`}></img>
                         <span>Pedido realizado<br/>{props.data}</span>
                     </ProductItem>
                     <span>R${props.valor}</span>
@@ -81,7 +90,7 @@ export default function MinhasCompras (props) {
             <>
                 <Detalhes>
                     <DetalhesVenda>
-                    <img src={FotoProduto}></img>
+                    <img src={`http://localhost:3333/files/announcement/${photoProduct}`}></img>
                     <Infos>
                         <H4>{props.nome}</H4>
                         <DetalhesItem>

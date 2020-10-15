@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import PanelMenu from '../../components/PanelMenu'
 import PanelContent from '../../components/PanelContent'
 import {PanelUser, Title, Content, Sidebar, Hove, Favs, Filter, Item} from './style'
 import ProductPanel from '../../components/ProductPanel'
 import Foto from '../../assets/photos/userphoto.png'
-import { Link } from 'react-router-dom';
 import PersonalInformation from '../../components/Personal'
 import AnuncioPanel from '../../components/AnuncioPanel'
 import Endereco from '../../components/EnderecoPanel'
@@ -16,6 +16,7 @@ import api from '../../services/api';
 export default function Panel() {
    const idUser = useSelector((user) => user.user.idUser);
     const name = useSelector((user) => user.user.name);
+    const history = useHistory();
     const [photo, setPhoto] = useState();
     const [stateAnuncios, setStateAnuncios] = useState(0);
     const [stateVendas, setStateVendas] = useState(0);
@@ -38,10 +39,6 @@ export default function Panel() {
     const [stateDraftAnnouncements, setDraftAnnouncements] = useState();
     const [stateReservedAnnouncements, setReservedAnnouncements] = useState();
 
-
-
-
-
     const [infos, setInfos] = useState(true);
     const [compras, setCompras] = useState(false);
     const [anuncios, setAnuncios] = useState(false);
@@ -63,15 +60,9 @@ export default function Panel() {
         hook(!false)
     }
 
-    useEffect(() => {
-        async function loadAnnouncementsOne() {
-          const casualAnnouncements = await api.get(
-            '/announcements/?idStyle=9867aef7-6913-4ae6-9ac1-c9e4102a9301&idStatus=a7249f2f-da3c-4312-8269-4d20aa326dcc&limit=3',
-          );
-        }
-        loadAnnouncementsOne();
-      }, []);
-
+    if(!idUser){
+      history.push('/');
+    }
       useEffect(()=>{
         const loadPhoto = async () => {
           if(idUser){
@@ -135,6 +126,8 @@ export default function Panel() {
           }
         }
         const loadSales = async () => {
+
+                    if(idUser){
             const allSales = await api.get(`/transactions/?vendas=${idUser}`);
             const progressSales = await api.get(`/transactions/?vendas=${idUser}&andamento=true`);
             const completedSales = await api.get(`/transactions/?vendas=${idUser}&completed=true`);
@@ -185,14 +178,11 @@ export default function Panel() {
                 });
               }
             }
+                      }
         }
         const announcements = async () => {
-          /*
-          setAllAnnouncements
-setPublishedAnnouncements
-setPausedAnnouncements
-setSoldAnnouncements
-setDraftAnnouncements*/
+
+                    if(idUser){
             const allAnnouncements = await api.get(`/announcements/?idOwner=${idUser}`);
             const publishedAnnouncements = await api.get(`/announcements/?idOwner=${idUser}&published=true`);
             const pausedAnnouncements = await api.get(`/announcements/?idUser=${idUser}&paused=true`);
@@ -220,6 +210,7 @@ setDraftAnnouncements*/
                 setReservedAnnouncements(reservedAnnouncements.data.promiseUser);
               }
             }
+                      }
         }
         loadPhoto();
         loadPurchases();
@@ -282,27 +273,27 @@ setDraftAnnouncements*/
                     {
                       stateCompras === 0 &&
                         Array.isArray(stateAllPurchases) && stateAllPurchases.map(purchase => {
-                         return (<ProductPanel comprador={name} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
+                         return (<ProductPanel comprador={name} key={purchase.idAnnouncement} id={purchase.idAnnouncement} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
                         );
                       })
                     }
                     {
                       stateCompras === 1 &&
                         Array.isArray(stateProgressPurchases) && stateProgressPurchases.map(purchase=>{
-                          return (<ProductPanel comprador={name} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
+                          return (<ProductPanel comprador={name} key={purchase.idAnnouncement}  id={purchase.idAnnouncement} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
                         );
                       })
                     }
                     {
                       stateCompras === 2 &&
                       Array.isArray(stateCompletedPurchases) && stateCompletedPurchases.map(purchase=>{
-                        return (<ProductPanel comprador={name} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
+                        return (<ProductPanel comprador={name} key={purchase.idAnnouncement}  id={purchase.idAnnouncement} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
                         );
                       })}
                     {
                       stateCompras === 3 &&
                       Array.isArray(stateCanceledPurchases) && stateCanceledPurchases.map(purchase=>{
-                        return (<ProductPanel comprador={name} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
+                        return (<ProductPanel comprador={name} key={purchase.idAnnouncement}  id={purchase.idAnnouncement} nome={purchase.title} valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={purchase.size} estado={purchase.state} cor={purchase.color} notify="1" valor={purchase.offert ? purchase.offertValue : purchase.initPrice} vendedor={purchase.nameOwner} data="15 Novembro"/>
                         );
                       })}
 
@@ -417,7 +408,7 @@ setDraftAnnouncements*/
 
                         Array.isArray(stateAllSales) && stateAllSales.map(s =>{
                             return(
-                              <ProductPanel tipo="venda"  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
+                              <ProductPanel tipo="venda" key={s.idAnnouncement} id={s.idAnnouncement}  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
                             );
 
                         })
@@ -426,7 +417,7 @@ setDraftAnnouncements*/
                       stateVendas === 1 &&
                       Array.isArray(stateProgressSales) && stateProgressSales.map(s =>{
                           return(
-                            <ProductPanel tipo="venda"  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
+                            <ProductPanel tipo="venda" key={s.idAnnouncement} id={s.idAnnouncement}  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
 
                           );
 
@@ -435,7 +426,7 @@ setDraftAnnouncements*/
                       stateVendas === 2 &&
                       Array.isArray(stateCompletedSales) && stateCompletedSales.map(s =>{
                           return(
-                            <ProductPanel tipo="venda"nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
+                            <ProductPanel tipo="venda" key={s.idAnnouncement} id={s.idAnnouncement}  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
 
                           );
 
@@ -444,7 +435,7 @@ setDraftAnnouncements*/
                       stateVendas === 3 &&
                       Array.isArray(stateCanceledSales) && stateCanceledSales.map(s =>{
                           return(
-                            <ProductPanel tipo="venda"  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
+                            <ProductPanel tipo="venda" key={s.idAnnouncement} id={s.idAnnouncement}  nome={s.title}valorAdicionado="20" rastreamento="AMASDASDQWEBR" formaPagamento="PicPay" formaEntrega="Sedex" tipoPagamento="PicPay" tamanho={s.size} estado={s.state} cor={s.color} notify="1" valor={s.offert ? s.valueOffert : s.initPrice} vendedor={name} data="15 Novembro"/>
 
                           );
 
