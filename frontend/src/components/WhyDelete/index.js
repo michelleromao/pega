@@ -9,7 +9,7 @@ export default function WhyDelete () {
             <WDelete>
                 <Title>
                     <h4>Excluir conta</h4>
-                    <span>Nem, fui enganado!</span>
+                    <span>Nem, fui enganadx!</span>
                 </Title>
                 <form>
                     <h5>Será que você poderia ajudar a gente a entender o motivo da despedida?
