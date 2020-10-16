@@ -18,6 +18,7 @@ import {
   Nologgedin,
   Sacola,
   Quantity,
+  Vender,
 } from './style';
 import api from '../../services/api';
 
@@ -72,11 +73,11 @@ export default function Header(props) {
         </Search>
         {user ? (
           <Link to="/add/anuncio">
-            <button id="cta-vender">Vender</button>
+            <Vender id="cta-vender">Vender</Vender>
           </Link>
         ) : (
           <Link to="/login">
-            <button id="cta-vender">Vender</button>
+            <Vender id="cta-vender">Vender</Vender>
           </Link>
         )}
 

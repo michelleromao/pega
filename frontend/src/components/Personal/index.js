@@ -105,13 +105,13 @@ function Personal() {
     const loadPhoto = async () =>{
       if(idUser){
         const photoUser = await api.get(`/photosuser/${idUser}`);
-        console.log(photoUser);
+
         setPhoto(photoUser.data[0].filename);
       }
     }
     loadPhoto()
   },[]);
-  console.log(photo);
+
   return (
     <>
 
