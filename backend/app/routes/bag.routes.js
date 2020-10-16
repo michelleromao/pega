@@ -10,8 +10,4 @@ bagsRouter.get('/:id', BagController.show);
 
 bagsRouter.post('/', BagController.create);
 
-// usersRouter.put('/:id', BagController.update);
-
-// usersRouter.delete('/:id', BagController.delete);
-
 module.exports = bagsRouter;

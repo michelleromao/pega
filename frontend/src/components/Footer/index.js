@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+
 import { FiInstagram } from 'react-icons/fi';
 import {
   Container,

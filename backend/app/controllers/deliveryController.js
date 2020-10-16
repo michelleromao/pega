@@ -35,23 +35,9 @@ class DeliveryController {
 
   static async create(request, response) {
     try {
-      const { type } = request.body;
-      const idDelivery = v4();
-      const criterion = { type };
-      const promise = await Delivery.find(criterion).exec();
-      if (promise.length !== 0) {
-        return response
-          .status(400)
-          .json({
-            message:
-              'Não é possível criar este tipo de entrega, pois ele já existe',
-          })
-          .end();
-      }
-
       const createPromise = await Delivery.create({
-        idDelivery,
-        type,
+        idDelivery: 'e005eb43-21ac-48ff-9944-b1f2510e6126',
+        type: 'Frete',
       });
       return response.json(createPromise);
     } catch (err) {

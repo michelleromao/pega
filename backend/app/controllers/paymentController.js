@@ -35,23 +35,9 @@ class PaymentController {
 
   static async create(request, response) {
     try {
-      const { type } = request.body;
-      const idPayment = v4();
-      const criterion = { type };
-      const promise = await Payment.find(criterion).exec();
-      if (promise.length !== 0) {
-        return response
-          .status(400)
-          .json({
-            message:
-              'Não é possível criar este tipo de pagamento, pois ele já existe',
-          })
-          .end();
-      }
-
       const createPromise = await Payment.create({
-        idPayment,
-        type,
+        idPayment: 'd51c243e-8adb-41fb-8093-b9241be23665',
+        type: 'Picpay',
       });
       return response.json(createPromise);
     } catch (err) {

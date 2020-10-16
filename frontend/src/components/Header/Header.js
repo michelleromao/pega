@@ -5,7 +5,7 @@ import { FiMenu, FiChevronDown } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import MenuVertical from '../Menu/Menu';
 import Menu from '../CategoryMenu/Menu';
-import './Header.css';
+
 
 import Bolsa from '../../assets/icons/Bolsa';
 import Logo from '../../assets/Logo';
@@ -68,7 +68,7 @@ export default function Header(props) {
             placeholder="Encontre seu produto aqui! =D"
           ></input>
           <Link to="/search"><Pesquisa /></Link>
-          
+
         </Search>
         {user ? (
           <Link to="/add/anuncio">

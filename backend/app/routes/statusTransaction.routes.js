@@ -8,10 +8,6 @@ statusTransactionRouter.get('/', StatusTransactionController.index);
 
 statusTransactionRouter.get('/:id', StatusTransactionController.show);
 
-// statusTransactionRouter.post('/', StatusTransactionController.create);
-
-// statusTransactionRouter.put('/:id', StatusTransactionController.update);
-
-// statusTransactionRouter.delete('/:id', StatusTransactionController.delete);
+statusTransactionRouter.post('/', StatusTransactionController.create);
 
 module.exports = statusTransactionRouter;

@@ -11,7 +11,7 @@ import Comment from '../../components/Product/CommentsArea/Comments/Comments';
 
 import SellerInformation from '../../components/SellerInformation';
 import ProductSmall from '../../components/ProductSmall';
-import './style.css';
+
 import Photoproduct from '../../assets/photos/photoproduct.png';
 import Photoproduct2 from '../../assets/photos/photoproduct2.png';
 import Photoproduct3 from '../../assets/photos/photoproduct3.png';
