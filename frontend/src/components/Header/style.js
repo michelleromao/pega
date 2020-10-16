@@ -22,7 +22,21 @@ export const Brand = styled.div`
     cursor: pointer;
   }
 `;
-
+export const Vender = styled.button`
+  margin: 0 15px 0 5px;
+  background: #be5599;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 31px;
+  border: none;
+  padding: 5px 40px 5px 40px;
+  transition: 0.3s;
+  :hover {
+  opacity: 94%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+`;
 export const Categorias = styled.div`
         display: flex;
         flex-direction: row;
