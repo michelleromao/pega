@@ -1,17 +1,17 @@
 # pega
 Repository of Pega!: a integrated project.
-Esse foi um projeto realizado na disciplina Projeto Integrado, no curso Design Digital, na Universidade Federal do Ceará.
-Pega! é um sistema que reúne pessoas e brechós interessados em vender e comprar artigos de moda seminovos e novos.
+This was a project carried out in the Integrated Project discipline, in the Digital Design course, at the Federal University of Ceará.
+Pega! is a system that brings together people and thrift stores interested in selling and buying used and new fashion items.
 
 ## Starting
-Oioioi! Para testar você precisa clonar o repositório, ter certeza que tem as dependencias instalas
+Oioioi! For you test you need clone the repository, make sure you have the dependencies installed
 - MongoDB
 - NodeJS
 - React
 - etc...
-A todo custo, da um Yarn para pegar a node_modules.
+At all costs, run a Yarn to get node_modules.
 
-As rotas são
+The routes are: 
 - '/authenticate/'
 
 - '/users/'
@@ -32,5 +32,5 @@ As rotas são
 - '/statusannouncements/'
 - '/statustransactions/'
 
-# Oservações
-Ao iniciar, use o banco de dados pegasystem e rode as rotas: '/styles/', '/categories/', '/payments/', '/deliveries/', '/statusannouncements/', '/statustransactions/' no método POST para adicionar categorias, estilos, tipos de pagamento e entregas, status de anuncios e transações. :)
+# OBS
+When starting, use the pegasystem database in MongoDB and run the routes: '/styles/', '/categories/', '/payments/', '/deliveries/', '/statusannouncements/', '/statustransactions/' in POST method to add categories, styles, types of payment and deliveries, ad status and transactions. :)
