@@ -10,25 +10,25 @@ Oioioi! Para testar você precisa clonar o repositório, ter certeza que tem as 
 A todo custo, da um Yarn para pegar a node_modules.
 
 As rotas são
-'/authenticate/'
+- '/authenticate/'
 
-'/users/'
-'/photosuser/'
+- '/users/'
+- '/photosuser/'
 
-'/announcements/'
-'/photosannouncement/'
+- '/announcements/'
+- '/photosannouncement/'
 
-'/bags/'
-'/transactions/'
+- '/bags/'
+- '/transactions/'
 
-'/styles/'
-'/categories/'
+- '/styles/'
+- '/categories/'
 
-'/payments/'
-'/deliveries/'
+- '/payments/'
+- '/deliveries/'
 
-'/statusannouncements/'
-'/statustransactions/'
+- '/statusannouncements/'
+- '/statustransactions/'
 
 #Oservações
 Ao iniciar, use o banco de dados pegasystem e rode as rotas: '/styles/', '/categories/', '/payments/', '/deliveries/', '/statusannouncements/', '/statustransactions/' no método POST para adicionar categorias, estilos, tipos de pagamento e entregas, status de anuncios e transações. :)
