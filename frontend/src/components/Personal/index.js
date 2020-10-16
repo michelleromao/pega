@@ -49,7 +49,7 @@ function Personal() {
   const inputNewPwdRef = useRef();
 
   async function handleSubmit(data) {
-    console.log(data);
+
     if((data.username
       || data.picpay
       || data.name

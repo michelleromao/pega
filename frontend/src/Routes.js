@@ -6,7 +6,6 @@ import CreateAnnouncement from './pages/CreateAnnouncement';
 import EditAnnouncement from './pages/EditAnnouncement';
 
 
-import TestPage from './pages/TestPage';
 import Sacola from './pages/Sacola/Sacola';
 import Payment from './pages/Sacola/Payment';
 import Details from './pages/Sacola/Details';
@@ -24,7 +23,6 @@ function Routes() {
       <Route path="/profile/:pathId/" component={() => <Profile />} />
 
       <Route path="/anuncio/:pathId/" component={() => <Announcement />} />
-      <Route path="/test" component={() => <TestPage />} />
       <Route path="/sacola" component={() => <Sacola />} />
       <Route path="/payment" component={() => <Payment />} />
       <Route path="/details/:pathId/" component={() => <Details />} />

@@ -76,7 +76,6 @@ function EditAnnouncement() {
       const delivery = await api.get(`/deliveries/${data[0].deliveryType}`);
       setDeliveryAnnouncement({label: delivery.data[0].type, value: delivery.data[0].deliveryType});
       const photos = await api.get(`/photosannouncement/${data[0].idAnnouncement}`);
-      console.log(photos.data[0]);
       if(photos.data[0].originalname.length === 1){
         setAnnouncementPhoto1(photos.data[0].originalname[0]);
       setIsLoad(false);
