@@ -35,24 +35,28 @@ class StatusAnnouncementController {
 
   static async create(request, response) {
     try {
-      const { type } = request.body;
-      const idStatus = v4();
-      const criterion = { type };
-      const promise = await StatusAnnouncement.find(criterion).exec();
-      if (promise.length !== 0) {
-        return response
-          .status(400)
-          .json({
-            message:
-              'Não é possível criar este tipo de status, pois ele já existe',
-          })
-          .end();
-      }
-
-      const createPromise = await StatusAnnouncement.create({
-        idStatus,
-        type,
-      });
+      const createPromise = await StatusAnnouncement.create([
+        {
+          idStatus: 'a7249f2f-da3c-4312-8269-4d20aa326dcc',
+          type: 'Ativo',
+        },
+        {
+          idStatus: '0b438541-f970-4e20-be51-ba9398326369',
+          type: 'Inativo',
+        },
+        {
+          idStatus: '7336a7a2-07cc-4966-adb4-5a19758b1506',
+          type: 'Vendido',
+        },
+        {
+          idStatus: '51f68a38-c8f0-4088-a40e-7b380dab6bd0',
+          type: 'Rascunho',
+        },
+        {
+          idStatus: '9008a1d4-59af-4fa2-9595-e868c6c0e4bb',
+          type: 'Reservado',
+        },
+      ]);
       return response.json(createPromise);
     } catch (err) {
       return err;

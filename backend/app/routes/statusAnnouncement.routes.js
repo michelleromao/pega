@@ -8,10 +8,6 @@ statusAnnouncementsRouter.get('/', StatusAnnouncementController.index);
 
 statusAnnouncementsRouter.get('/:id', StatusAnnouncementController.show);
 
-// statusAnnouncementsRouter.post('/', StatusAnnouncementController.create);
-
-// statusAnnouncementsRouter.put('/:id', StatusAnnouncementController.update);
-
-// statusAnnouncementsRouter.delete('/:id', StatusAnnouncementController.delete);
+statusAnnouncementsRouter.post('/', StatusAnnouncementController.create);
 
 module.exports = statusAnnouncementsRouter;

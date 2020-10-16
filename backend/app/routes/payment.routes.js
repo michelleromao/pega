@@ -8,10 +8,6 @@ paymentRouter.get('/', PaymentController.index);
 
 paymentRouter.get('/:id', PaymentController.show);
 
-// paymentRouter.post('/', PaymentController.create);
-
-// paymentRouter.put('/:id', PaymentController.update);
-
-// paymentRouter.delete('/:id', PaymentController.delete);
+paymentRouter.post('/', PaymentController.create);
 
 module.exports = paymentRouter;

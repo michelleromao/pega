@@ -35,24 +35,20 @@ class StatusTransactionController {
 
   static async create(request, response) {
     try {
-      const { type } = request.body;
-      const idStatus = v4();
-      const criterion = { type };
-      const promise = await StatusTransaction.find(criterion).exec();
-      if (promise.length !== 0) {
-        return response
-          .status(400)
-          .json({
-            message:
-              'Não é possível criar este tipo de status, pois ele já existe',
-          })
-          .end();
-      }
-
-      const createPromise = await StatusTransaction.create({
-        idStatus,
-        type,
-      });
+      const createPromise = await StatusTransaction.create([
+        {
+          idStatus: '00fd31a5-d50f-4ac2-945e-08166aff88bd',
+          type: 'Em andamento',
+        },
+        {
+          idStatus: '852091cf-a079-4c54-bf8f-86ce8af424a4',
+          type: 'Concluída',
+        },
+        {
+          idStatus: 'a8cd0bbc-21a4-4295-8a81-d8c138197028',
+          type: 'Cancelada',
+        },
+      ]);
       return response.json(createPromise);
     } catch (err) {
       return err;
